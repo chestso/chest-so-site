@@ -5,7 +5,7 @@
     var phrases = [
         "Open your Chest.",
         "The terminal, reimagined.",
-        "C so, therefore Lisp.",
+        "C for the core, Lisp for you.",
         "GPU-accelerated glory.",
         "Build with Chest.so",
     ];
