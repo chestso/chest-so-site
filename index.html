@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chest — The Open Source Terminal Ecosystem</title>
+    <meta name="description" content="Chest makes the command line powerful. Open source terminal emulator, TUI framework, and Lisp scripting — all in one monorepo.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧰</text></svg>">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <span class="logo-chest">chest</span><span class="logo-tld">.so</span>
+            </a>
+            <div class="nav-links">
+                <a href="#projects">Libs</a>
+                <a href="#apps">Apps</a>
+                <a href="https://github.com/user/chest" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-bg">
+            <div class="hero-noise" id="noise"></div>
+            <img src="assets/banner.jpg" alt="Treasure chest" class="hero-banner" loading="eager">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="typewriter" id="typewriter"></span><span class="cursor">_</span>
+            </h1>
+            <p class="hero-sub">The open source terminal ecosystem.<br>Emulator. TUI framework. Lisp scripting. All in one chest.</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">Explore</a>
+                <a href="#apps" class="btn btn-outline">See Apps</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Build with Chest</h2>
+                <p class="section-sub">Everything you need to build great stuff for the terminal. Always open&#8209;source.</p>
+                <div class="card-grid">
+                    <a href="https://github.com/user/chest-vt" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">⎕</div>
+                        <h3>Chest VT<span class="card-flair"> — Engine Virtual</span></h3>
+                        <p>Virtual terminal engine: VT parser, grid, scrollback, reflow, sixel. Zero dependencies.</p>
+                    </a>
+                    <a href="https://github.com/user/chest-boba" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">◉</div>
+                        <h3>Chest Boba<span class="card-flair"> — Flavor Taro</span></h3>
+                        <p>TUI library with Elm Architecture. Components, styles, and runtime — the Bubbletea of C.</p>
+                    </a>
+                    <a href="https://github.com/user/chest-lisp" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">λ</div>
+                        <h3>Chest Lisp<span class="card-flair"> — Macro Powerful</span></h3>
+                        <p>Embeddable Lisp interpreter with Flare syntax highlighting and REPL. Script your terminal.</p>
+                    </a>
+                    <a href="https://github.com/user/chest-terminal" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">▤</div>
+                        <h3>Chest Terminal<span class="card-flair"> — Pixels Sharp</span></h3>
+                        <p>GPU-accelerated terminal emulator. SDL3 renderer, FreeType/HarfBuzz, modular backends.</p>
+                    </a>
+                    <a href="https://github.com/user/chest-telnet" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">⌘</div>
+                        <h3>Chest Telnet<span class="card-flair"> — MUD Ready</span></h3>
+                        <p>MUD/telnet client with Lisp scripting and TinTin++ compatibility. Adventure awaits.</p>
+                    </a>
+                    <a href="https://github.com/user/chest-lisp" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">✦</div>
+                        <h3>Flare<span class="card-flair"> — Highlight Glamorous</span></h3>
+                        <p>Syntax highlighter for Lisp and beyond. Powers the REPL and Emacs mode.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="apps" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">More stuff</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🖥️</div>
+                        <h3>Chest Terminal<span class="card-flair"> — GPU Fast</span></h3>
+                        <p>A modern terminal emulator built on SDL3 with Vulkan/D3D12/Metal rendering. Gamma-correct text, sixel images, and Lottie animations — all at 60fps.</p>
+                        <a href="#" class="btn btn-small">Try It</a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔮</div>
+                        <h3>Chest REPL<span class="card-flair"> — Interactive Very</span></h3>
+                        <p>The interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate, explore, and extend your terminal in real time.</p>
+                        <a href="#" class="btn btn-small">Run REPL</a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚔️</div>
+                        <h3>Chest Telnet<span class="card-flair"> — Adventure Bound</span></h3>
+                        <p>Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Chest Lisp.</p>
+                        <a href="#" class="btn btn-small">Connect</a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Emacs Mode<span class="card-flair"> — Editing Pleasant</span></h3>
+                        <p>A major mode for Emacs with syntax highlighting, indentation, and REPL integration. Write Lisp the way Lisp was meant to be written.</p>
+                        <a href="#" class="btn btn-small">Install</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-motto">
+            <div class="container">
+                <h2 class="motto">Free as in freedom.</h2>
+                <p class="motto-sub">Every library in Chest is free software — not because it's trendy, but because the best terminals are the ones you can crack open, inspect, and rebuild yourself.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p><span class="logo-chest">chest</span><span class="logo-tld">.so</span></p>
+            <p class="footer-sub">Copyright &copy; 2026 Chest Contributors.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
