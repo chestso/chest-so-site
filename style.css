@@ -131,6 +131,7 @@ a:hover {
 .hero-overlay {
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(
         180deg,
         rgba(13, 13, 13, 0.4) 0%,
@@ -142,8 +143,9 @@ a:hover {
 .hero-noise {
     position: absolute;
     inset: 0;
-    z-index: 1;
-    opacity: 0.06;
+    z-index: 2;
+    opacity: 0.2;
+    mix-blend-mode: overlay;
     pointer-events: none;
 }
 
