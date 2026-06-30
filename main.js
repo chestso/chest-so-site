@@ -6,6 +6,7 @@
         "Open your Chest.",
         "The terminal, reimagined.",
         "C for the core, Lisp for you.",
+        "C and Lisp never Rusts.",
         "GPU-accelerated glory.",
         "Build with Chest.so",
     ];
