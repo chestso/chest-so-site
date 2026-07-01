@@ -186,6 +186,53 @@ var I18N = {
       "ابنِ مع Chest.so",
     ],
   },
+  th: {
+    "meta.title": "Chest — ระบบนิเวศเทอร์มินัลโอเพนซอร์ส",
+    "meta.description":
+      "Chest ทำให้บรรทัดคำสั่งทรงพลัง เทอร์มินัลอิมิวเลเตอร์โอเพนซอร์ส เฟรมเวิร์ก TUI และสคริปต์ Lisp — ทั้งหมดใน monorepo เดียว",
+    "nav.apps": "แอป",
+    "nav.libs": "ไลบรารี",
+    "hero.subtitle":
+      "ระบบนิเวศเทอร์มินัลโอเพนซอร์ส<br>อิมิวเลเตอร์ เฟรมเวิร์ก TUI สคริปต์ Lisp ทั้งหมดในหีบเดียว",
+    "hero.cta.apps": "ดูแอป",
+    "hero.cta.explore": "สำรวจ",
+    "apps.title": "แอป",
+    "apps.subtitle": "สร้างด้วย Chest พร้อมใช้งาน",
+    "apps.download": "ดาวน์โหลด",
+    "apps.source": "ซอร์สโค้ด",
+    "apps.badge.new": "ใหม่!",
+    "apps.portty.flair": " — เร่งด้วย GPU",
+    "apps.portty.description":
+      "เทอร์มินัลอิมิวเลเตอร์สมัยใหม่สร้างบน SDL3 พร้อมการเรนเดอร์ Vulkan/D3D12/Metal ข้อความแกมม่าถูกต้อง ภาพ sixel และอนิเมชัน Lottie — ทั้งหมดที่ 60fps",
+    "apps.ditty.flair": " — REPL โต้ตอบ",
+    "apps.ditty.description":
+      "REPL Lisp โต้ตอบพร้อมการไฮไลต์ไวยากรณ์ Flare ประเมิน สำรวจ และขยายเทอร์มินัลของคุณแบบเรียลไทม์",
+    "apps.mudlark.flair": " — พร้อมผจญภัย",
+    "apps.mudlark.description":
+      "เชื่อมต่อกับ MUD และเซิร์ฟเวอร์ telnet พร้อมรองรับสคริปต์เต็มรูปแบบ นามแฝง ทริกเกอร์ speedwalk และความเข้ากันได้ของ TinTin++ — ทั้งหมดขับเคลื่อนด้วย Ditty Lisp",
+    "libs.title": "สร้างด้วย Chest",
+    "libs.subtitle":
+      "ทุกสิ่งที่คุณต้องการเพื่อสร้างสิ่งดีๆ สำหรับเทอร์มินัล โอเพนซอร์สเสมอ",
+    "libs.coffer.flair": " — เอนจินเสมือน",
+    "libs.coffer.description":
+      "เอนจินเทอร์มินัลเสมือน: ตัววิเคราะห์ VT กริด สกรอลแบ็ก รีโฟลว์ sixel ไม่มีการพึ่งพาใดๆ",
+    "libs.boba.flair": " — รสชาติ Taro",
+    "libs.boba.description":
+      "ไลบรารี TUI ด้วยสถาปัตยกรรม Elm คอมโพเนนต์ สไตล์ และรันไทม์ — Bubbletea ของภาษา C",
+    "libs.ditty.flair": " — มาโครทรงพลัง",
+    "libs.ditty.description":
+      "อินเทอร์พรีเตอร์ Lisp ฝังได้ ตัวไฮไลต์ไวยากรณ์ Flare และ CLI เขียนสคริปต์เทอร์มินัลของคุณ",
+    "motto.title": "เสรีดั่งอิสรภาพ",
+    "motto.subtitle":
+      "ทุกไลบรารีใน Chest คือซอฟต์แวร์เสรี เพราะของเล่นที่ดีที่สุดคือของที่คุณสามารถเปิดออก ตรวจสอบ และสร้างใหม่ได้ด้วยตัวเอง",
+    "footer.copyright": "ลิขสิทธิ์ \u00A9 2026 ผู้มีส่วนร่วม Chest",
+    typewriter: [
+      "เทอร์มินัล ที่จินตนาการใหม่",
+      "C และ Lisp ไม่มีสนิม",
+      "พลังเร่งด้วย GPU",
+      "สร้างด้วย Chest.so",
+    ],
+  },
 };
 
 var RTL_LANGS = ["fa", "ar"];
