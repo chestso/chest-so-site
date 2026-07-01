@@ -358,6 +358,28 @@ a:hover {
   line-height: 1.6;
 }
 
+.feature-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.badge-new {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--cyan);
+  color: var(--dark);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
 /* ── Motto ── */
 .section-motto {
   text-align: center;
