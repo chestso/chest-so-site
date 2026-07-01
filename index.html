@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chest — The Open Source Terminal Ecosystem</title>
+    <title data-i18n="meta.title">
+      Chest — The Open Source Terminal Ecosystem
+    </title>
     <meta
       name="description"
+      data-i18n-attr="content:meta.description"
       content="Chest makes the command line powerful. Open source terminal emulator, TUI framework, and Lisp scripting — all in one monorepo."
     />
     <link rel="stylesheet" href="style.css" />
@@ -21,11 +24,28 @@
           <span class="logo-chest">chest</span><span class="logo-tld">.so</span>
         </a>
         <div class="nav-links">
-          <a href="#apps">Apps</a>
-          <a href="#projects">Libs</a>
+          <a href="#apps" data-i18n="nav.apps">Apps</a>
+          <a href="#projects" data-i18n="nav.libs">Libs</a>
           <a href="https://github.com/chestso" target="_blank" rel="noopener"
             >GitHub</a
           >
+          <div class="lang-switcher" id="lang-switcher">
+            <button
+              class="lang-btn"
+              id="lang-btn"
+              aria-label="Switch language"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              EN
+            </button>
+            <ul class="lang-menu" id="lang-menu" role="menu">
+              <li role="menuitem" data-lang="en">English</li>
+              <li role="menuitem" data-lang="zh">中文</li>
+              <li role="menuitem" data-lang="fa">فارسی</li>
+              <li role="menuitem" data-lang="ar">العربية</li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
@@ -46,13 +66,20 @@
           <span class="typewriter" id="typewriter"></span
           ><span class="cursor">_</span>
         </h1>
-        <p class="hero-sub">
+        <p class="hero-sub" data-i18n="hero.subtitle">
           The open source terminal ecosystem.<br />Emulator. TUI framework. Lisp
           scripting. All in one chest.
         </p>
         <div class="hero-cta">
-          <a href="#apps" class="btn btn-primary">See Apps</a>
-          <a href="#projects" class="btn btn-outline">Explore</a>
+          <a href="#apps" class="btn btn-primary" data-i18n="hero.cta.apps"
+            >See Apps</a
+          >
+          <a
+            href="#projects"
+            class="btn btn-outline"
+            data-i18n="hero.cta.explore"
+            >Explore</a
+          >
         </div>
       </div>
     </header>
@@ -60,16 +87,19 @@
     <main>
       <section id="apps" class="section">
         <div class="container">
-          <h2 class="section-title">Apps</h2>
-          <p class="section-sub">Built with Chest. Ready to use.</p>
+          <h2 class="section-title" data-i18n="apps.title">Apps</h2>
+          <p class="section-sub" data-i18n="apps.subtitle">
+            Built with Chest. Ready to use.
+          </p>
           <div class="feature-grid">
             <div class="feature-card">
               <div class="feature-icon">🖥️</div>
               <h3>
-                Portty<span class="card-flair"> — GPU-Accelerated</span
-                ><span class="badge-new">New!</span>
+                Portty<span class="card-flair" data-i18n="apps.portty.flair">
+                  — GPU-Accelerated</span
+                ><span class="badge-new" data-i18n="apps.badge.new">New!</span>
               </h3>
-              <p>
+              <p data-i18n="apps.portty.description">
                 A modern terminal emulator built on SDL3 with Vulkan/D3D12/Metal
                 rendering. Gamma-correct text, sixel images, and Lottie
                 animations — all at 60fps.
@@ -80,6 +110,7 @@
                   class="btn btn-small btn-primary"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="apps.download"
                   >Download</a
                 >
                 <a
@@ -87,14 +118,19 @@
                   class="btn btn-small"
                   target="_blank"
                   rel="noopener"
+                  data-i18n="apps.source"
                   >Source</a
                 >
               </div>
             </div>
             <div class="feature-card">
               <div class="feature-icon">🔮</div>
-              <h3>Ditty<span class="card-flair"> — Interactive REPL</span></h3>
-              <p>
+              <h3>
+                Ditty<span class="card-flair" data-i18n="apps.ditty.flair">
+                  — Interactive REPL</span
+                >
+              </h3>
+              <p data-i18n="apps.ditty.description">
                 An interactive Lisp REPL with Flare-powered syntax highlighting.
                 Evaluate, explore, and extend your terminal in real time.
               </p>
@@ -103,15 +139,18 @@
                 class="btn btn-small"
                 target="_blank"
                 rel="noopener"
+                data-i18n="apps.source"
                 >Source</a
               >
             </div>
             <div class="feature-card">
               <div class="feature-icon">⚔️</div>
               <h3>
-                Mudlark<span class="card-flair"> — Bound for Adventure</span>
+                Mudlark<span class="card-flair" data-i18n="apps.mudlark.flair">
+                  — Bound for Adventure</span
+                >
               </h3>
-              <p>
+              <p data-i18n="apps.mudlark.description">
                 Connect to MUDs and telnet servers with full scripting support.
                 Aliases, triggers, speedwalk, and TinTin++ compatibility — all
                 driven by Ditty Lisp.
@@ -121,6 +160,7 @@
                 class="btn btn-small"
                 target="_blank"
                 rel="noopener"
+                data-i18n="apps.source"
                 >Source</a
               >
             </div>
@@ -130,8 +170,8 @@
 
       <section id="projects" class="section section-alt">
         <div class="container">
-          <h2 class="section-title">Build with Chest</h2>
-          <p class="section-sub">
+          <h2 class="section-title" data-i18n="libs.title">Build with Chest</h2>
+          <p class="section-sub" data-i18n="libs.subtitle">
             Everything you need to build great stuff for the terminal. Always
             open&#8209;source.
           </p>
@@ -143,8 +183,12 @@
               rel="noopener"
             >
               <div class="card-icon">▣</div>
-              <h3>Coffer<span class="card-flair"> — Virtual Engine</span></h3>
-              <p>
+              <h3>
+                Coffer<span class="card-flair" data-i18n="libs.coffer.flair">
+                  — Virtual Engine</span
+                >
+              </h3>
+              <p data-i18n="libs.coffer.description">
                 Virtual terminal engine: VT parser, grid, scrollback, reflow,
                 sixel. Zero dependencies.
               </p>
@@ -156,8 +200,12 @@
               rel="noopener"
             >
               <div class="card-icon">◉</div>
-              <h3>Boba<span class="card-flair"> — Taro Flavor</span></h3>
-              <p>
+              <h3>
+                Boba<span class="card-flair" data-i18n="libs.boba.flair">
+                  — Taro Flavor</span
+                >
+              </h3>
+              <p data-i18n="libs.boba.description">
                 TUI library with Elm Architecture. Components, styles, and
                 runtime — the Bubbletea of C.
               </p>
@@ -169,8 +217,12 @@
               rel="noopener"
             >
               <div class="card-icon">λ</div>
-              <h3>Ditty<span class="card-flair"> — Powerful Macros</span></h3>
-              <p>
+              <h3>
+                Ditty<span class="card-flair" data-i18n="libs.ditty.flair">
+                  — Powerful Macros</span
+                >
+              </h3>
+              <p data-i18n="libs.ditty.description">
                 Embeddable Lisp interpreter, Flare syntax highlighter, and CLI.
                 Script your terminal.
               </p>
@@ -181,8 +233,8 @@
 
       <section class="section section-motto">
         <div class="container">
-          <h2 class="motto">Free as in freedom.</h2>
-          <p class="motto-sub">
+          <h2 class="motto" data-i18n="motto.title">Free as in freedom.</h2>
+          <p class="motto-sub" data-i18n="motto.subtitle">
             Every library in Chest is free software, because the best toys are
             the ones you can crack open, inspect, and rebuild yourself.
           </p>
@@ -195,10 +247,13 @@
         <p>
           <span class="logo-chest">chest</span><span class="logo-tld">.so</span>
         </p>
-        <p class="footer-sub">Copyright &copy; 2026 Chest Contributors.</p>
+        <p class="footer-sub" data-i18n="footer.copyright">
+          Copyright &copy; 2026 Chest Contributors.
+        </p>
       </div>
     </footer>
 
+    <script src="i18n.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

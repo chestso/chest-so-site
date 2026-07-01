@@ -1,0 +1,191 @@
+var I18N = {
+  en: {
+    "meta.title": "Chest — The Open Source Terminal Ecosystem",
+    "meta.description":
+      "Chest makes the command line powerful. Open source terminal emulator, TUI framework, and Lisp scripting — all in one monorepo.",
+    "nav.apps": "Apps",
+    "nav.libs": "Libs",
+    "hero.subtitle":
+      "The open source terminal ecosystem.<br>Emulator. TUI framework. Lisp scripting. All in one chest.",
+    "hero.cta.apps": "See Apps",
+    "hero.cta.explore": "Explore",
+    "apps.title": "Apps",
+    "apps.subtitle": "Built with Chest. Ready to use.",
+    "apps.download": "Download",
+    "apps.source": "Source",
+    "apps.badge.new": "New!",
+    "apps.portty.flair": " — GPU-Accelerated",
+    "apps.portty.description":
+      "A modern terminal emulator built on SDL3 with Vulkan/D3D12/Metal rendering. Gamma-correct text, sixel images, and Lottie animations — all at 60fps.",
+    "apps.ditty.flair": " — Interactive REPL",
+    "apps.ditty.description":
+      "An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate, explore, and extend your terminal in real time.",
+    "apps.mudlark.flair": " — Bound for Adventure",
+    "apps.mudlark.description":
+      "Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Ditty Lisp.",
+    "libs.title": "Build with Chest",
+    "libs.subtitle":
+      "Everything you need to build great stuff for the terminal. Always open&#8209;source.",
+    "libs.coffer.flair": " — Virtual Engine",
+    "libs.coffer.description":
+      "Virtual terminal engine: VT parser, grid, scrollback, reflow, sixel. Zero dependencies.",
+    "libs.boba.flair": " — Taro Flavor",
+    "libs.boba.description":
+      "TUI library with Elm Architecture. Components, styles, and runtime — the Bubbletea of C.",
+    "libs.ditty.flair": " — Powerful Macros",
+    "libs.ditty.description":
+      "Embeddable Lisp interpreter, Flare syntax highlighter, and CLI. Script your terminal.",
+    "motto.title": "Free as in freedom.",
+    "motto.subtitle":
+      "Every library in Chest is free software, because the best toys are the ones you can crack open, inspect, and rebuild yourself.",
+    "footer.copyright": "Copyright \u00A9 2026 Chest Contributors.",
+    typewriter: [
+      "The terminal, reimagined.",
+      "C and Lisp never Rusts.",
+      "GPU-accelerated glory.",
+      "Build with Chest.so",
+    ],
+  },
+  zh: {
+    "meta.title": "Chest — 开源终端生态系统",
+    "meta.description":
+      "Chest 让命令行变得强大。开源终端模拟器、TUI 框架和 Lisp 脚本——全部集于一个 monorepo 中。",
+    "nav.apps": "应用",
+    "nav.libs": "库",
+    "hero.subtitle":
+      "开源终端生态系统。<br>模拟器。TUI 框架。Lisp 脚本。全部装在一个箱子里。",
+    "hero.cta.apps": "查看应用",
+    "hero.cta.explore": "探索",
+    "apps.title": "应用",
+    "apps.subtitle": "用 Chest 构建。开箱即用。",
+    "apps.download": "下载",
+    "apps.source": "源码",
+    "apps.badge.new": "新!",
+    "apps.portty.flair": " — GPU 加速",
+    "apps.portty.description":
+      "基于 SDL3 构建的现代终端模拟器，支持 Vulkan/D3D12/Metal 渲染。伽马校正文本、sixel 图像和 Lottie 动画——全部 60fps。",
+    "apps.ditty.flair": " — 交互式 REPL",
+    "apps.ditty.description":
+      "带有 Flare 语法高亮的交互式 Lisp REPL。实时评估、探索和扩展你的终端。",
+    "apps.mudlark.flair": " — 冒险启航",
+    "apps.mudlark.description":
+      "连接到 MUD 和 telnet 服务器，支持完整脚本功能。别名、触发器、快速行走和 TinTin++ 兼容性——全部由 Ditty Lisp 驱动。",
+    "libs.title": "用 Chest 构建",
+    "libs.subtitle": "构建出色终端作品所需的一切。始终开源。",
+    "libs.coffer.flair": " — 虚拟引擎",
+    "libs.coffer.description":
+      "虚拟终端引擎：VT 解析器、网格、回滚、回流、sixel。零依赖。",
+    "libs.boba.flair": " — 塔罗风味",
+    "libs.boba.description":
+      "采用 Elm 架构的 TUI 库。组件、样式和运行时——C 语言的 Bubbletea。",
+    "libs.ditty.flair": " — 强大宏",
+    "libs.ditty.description":
+      "可嵌入 Lisp 解释器、Flare 语法高亮和 CLI。脚本化你的终端。",
+    "motto.title": "自由如自由。",
+    "motto.subtitle":
+      "Chest 中的每个库都是自由软件，因为最好的玩具是那些你可以拆开、检查并自己重建的。",
+    "footer.copyright": "版权所有 \u00A9 2026 Chest 贡献者。",
+    typewriter: [
+      "终端，重新想象。",
+      "C 和 Lisp 永不生锈。",
+      "GPU 加速的荣耀。",
+      "用 Chest.so 构建",
+    ],
+  },
+  fa: {
+    "meta.title": "Chest — اکوسیستم ترمینال متن‌باز",
+    "meta.description":
+      "Chest خط فرمان را قدرتمند می‌کند. شبیه‌ساز ترمینال متن‌باز، چارچوب TUI، و اسکریپت‌نویسی Lisp — همه در یک monorepo.",
+    "nav.apps": "اپ‌ها",
+    "nav.libs": "کتابخانه‌ها",
+    "hero.subtitle":
+      "اکوسیستم ترمینال متن‌باز.<br>شبیه‌ساز. چارچوب TUI. اسکریپت Lisp. همه در یک صندوق.",
+    "hero.cta.apps": "دیدن اپ‌ها",
+    "hero.cta.explore": "کاوش",
+    "apps.title": "اپ‌ها",
+    "apps.subtitle": "ساخته شده با Chest. آماده استفاده.",
+    "apps.download": "دانلود",
+    "apps.source": "کد منبع",
+    "apps.badge.new": "جدید!",
+    "apps.portty.flair": " — شتاب‌یافته GPU",
+    "apps.portty.description":
+      "شبیه‌ساز ترمینال مدرن ساخته شده روی SDL3 با رندر Vulkan/D3D12/Metal. متن گامای صحیح، تصاویر sixel، و انیمیشن Lottie — همه با ۶۰fps.",
+    "apps.ditty.flair": " — REPL تعاملی",
+    "apps.ditty.description":
+      "REPL Lisp تعاملی با برجسته‌سازی نحو Flare. ارزیابی، کاوش، و گسترش ترمینال خود در زمان واقعی.",
+    "apps.mudlark.flair": " — آماده ماجراجویی",
+    "apps.mudlark.description":
+      "به MUDها و سرورهای telnet متصل شوید با پشتیبانی کامل اسکریپت. نام‌های مستعار، تریگرها، speedwalk، و سازگاری TinTin++ — همه توسط Ditty Lisp هدایت می‌شود.",
+    "libs.title": "با Chest بسازید",
+    "libs.subtitle":
+      "هر آنچه برای ساختن چیزهای عالی برای ترمینال نیاز دارید. همیشه متن‌باز.",
+    "libs.coffer.flair": " — موتور مجازی",
+    "libs.coffer.description":
+      "موتور ترمینال مجازی: تجزیه‌کننده VT، شبکه، اسکرول‌بک، reflow، sixel. وابستگی صفر.",
+    "libs.boba.flair": " — طعم تارو",
+    "libs.boba.description":
+      "کتابخانه TUI با معماری Elm. کامپوننت‌ها، سبک‌ها، و رانتایم — Bubbleteaی C.",
+    "libs.ditty.flair": " — ماکروهای قدرتمند",
+    "libs.ditty.description":
+      "مفسر Lisp قابل جاسازی، برجسته‌کننده نحو Flare، و CLI. ترمینال خود را اسکریپت کنید.",
+    "motto.title": "آزاد به معنای آزادی.",
+    "motto.subtitle":
+      "هر کتابخانه در Chest نرم‌افزار آزاد است، زیرا بهترین اسباب‌بازی‌ها آن‌هایی هستند که می‌توانید باز کنید، بررسی کنید، و خودتان بازسازی کنید.",
+    "footer.copyright": "حق نشر \u00A9 ۲۰۲۶ مشارکت‌کنندگان Chest.",
+    typewriter: [
+      "ترمینال، از نو تصور شده.",
+      "C و Lisp هرگز زنگ نمی‌زنند.",
+      "شتاب GPU.",
+      "با Chest.so بسازید",
+    ],
+  },
+  ar: {
+    "meta.title": "Chest — نظام الواجهة الطرفية مفتوح المصدر",
+    "meta.description":
+      "Chest يجعل سطر الأوامر قوياً. محاكي طرفية مفتوح المصدر، إطار عمل TUI، وبرمجة Lisp — كل ذلك في مستودع واحد.",
+    "nav.apps": "تطبيقات",
+    "nav.libs": "مكتبات",
+    "hero.subtitle":
+      "نظام الواجهة الطرفية مفتوح المصدر.<br>محاكي. إطار عمل TUI. برمجة Lisp. الكل في صندوق واحد.",
+    "hero.cta.apps": "عرض التطبيقات",
+    "hero.cta.explore": "استكشاف",
+    "apps.title": "تطبيقات",
+    "apps.subtitle": "مبنية بـ Chest. جاهزة للاستخدام.",
+    "apps.download": "تنزيل",
+    "apps.source": "المصدر",
+    "apps.badge.new": "جديد!",
+    "apps.portty.flair": " — معجل بـ GPU",
+    "apps.portty.description":
+      "محاكي طرفية حديث مبني على SDL3 مع رسم Vulkan/D3D12/Metal. نص بجاما صحيح، صور sixel، ورسوم Lottie متحركة — كل ذلك بـ 60fps.",
+    "apps.ditty.flair": " — REPL تفاعلي",
+    "apps.ditty.description":
+      "REPL Lisp تفاعلي مع إبراز بناء الجملة Flare. قيّم، استكشف، ووسّع طرفيتك في الوقت الفعلي.",
+    "apps.mudlark.flair": " — متجه نحو المغامرة",
+    "apps.mudlark.description":
+      "اتصل بخوادم MUD و telnet مع دعم كامل للبرمجة. أسماء مستعارة، مشغلات، speedwalk، وتوافق TinTin++ — كلها مدفوعة بـ Ditty Lisp.",
+    "libs.title": "ابنِ بـ Chest",
+    "libs.subtitle":
+      "كل ما تحتاجه لبناء أشياء رائعة للطرفية. دائماً مفتوح المصدر.",
+    "libs.coffer.flair": " — محرك افتراضي",
+    "libs.coffer.description":
+      "محرك طرفية افتراضي: محلل VT، شبكة، تمرير للخلف، إعادة تدفق، sixel. صفر تبعيات.",
+    "libs.boba.flair": " — نكهة تارو",
+    "libs.boba.description":
+      "مكتبة TUI بمعمارية Elm. مكونات، أنماط، وزمن تشغيل — Bubbletea الخاص بـ C.",
+    "libs.ditty.flair": " — وحدات ماكرو قوية",
+    "libs.ditty.description":
+      "مفسر Lisp قابل للتضمين، أداة إبراز بناء الجملة Flare، و CLI. برمج طرفيتك.",
+    "motto.title": "حر كما في الحرية.",
+    "motto.subtitle":
+      "كل مكتبة في Chest هي برمجية حرة، لأن أفضل الألعاب هي تلك التي يمكنك فتحها وفحصها وإعادة بنائها بنفسك.",
+    "footer.copyright": "حقوق النشر \u00A9 2026 مساهمو Chest.",
+    typewriter: [
+      "الطرفية، بطريقة جديدة.",
+      "C و Lisp لا تصدأ أبداً.",
+      "مجد معجل بـ GPU.",
+      "ابنِ مع Chest.so",
+    ],
+  },
+};
+
+var RTL_LANGS = ["fa", "ar"];
