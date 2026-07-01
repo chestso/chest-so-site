@@ -87,7 +87,7 @@ var I18N = {
     "footer.copyright": "版权所有 \u00A9 2026 Chest 贡献者。",
     typewriter: [
       "终端，重新想象。",
-      "C 和 Lisp 永不生锈。",
+      "C 和 Lisp 永不 Rust。",
       "GPU 加速的荣耀。",
       "用 Chest.so 构建",
     ],
@@ -134,7 +134,7 @@ var I18N = {
     "footer.copyright": "حق نشر \u00A9 ۲۰۲۶ مشارکت‌کنندگان Chest.",
     typewriter: [
       "ترمینال، از نو تصور شده.",
-      "C و Lisp هرگز زنگ نمی‌زنند.",
+      "C و Lisp هرگز Rust نمی‌کنند.",
       "شتاب GPU.",
       "با Chest.so بسازید",
     ],
@@ -181,7 +181,7 @@ var I18N = {
     "footer.copyright": "حقوق النشر \u00A9 2026 مساهمو Chest.",
     typewriter: [
       "الطرفية، بطريقة جديدة.",
-      "C و Lisp لا تصدأ أبداً.",
+      "C و Lisp لا Rust أبداً.",
       "مجد معجل بـ GPU.",
       "ابنِ مع Chest.so",
     ],
@@ -228,7 +228,7 @@ var I18N = {
     "footer.copyright": "ลิขสิทธิ์ \u00A9 2026 ผู้มีส่วนร่วม Chest",
     typewriter: [
       "เทอร์มินัล ที่จินตนาการใหม่",
-      "C และ Lisp ไม่มีสนิม",
+      "C และ Lisp ไม่มี Rust",
       "พลังเร่งด้วย GPU",
       "สร้างด้วย Chest.so",
     ],
