@@ -1,6 +1,71 @@
 (function () {
   "use strict";
 
+  var SUPPORTED = ["en", "zh", "fa", "ar"];
+  var DEFAULT_LANG = "en";
+
+  function getLang() {
+    var stored = null;
+    try {
+      stored = localStorage.getItem("chest-lang");
+    } catch (e) {}
+    if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
+    var nav = (navigator.language || "").toLowerCase();
+    for (var i = 0; i < SUPPORTED.length; i++) {
+      if (nav.indexOf(SUPPORTED[i]) === 0) return SUPPORTED[i];
+    }
+    return DEFAULT_LANG;
+  }
+
+  function setLang(lang) {
+    if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
+    try {
+      localStorage.setItem("chest-lang", lang);
+    } catch (e) {}
+    applyLang(lang);
+  }
+
+  function applyLang(lang) {
+    var dict = I18N[lang] || I18N[DEFAULT_LANG];
+
+    document.documentElement.lang = lang;
+
+    var isRTL = RTL_LANGS.indexOf(lang) !== -1;
+    document.documentElement.dir = isRTL ? "rtl" : "ltr";
+    document.body.classList.toggle("rtl", isRTL);
+
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    document.querySelectorAll("[data-i18n-attr]").forEach(function (el) {
+      var pairs = el.getAttribute("data-i18n-attr").split(",");
+      pairs.forEach(function (pair) {
+        var parts = pair.split(":");
+        var attr = parts[0].trim();
+        var key = parts[1].trim();
+        if (dict[key] !== undefined) el.setAttribute(attr, dict[key]);
+      });
+    });
+
+    var btn = document.getElementById("lang-btn");
+    if (btn) btn.textContent = lang.toUpperCase();
+
+    var menu = document.getElementById("lang-menu");
+    if (menu) {
+      menu.querySelectorAll("[data-lang]").forEach(function (item) {
+        if (item.getAttribute("data-lang") === lang) {
+          item.classList.add("lang-active");
+        } else {
+          item.classList.remove("lang-active");
+        }
+      });
+    }
+
+    updateTypewriter(dict);
+  }
+
   // ── Typewriter Effect ──
   var phrases = [
     "The terminal, reimagined.",
@@ -12,8 +77,23 @@
   var charIndex = 0;
   var isDeleting = false;
   var el = document.getElementById("typewriter");
+  var typeTimer = null;
+
+  function updateTypewriter(dict) {
+    var newPhrases = dict.typewriter || phrases;
+    if (newPhrases.join("|") !== phrases.join("|")) {
+      phrases = newPhrases;
+      phraseIndex = 0;
+      charIndex = 0;
+      isDeleting = false;
+      if (el) el.textContent = "";
+      if (typeTimer) clearTimeout(typeTimer);
+      type();
+    }
+  }
 
   function type() {
+    if (!el) return;
     var current = phrases[phraseIndex];
     if (isDeleting) {
       el.textContent = current.substring(0, charIndex - 1);
@@ -34,10 +114,39 @@
       delay = 400;
     }
 
-    setTimeout(type, delay);
+    typeTimer = setTimeout(type, delay);
   }
 
   type();
+
+  // ── Language Switcher ──
+  var langBtn = document.getElementById("lang-btn");
+  var langMenu = document.getElementById("lang-menu");
+
+  if (langBtn && langMenu) {
+    langBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var isOpen = langMenu.classList.toggle("lang-menu-open");
+      langBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    langMenu.addEventListener("click", function (e) {
+      var item = e.target.closest("[data-lang]");
+      if (item) {
+        setLang(item.getAttribute("data-lang"));
+        langMenu.classList.remove("lang-menu-open");
+        langBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.addEventListener("click", function () {
+      langMenu.classList.remove("lang-menu-open");
+      langBtn.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  applyLang(getLang());
 
   // ── Subtle Gaussian Noise (2D Canvas) ──
   var noiseContainer = document.getElementById("noise");
