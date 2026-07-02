@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var SUPPORTED = ["en", "zh", "fa", "ar", "th"];
+  var SUPPORTED = ["en", "zh", "fa", "ar", "th", "ru"];
   var DEFAULT_LANG = "en";
 
   function getLang() {
