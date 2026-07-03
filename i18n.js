@@ -9,7 +9,7 @@ var I18N = {
     'nav.home': 'Home',
     'community.title': 'Community',
     'community.subtitle':
-      'User sub-pages showcasing projects incubating in the Chest ecosystem.',
+      'Personal pages of Chest community members and their projects.',
     'community.view': 'View',
     'community.yours': 'Get your own page',
     'community.project': 'project',
@@ -72,7 +72,7 @@ var I18N = {
     'nav.community': '社区',
     'nav.home': '首页',
     'community.title': '社区',
-    'community.subtitle': '用户子页面，展示在 Chest 生态中孵化的项目。',
+    'community.subtitle': 'Chest 社区成员的个人页面及他们的项目。',
     'community.view': '查看',
     'community.yours': '获取你的页面',
     'community.project': '个项目',
@@ -133,8 +133,7 @@ var I18N = {
     'nav.community': 'اجتماع',
     'nav.home': 'خانه',
     'community.title': 'اجتماع',
-    'community.subtitle':
-      'زیرصفحات کاربران showcasing پروژه‌های در حال رشد در اکوسیستم Chest.',
+    'community.subtitle': 'صفحات شخصی اعضای اجتماع Chest و پروژه‌هایشان.',
     'community.view': 'مشاهده',
     'community.yours': 'صفحه خود را بسازید',
     'community.project': 'پروژه',
@@ -197,8 +196,7 @@ var I18N = {
     'nav.community': 'المجتمع',
     'nav.home': 'الرئيسية',
     'community.title': 'المجتمع',
-    'community.subtitle':
-      'صفحات فرعية للمستخدمين تعرض المشاريع المحتضنة في نظام Chest.',
+    'community.subtitle': 'صفحات شخصية لأعضاء مجتمع Chest ومشاريعهم.',
     'community.view': 'عرض',
     'community.yours': 'احصل على صفحتك',
     'community.project': 'مشروع',
@@ -262,7 +260,7 @@ var I18N = {
     'nav.home': 'หน้าแรก',
     'community.title': 'ชุมชน',
     'community.subtitle':
-      'หน้าย่อยของผู้ใช้ที่จัดแสดงโปรเจกต์ที่กำลังพัฒนาในระบบ Chest',
+      'หน้าส่วนตัวของสมาชิกชุมชน Chest และโปรเจกต์ของพวกเขา',
     'community.view': 'ดู',
     'community.yours': 'สร้างหน้าของคุณ',
     'community.project': 'โปรเจกต์',
@@ -326,7 +324,7 @@ var I18N = {
     'nav.home': 'Главная',
     'community.title': 'Сообщество',
     'community.subtitle':
-      'Подстраницы пользователей с проектами, развивающимися в экосистеме Chest.',
+      'Личные страницы участников сообщества Chest и их проекты.',
     'community.view': 'Просмотр',
     'community.yours': 'Создать свою страницу',
     'community.project': 'проект',
