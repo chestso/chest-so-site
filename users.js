@@ -112,6 +112,13 @@
     return parts[0].substring(0, 2).toUpperCase();
   }
 
+  function libravatarUrl(hash, size) {
+    var s = size || 80;
+    return (
+      'https://seccdn.libravatar.org/avatar/' + hash + '?s=' + s + '&d=404'
+    );
+  }
+
   function isSourceUrl(url) {
     return (
       url &&
@@ -128,13 +135,21 @@
     // ── Profile header ──
     html += '<section class="user-header">';
     html += '<div class="container">';
-    if (data.avatar) {
+    var avatarSrc = data.avatar;
+    if (!avatarSrc && data.avatarHash) {
+      avatarSrc = libravatarUrl(data.avatarHash, 80);
+    }
+    var initials = getInitials(data.displayName || data.username);
+    if (avatarSrc) {
       html +=
         '<img src="' +
-        escapeHtml(data.avatar) +
+        escapeHtml(avatarSrc) +
         '" alt="' +
         escapeHtml(data.displayName || data.username) +
-        '" class="user-avatar" />';
+        '" class="user-avatar" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'" />' +
+        '<div class="user-avatar-placeholder" style="display:none">' +
+        escapeHtml(initials) +
+        '</div>';
     } else {
       var initials = getInitials(data.displayName || data.username);
       html +=

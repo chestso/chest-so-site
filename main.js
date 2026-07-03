@@ -230,6 +230,13 @@
     return parts[0].substring(0, 2).toUpperCase();
   }
 
+  function libravatarUrl(hash, size) {
+    var s = size || 56;
+    return (
+      'https://seccdn.libravatar.org/avatar/' + hash + '?s=' + s + '&d=404'
+    );
+  }
+
   function renderCommunity(users, container) {
     var dict = I18N[getLang()] || I18N[DEFAULT_LANG];
     var html = '';
@@ -239,14 +246,21 @@
       var url = u.username + '/';
       var initials = getInitials(u.displayName || u.username);
 
+      var avatarSrc = u.avatar;
+      if (!avatarSrc && u.avatarHash) {
+        avatarSrc = libravatarUrl(u.avatarHash, 56);
+      }
       html += '<a href="' + escapeHtml(url) + '" class="community-card">';
-      if (u.avatar) {
+      if (avatarSrc) {
         html +=
           '<img src="' +
-          escapeHtml(u.avatar) +
+          escapeHtml(avatarSrc) +
           '" alt="' +
           escapeHtml(u.displayName || u.username) +
-          '" class="community-avatar" />';
+          '" class="community-avatar" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'" />' +
+          '<div class="community-avatar-placeholder" style="display:none">' +
+          escapeHtml(initials) +
+          '</div>';
       } else {
         html +=
           '<div class="community-avatar-placeholder">' +
