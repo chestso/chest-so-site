@@ -11,10 +11,10 @@
   --text-light: #e0d8f0;
   --text-muted: #9a8fbf;
   --font-mono:
-    "SF Mono", "Cascadia Code", "Fira Code", "JetBrains Mono", "Menlo",
-    "Consolas", monospace;
+    'SF Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Menlo',
+    'Consolas', monospace;
   --font-sans:
-    system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
   --max-width: 1100px;
 }
 
@@ -482,6 +482,104 @@ a:hover {
   line-height: 1.7;
 }
 
+/* ── Community Grid ── */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.community-card {
+  display: block;
+  background: var(--violet-deep);
+  border: 1px solid rgba(108, 31, 140, 0.4);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.25s;
+}
+
+.community-card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+  color: var(--cream);
+}
+
+.community-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--magenta);
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.community-avatar-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--magenta);
+  background: var(--gray-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--magenta);
+  margin: 0 auto 1rem;
+}
+
+.community-card h3 {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.community-card-tagline {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.community-card-count {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--magenta);
+  margin-bottom: 1rem;
+}
+
+.community-card .btn {
+  font-size: 0.8rem;
+  padding: 0.4rem 1rem;
+}
+
+.community-card-yours {
+  border-style: dashed;
+  border-color: rgba(108, 31, 140, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.community-card-yours .yours-icon {
+  font-size: 2rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.community-card-yours .yours-text {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 /* ── Footer ── */
 .footer {
   text-align: center;
@@ -524,7 +622,8 @@ a:hover {
   }
 
   .card-grid,
-  .feature-grid {
+  .feature-grid,
+  .community-grid {
     grid-template-columns: 1fr;
   }
 
@@ -561,7 +660,8 @@ body.rtl .hero-cta {
 }
 
 body.rtl .card-grid,
-body.rtl .feature-grid {
+body.rtl .feature-grid,
+body.rtl .community-grid {
   direction: rtl;
 }
 

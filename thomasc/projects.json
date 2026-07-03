@@ -1,0 +1,65 @@
+{
+  "username": "thomasc",
+  "displayName": "Thomas Christensen",
+  "tagline": "Building tools at the edge of terminal and web.",
+  "links": {
+    "github": "https://github.com/thomasc1971",
+    "codeberg": "https://codeberg.org/thomasc"
+  },
+  "projects": [
+    {
+      "name": "telnet-gui",
+      "tagline": "Lisp-scriptable telnet client",
+      "description": "Lisp scriptable multi-platform telnet client with its own terminal emulator. Built for MUD games. Inspired by DIKU days. Superseded by Mudlark — left for posterity.",
+      "status": "independent",
+      "tags": ["c", "lisp", "mud", "telnet"],
+      "url": "https://codeberg.org/thomasc/telnet-gui",
+      "icon": "🎭"
+    },
+    {
+      "name": "cb",
+      "tagline": "Codeberg repository management CLI",
+      "description": "Codeberg (Forgejo) repository management CLI written in C11.",
+      "status": "independent",
+      "tags": ["c", "cli", "codeberg", "forgejo", "api-client"],
+      "url": "https://codeberg.org/thomasc/cb",
+      "icon": "🏔️"
+    },
+    {
+      "name": "Spool",
+      "tagline": "GNOME mail app",
+      "description": "GNOME mail app inspired by Mutt and Emacs/Gnus/Rmail.",
+      "status": "experimental",
+      "tags": ["c", "gnome", "mail", "email"],
+      "url": "https://codeberg.org/thomasc/spool",
+      "icon": "📫"
+    },
+    {
+      "name": "Firefox Markdown Viewer",
+      "tagline": "Render GFM in the browser",
+      "description": "A Firefox extension that renders GitHub Flavored Markdown files directly in the browser.",
+      "status": "independent",
+      "tags": ["javascript", "firefox", "markdown", "extension"],
+      "url": "https://codeberg.org/thomasc/firefox-markdown-viewer",
+      "icon": "📖"
+    },
+    {
+      "name": "Pandoc-Easy",
+      "tagline": "GFM to PDF",
+      "description": "Simple GFM-to-PDF conversion tool.",
+      "status": "independent",
+      "tags": ["python", "pandoc", "pdf", "markdown"],
+      "url": "https://codeberg.org/thomasc/pandoc-easy",
+      "icon": "📄"
+    },
+    {
+      "name": "Subgrab",
+      "tagline": "Movie subtitle downloader",
+      "description": "CLI to search and download movie subtitles from subf2m.co. Fuzzy/keyword search, 40+ languages, ZIP auto-extraction.",
+      "status": "independent",
+      "tags": ["python", "cli", "subtitles"],
+      "url": "https://codeberg.org/thomasc/subgrab",
+      "icon": "💬"
+    }
+  ]
+}

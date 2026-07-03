@@ -1,0 +1,241 @@
+/* ── User Page: Profile Header ── */
+.user-header {
+  padding: 7rem 0 3rem;
+  background: linear-gradient(180deg, var(--dark) 0%, var(--violet-deep) 100%);
+  text-align: center;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--magenta);
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.user-avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--magenta);
+  background: var(--gray-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--magenta);
+  margin: 0 auto 1rem;
+}
+
+.user-name {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.user-tagline {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.user-links {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.user-links .btn {
+  font-size: 0.85rem;
+  padding: 0.45rem 1.1rem;
+}
+
+/* ── User Page: Projects Section ── */
+.user-projects {
+  padding: 4rem 0 5rem;
+}
+
+.user-projects-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.user-projects-title .tilde {
+  color: var(--magenta);
+}
+
+.user-projects-sub {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 3rem;
+}
+
+/* ── Project Cards (adapted from feature-card) ── */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--violet-deep);
+  border: 1px solid rgba(108, 31, 140, 0.4);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.25s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.project-card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+.project-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-name {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.project-status {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.status-incubating {
+  background: var(--cyan);
+  color: var(--dark);
+}
+
+.status-independent {
+  background: var(--purple-mid);
+  color: var(--text-light);
+}
+
+.status-experimental {
+  background: #f5a623;
+  color: var(--dark);
+}
+
+.project-tagline {
+  color: var(--magenta);
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--gray-mid);
+  color: var(--text-light);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+/* ── User Not Found ── */
+.user-notfound {
+  padding: 8rem 0 6rem;
+  text-align: center;
+}
+
+.user-notfound h2 {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.user-notfound p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .user-header {
+    padding: 6rem 0 2rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-projects {
+    padding: 2rem 0 3rem;
+  }
+}
+
+/* ── RTL Support ── */
+body.rtl .user-links,
+body.rtl .project-actions {
+  flex-direction: row-reverse;
+}
+
+body.rtl .project-grid {
+  direction: rtl;
+}
+
+body.rtl .project-header {
+  flex-direction: row-reverse;
+}
+
+body.rtl .project-tags {
+  justify-content: flex-end;
+}
