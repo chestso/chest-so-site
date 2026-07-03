@@ -112,6 +112,7 @@ a:hover {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
   font-family: var(--font-mono);
   font-size: 0.9rem;
@@ -123,6 +124,30 @@ a:hover {
 
 .nav-links a:hover {
   color: var(--text);
+}
+
+.nav-github {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-muted);
+}
+
+.nav-github:hover {
+  color: var(--text);
+}
+
+/* ── Liberapay ── */
+/* Hidden until Liberapay account is fully set up.
+   To enable: change display to "inline-flex" */
+.nav-liberapay {
+  display: none;
+  align-items: center;
+}
+
+.nav-liberapay img {
+  height: 28px;
+  width: auto;
+  border-radius: 4px;
 }
 
 /* ── Language Switcher ── */

@@ -223,9 +223,7 @@
         html += '<div class="project-name">' + escapeHtml(p.name);
         if (p.version) {
           html +=
-            '<span class="badge-version">' +
-            escapeHtml(p.version) +
-            '</span>';
+            '<span class="badge-version">' + escapeHtml(p.version) + '</span>';
         }
         html += '</div>';
         if (p.status) {
