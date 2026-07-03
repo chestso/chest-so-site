@@ -466,18 +466,11 @@ a:hover {
   margin-top: auto;
 }
 
-.badge-new {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: var(--accent); /* Cherry */
-  color: var(--bg);
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
+.badge-version {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text);
   margin-left: 0.5rem;
   vertical-align: middle;
 }
@@ -694,9 +687,4 @@ body.rtl .community-grid {
 body.rtl .lang-menu {
   right: auto;
   left: 0;
-}
-
-body.rtl .badge-new {
-  margin-left: 0;
-  margin-right: 0.5rem;
 }

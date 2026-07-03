@@ -91,6 +91,10 @@
       el.textContent = dict['user.project.visit'] || 'Visit';
     });
 
+    document.querySelectorAll('[data-action-download]').forEach(function (el) {
+      el.textContent = dict['user.project.download'] || 'Download';
+    });
+
     document.querySelectorAll('[data-status-key]').forEach(function (el) {
       var key = el.getAttribute('data-status-key');
       var label = dict['user.status.' + key] || key;
@@ -216,7 +220,14 @@
 
         // Header (name + status)
         html += '<div class="project-header">';
-        html += '<div class="project-name">' + escapeHtml(p.name) + '</div>';
+        html += '<div class="project-name">' + escapeHtml(p.name);
+        if (p.version) {
+          html +=
+            '<span class="badge-version">' +
+            escapeHtml(p.version) +
+            '</span>';
+        }
+        html += '</div>';
         if (p.status) {
           html +=
             '<span class="project-status status-' +
@@ -253,16 +264,25 @@
           html += '</div>';
         }
 
-        // Action button
-        if (p.url) {
-          var isSource = isSourceUrl(p.url);
+        // Action buttons
+        if (p.url || p.download) {
           html += '<div class="project-actions">';
-          html +=
-            '<a href="' +
-            escapeHtml(p.url) +
-            '" class="btn btn-small btn-primary" target="_blank" rel="noopener" ' +
-            (isSource ? 'data-action-source' : 'data-action-visit') +
-            '></a>';
+          if (p.download) {
+            html +=
+              '<a href="' +
+              escapeHtml(p.download) +
+              '" class="btn btn-small btn-primary" target="_blank" rel="noopener" ' +
+              'data-action-download></a>';
+          }
+          if (p.url) {
+            var isSource = isSourceUrl(p.url);
+            html +=
+              '<a href="' +
+              escapeHtml(p.url) +
+              '" class="btn btn-small" target="_blank" rel="noopener" ' +
+              (isSource ? 'data-action-source' : 'data-action-visit') +
+              '></a>';
+          }
           html += '</div>';
         }
 
