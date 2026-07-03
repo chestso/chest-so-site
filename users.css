@@ -1,7 +1,7 @@
 /* ── User Page: Profile Header ── */
 .user-header {
   padding: 7rem 0 3rem;
-  background: linear-gradient(180deg, var(--bg) 0%, #2a1018 100%);
+  background: #1c3634; /* Spinach */
   text-align: center;
 }
 
@@ -101,7 +101,7 @@
 }
 
 .project-card:hover {
-  border-color: var(--accent-hover);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -139,7 +139,7 @@
 }
 
 .status-incubating {
-  background: var(--accent-hover);
+  background: var(--accent);
   color: var(--bg);
 }
 
