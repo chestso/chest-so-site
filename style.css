@@ -9,13 +9,13 @@
   --text-muted: #858392; /* Squid */
   --card-text: #fbfbfb; /* Soda — text on cards */
   --card-title: #f5ef34; /* Mustard — turns Blush on hover */
-  --card-title-hover: #ff84ff; /* Blush */
+  --card-title-hover: #fbfbfb; /* Soda — white on hover */
 
   /* ── CharmTones Accents ── */
   --accent: #ff388b; /* Cherry — primary */
   --accent-hover: #00a4ff; /* Malibu — hover/secondary */
   --accent-green: #00ffb2; /* Julep — badges, success */
-  --link-green: #12c78f; /* Guac — buttons, links */
+  --link-green: #00ffb2; /* Julep — buttons, links */
   --accent-yellow: #f5ef34; /* Mustard — experimental */
   --accent-purple: #9953ff; /* Plum — independent status */
   --accent-warm: #ff985a; /* Tang — warm accent */
@@ -474,7 +474,7 @@ a:hover {
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: var(--accent-green);
+  background: var(--accent); /* Cherry */
   color: var(--bg);
   padding: 0.15rem 0.5rem;
   border-radius: 4px;
