@@ -9,7 +9,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--card-accent);
   object-fit: cover;
   margin-bottom: 1rem;
 }
@@ -18,7 +18,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--card-accent);
   background: var(--bg-card-hover);
   display: flex;
   align-items: center;
@@ -26,7 +26,7 @@
   font-family: var(--font-mono);
   font-size: 2rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--card-accent);
   margin: 0 auto 1rem;
 }
 
@@ -40,7 +40,7 @@
 
 .user-tagline {
   font-size: 1.1rem;
-  color: var(--text-muted);
+  color: var(--card-text);
   max-width: 500px;
   margin: 0 auto 1.5rem;
   line-height: 1.6;
@@ -72,12 +72,12 @@
 }
 
 .user-projects-title .tilde {
-  color: var(--accent);
+  color: var(--card-accent);
 }
 
 .user-projects-sub {
   text-align: center;
-  color: var(--text-muted);
+  color: var(--card-text);
   font-size: 0.95rem;
   margin-bottom: 3rem;
 }
@@ -101,7 +101,7 @@
 }
 
 .project-card:hover {
-  border-color: var(--accent);
+  border-color: var(--card-accent);
   transform: translateY(-2px);
 }
 
@@ -122,6 +122,12 @@
   font-family: var(--font-mono);
   font-size: 1.2rem;
   font-weight: 700;
+  color: var(--card-title);
+  transition: color 0.25s;
+}
+
+.project-card:hover .project-name {
+  color: var(--card-title-hover);
 }
 
 .project-status {
@@ -139,7 +145,7 @@
 }
 
 .status-incubating {
-  background: var(--accent);
+  background: var(--card-accent);
   color: var(--bg);
 }
 
@@ -154,14 +160,14 @@
 }
 
 .project-tagline {
-  color: var(--accent);
+  color: var(--card-accent);
   font-style: italic;
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
 }
 
 .project-description {
-  color: var(--text-muted);
+  color: var(--card-text);
   font-size: 0.95rem;
   line-height: 1.6;
   flex: 1;
@@ -179,7 +185,7 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   background: var(--bg-card-hover);
-  color: var(--text-light);
+  color: var(--card-text);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
 }
@@ -203,7 +209,7 @@
 }
 
 .user-notfound p {
-  color: var(--text-muted);
+  color: var(--card-text);
   margin-bottom: 2rem;
 }
 
