@@ -133,7 +133,7 @@ a:hover {
 .lang-btn {
   background: transparent;
   border: 1px solid var(--border);
-  color: var(--text-muted);
+  color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 600;
@@ -181,7 +181,7 @@ a:hover {
   padding: 0.4rem 1rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text);
   cursor: pointer;
   transition: all 0.15s;
   white-space: nowrap;
