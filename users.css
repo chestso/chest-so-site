@@ -1,7 +1,7 @@
 /* ── User Page: Profile Header ── */
 .user-header {
   padding: 7rem 0 3rem;
-  background: linear-gradient(180deg, var(--dark) 0%, var(--violet-deep) 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, #2a1018 100%);
   text-align: center;
 }
 
@@ -9,7 +9,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid var(--magenta);
+  border: 2px solid var(--accent);
   object-fit: cover;
   margin-bottom: 1rem;
 }
@@ -18,15 +18,15 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid var(--magenta);
-  background: var(--gray-mid);
+  border: 2px solid var(--accent);
+  background: var(--bg-card-hover);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
   font-size: 2rem;
   font-weight: 700;
-  color: var(--magenta);
+  color: var(--accent);
   margin: 0 auto 1rem;
 }
 
@@ -34,7 +34,7 @@
   font-family: var(--font-mono);
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
-  color: var(--cream);
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .user-projects-title .tilde {
-  color: var(--magenta);
+  color: var(--accent);
 }
 
 .user-projects-sub {
@@ -82,7 +82,7 @@
   margin-bottom: 3rem;
 }
 
-/* ── Project Cards (adapted from feature-card) ── */
+/* ── Project Cards ── */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -90,8 +90,8 @@
 }
 
 .project-card {
-  background: var(--violet-deep);
-  border: 1px solid rgba(108, 31, 140, 0.4);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 2rem;
   transition: all 0.25s;
@@ -101,7 +101,7 @@
 }
 
 .project-card:hover {
-  border-color: var(--cyan);
+  border-color: var(--accent-hover);
   transform: translateY(-2px);
 }
 
@@ -139,22 +139,22 @@
 }
 
 .status-incubating {
-  background: var(--cyan);
-  color: var(--dark);
+  background: var(--accent-hover);
+  color: var(--bg);
 }
 
 .status-independent {
-  background: var(--purple-mid);
-  color: var(--text-light);
+  background: var(--accent-purple);
+  color: var(--text);
 }
 
 .status-experimental {
-  background: #f5a623;
-  color: var(--dark);
+  background: var(--accent-yellow);
+  color: var(--bg);
 }
 
 .project-tagline {
-  color: var(--magenta);
+  color: var(--accent);
   font-style: italic;
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
@@ -178,7 +178,7 @@
 .project-tag {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  background: var(--gray-mid);
+  background: var(--bg-card-hover);
   color: var(--text-light);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
