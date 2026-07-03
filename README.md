@@ -19,4 +19,5 @@ python3 -m http.server 8080
 ## Attribution
 
 - Site design inspired by [Charm](https://charm.land).
+- Color palette uses [CharmTones](https://github.com/charmbracelet/x/blob/main/exp/charmtone/charmtone.go) from [Charm](https://charm.land).
 - Hero banner image sourced from [Putting Green Blog](https://www.puttinggreenblog.com/wp-content/uploads/2024/02/treasure-chest-1200x480.jpeg).
