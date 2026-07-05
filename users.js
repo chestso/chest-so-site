@@ -174,13 +174,17 @@
         html +=
           '<a href="' +
           escapeHtml(data.links.github) +
-          '" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>';
+          '" class="btn btn-outline" target="_blank" rel="noopener">' +
+          (typeof Icons !== 'undefined' ? Icons.githubSvg() : '') +
+          '<span>GitHub</span></a>';
       }
       if (data.links.codeberg) {
         html +=
           '<a href="' +
           escapeHtml(data.links.codeberg) +
-          '" class="btn btn-outline" target="_blank" rel="noopener">Codeberg</a>';
+          '" class="btn btn-outline" target="_blank" rel="noopener">' +
+          (typeof Icons !== 'undefined' ? Icons.codebergSvg() : '') +
+          '<span>Codeberg</span></a>';
       }
       if (data.links.website) {
         html +=
@@ -338,18 +342,45 @@
     });
   }
 
+  function renderNavIcons(userInfo) {
+    var navIcons = document.getElementById('nav-icons');
+    if (!navIcons || typeof Icons === 'undefined' || !userInfo.links) return;
+    var html = '';
+    if (userInfo.links.github) html += Icons.github(userInfo.links.github);
+    if (userInfo.links.codeberg)
+      html += Icons.codeberg(userInfo.links.codeberg);
+    navIcons.innerHTML = html;
+  }
+
   // ── Load user data ──
   var meta = document.querySelector('meta[name="user"]');
   var username = meta ? meta.getAttribute('content') : null;
 
   if (username) {
-    fetch('projects.json')
-      .then(function (r) {
+    Promise.all([
+      fetch('../users.json').then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
-      })
-      .then(function (data) {
-        renderUser(data);
+      }),
+      fetch('projects.json').then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }),
+    ])
+      .then(function (results) {
+        var users = results[0];
+        var projectsData = results[1];
+        var userInfo = null;
+        for (var i = 0; i < users.length; i++) {
+          if (users[i].username === username) {
+            userInfo = users[i];
+            break;
+          }
+        }
+        if (!userInfo) throw new Error('User not found in users.json');
+        userInfo.projects = projectsData.projects || [];
+        renderUser(userInfo);
+        renderNavIcons(userInfo);
       })
       .catch(function () {
         renderNotFound(username);

@@ -148,6 +148,14 @@
 
   applyLang(getLang());
 
+  // ── Nav Icons ──
+  var navIcons = document.getElementById('nav-icons');
+  if (navIcons && typeof Icons !== 'undefined') {
+    navIcons.innerHTML =
+      Icons.github('https://github.com/chestso') +
+      Icons.codeberg('https://codeberg.org/chestso');
+  }
+
   // ── Subtle Gaussian Noise (2D Canvas) ──
   var noiseContainer = document.getElementById('noise');
   if (noiseContainer) {
