@@ -1,0 +1,54 @@
+{
+  "_comment": "Colors actually used on charm.land, extracted from main.cbaa2cba61cdc899.css + inline SVG fills. Names describe site usage. Colors that match a CharmTone name are annotated in _charmtone.",
+
+  "Cream":         "#FFFDF5",
+  "Butter":        "#FFFAF1",
+  "PureWhite":     "#FFFFFF",
+
+  "Pepper":        "#201F26",
+  "NearBlack":     "#222222",
+  "ScreenDark":    "#161616",
+  "BadgeGray":     "#3A3A3A",
+  "Oyster":        "#605F6B",
+  "Smoke":         "#BFBCC8",
+  "SloganTan":     "#C3BEAB",
+  "Lavender":      "#F5EDFF",
+
+  "Charple":       "#6B50FF",
+  "AccentPurple":  "#9671FF",
+
+  "Dolly":         "#FF60FF",
+  "Blush":         "#FF84FF",
+  "ButtonMagenta": "#FF6DFF",
+  "LinkPink":      "#FF7BF5",
+  "Tuna":          "#FF6DAA",
+  "BurstRed":      "#FE3E78",
+
+  "NavMagenta1":   "#FF84FF",
+  "NavMagenta2":   "#FB6EFB",
+  "NavMagenta3":   "#F65AF6",
+  "NavMagenta4":   "#F046F0",
+  "NavMagenta5":   "#E935E9",
+  "NavMagenta6":   "#E024E0",
+  "NavMagenta7":   "#CF1ECF",
+
+  "Julep":         "#00FFB2",
+  "Turtle":        "#0ADCDB",
+  "Guac":          "#12C78F",
+  "Zest":          "#E8FE96",
+  "ActiveYellow":  "#ECFD65",
+
+  "_charmtone_matches": [
+    "Butter", "Pepper", "Oyster", "Smoke", "Charple",
+    "Dolly", "Blush", "Julep", "Turtle", "Guac", "Zest", "Tuna"
+  ],
+
+  "_site_only": [
+    "Cream", "PureWhite", "NearBlack", "ScreenDark", "BadgeGray",
+    "SloganTan", "Lavender", "AccentPurple",
+    "ButtonMagenta", "LinkPink", "BurstRed",
+    "NavMagenta1", "NavMagenta2", "NavMagenta3", "NavMagenta4",
+    "NavMagenta5", "NavMagenta6", "NavMagenta7",
+    "ActiveYellow"
+  ]
+}
