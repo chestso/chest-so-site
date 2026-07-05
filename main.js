@@ -170,11 +170,17 @@
         'attribute vec2 a_pos;void main(){gl_Position=vec4(a_pos,0,1);}';
       var fsSource =
         'precision mediump float;uniform float u_time;uniform vec2 u_res;' +
-        'float rand(vec2 co){return fract(sin(dot(co,vec2(12.9898,78.233)))*43758.5453);}' +
-        'void main(){vec2 uv=gl_FragCoord.xy/u_res;' +
-        'float n=rand(uv+fract(u_time*0.01));' +
-        'n=clamp(n*0.08+0.5,0.0,1.0);' +
-        'gl_FragColor=vec4(n,n,n,1.0);}';
+        'float hash(vec2 p){vec3 p3=fract(vec3(p.xyx)*0.1031);' +
+        'p3+=dot(p3,p3.yzx+33.33);return fract((p3.x+p3.y)*p3.z);}' +
+        'float gaussianNoise(vec2 coord){vec2 seed=coord+u_time*0.01;' +
+        'float u1=hash(seed);float u2=hash(seed+vec2(1.0,0.0));' +
+        'u1=max(u1,0.0001);float mag=sqrt(-2.0*log(u1));' +
+        'return mag*cos(6.28318530718*u2);}' +
+        'void main(){vec2 coord=gl_FragCoord.xy;' +
+        'coord+=vec2(sin(u_time*0.1)*0.5,cos(u_time*0.13)*0.5);' +
+        'float noise=gaussianNoise(coord);' +
+        'float intensity=clamp(noise*0.08+0.5,0.0,1.0);' +
+        'gl_FragColor=vec4(vec3(intensity),1.0);}';
 
       function createShader(type, source) {
         var s = gl.createShader(type);
@@ -207,13 +213,19 @@
       var uRes = gl.getUniformLocation(prog, 'u_res');
 
       function resize() {
-        canvas.width = canvas.clientWidth / 2;
-        canvas.height = canvas.clientHeight / 2;
+        var w = canvas.clientWidth || canvas.parentNode.clientWidth;
+        var h = canvas.clientHeight || canvas.parentNode.clientHeight;
+        if (w < 2 || h < 2) return;
+        canvas.width = w / 2;
+        canvas.height = h / 2;
         gl.viewport(0, 0, canvas.width, canvas.height);
       }
 
       window.addEventListener('resize', resize);
-      resize();
+      requestAnimationFrame(function () {
+        resize();
+        render();
+      });
 
       var startTime = Date.now();
       var frameInterval = 83;
@@ -226,8 +238,6 @@
           requestAnimationFrame(render);
         }, frameInterval);
       }
-
-      render();
     }
   }
 
