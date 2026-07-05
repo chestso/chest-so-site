@@ -156,45 +156,79 @@
       Icons.codeberg('https://codeberg.org/chestso');
   }
 
-  // ── Subtle Gaussian Noise (2D Canvas) ──
+  // ── Subtle Gaussian Noise (WebGL) ──
   var noiseContainer = document.getElementById('noise');
-  if (noiseContainer) {
+  if (noiseContainer && document.createElement('canvas').getContext('webgl')) {
     var canvas = document.createElement('canvas');
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     noiseContainer.appendChild(canvas);
 
-    var ctx = canvas.getContext('2d');
-    var frameInterval = 83;
+    var gl = canvas.getContext('webgl');
+    if (gl) {
+      var vsSource =
+        'attribute vec2 a_pos;void main(){gl_Position=vec4(a_pos,0,1);}';
+      var fsSource =
+        'precision mediump float;uniform float u_time;uniform vec2 u_res;' +
+        'float rand(vec2 co){return fract(sin(dot(co,vec2(12.9898,78.233)))*43758.5453);}' +
+        'void main(){vec2 uv=gl_FragCoord.xy/u_res;' +
+        'float n=rand(uv+fract(u_time*0.01));' +
+        'n=clamp(n*0.08+0.5,0.0,1.0);' +
+        'gl_FragColor=vec4(n,n,n,1.0);}';
 
-    var grainScale = 2;
-
-    function resize() {
-      canvas.width = Math.ceil(canvas.clientWidth / grainScale);
-      canvas.height = Math.ceil(canvas.clientHeight / grainScale);
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-
-    function render() {
-      ctx.imageSmoothingEnabled = false;
-      var w = canvas.width;
-      var h = canvas.height;
-      var img = ctx.createImageData(w, h);
-      var d = img.data;
-      for (var i = 0; i < d.length; i += 4) {
-        var v = Math.random() * 0.3 + 0.5;
-        d[i] = d[i + 1] = d[i + 2] = (v * 255) | 0;
-        d[i + 3] = 255;
+      function createShader(type, source) {
+        var s = gl.createShader(type);
+        gl.shaderSource(s, source);
+        gl.compileShader(s);
+        return s;
       }
-      ctx.putImageData(img, 0, 0);
-      setTimeout(function () {
-        requestAnimationFrame(render);
-      }, frameInterval);
-    }
 
-    render();
+      var vs = createShader(gl.VERTEX_SHADER, vsSource);
+      var fs = createShader(gl.FRAGMENT_SHADER, fsSource);
+      var prog = gl.createProgram();
+      gl.attachShader(prog, vs);
+      gl.attachShader(prog, fs);
+      gl.linkProgram(prog);
+      gl.useProgram(prog);
+
+      var buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+        gl.STATIC_DRAW,
+      );
+
+      var aPos = gl.getAttribLocation(prog, 'a_pos');
+      gl.enableVertexAttribArray(aPos);
+      gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+      var uTime = gl.getUniformLocation(prog, 'u_time');
+      var uRes = gl.getUniformLocation(prog, 'u_res');
+
+      function resize() {
+        canvas.width = canvas.clientWidth / 2;
+        canvas.height = canvas.clientHeight / 2;
+        gl.viewport(0, 0, canvas.width, canvas.height);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      var startTime = Date.now();
+      var frameInterval = 83;
+
+      function render() {
+        gl.uniform1f(uTime, (Date.now() - startTime) / 1000);
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        setTimeout(function () {
+          requestAnimationFrame(render);
+        }, frameInterval);
+      }
+
+      render();
+    }
   }
 
   // ── Smooth scroll for anchor links ──
