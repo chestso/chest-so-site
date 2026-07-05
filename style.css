@@ -424,6 +424,10 @@ a:hover {
   box-shadow: var(--shadow-card-hover);
 }
 
+.btn:not(.btn-primary):not(.btn-outline):hover {
+  color: var(--link-green);
+}
+
 .btn:active {
   transform: translateY(2px);
 }
@@ -436,6 +440,7 @@ a:hover {
 
 .btn-primary:hover {
   opacity: 0.85;
+  color: var(--btn-text);
 }
 
 .btn-outline {
