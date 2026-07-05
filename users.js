@@ -342,14 +342,12 @@
     });
   }
 
-  function renderNavIcons(userInfo) {
+  function renderNavIcons() {
     var navIcons = document.getElementById('nav-icons');
-    if (!navIcons || typeof Icons === 'undefined' || !userInfo.links) return;
-    var html = '';
-    if (userInfo.links.github) html += Icons.github(userInfo.links.github);
-    if (userInfo.links.codeberg)
-      html += Icons.codeberg(userInfo.links.codeberg);
-    navIcons.innerHTML = html;
+    if (!navIcons || typeof Icons === 'undefined') return;
+    navIcons.innerHTML =
+      Icons.github('https://github.com/chestso') +
+      Icons.codeberg('https://codeberg.org/chestso');
   }
 
   // ── Load user data ──
@@ -380,7 +378,7 @@
         if (!userInfo) throw new Error('User not found in users.json');
         userInfo.projects = projectsData.projects || [];
         renderUser(userInfo);
-        renderNavIcons(userInfo);
+        renderNavIcons();
       })
       .catch(function () {
         renderNotFound(username);
