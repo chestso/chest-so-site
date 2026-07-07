@@ -8,12 +8,7 @@ SH_FILES   = serve.sh
 
 format:
 	@echo "→ Formatting JS/CSS/HTML/JSON with prettier…"
-	@prettier --write --no-config \
-		--print-width 80 \
-		--tab-width 2 \
-		--single-quote \
-		--trailing-comma all \
-		--arrow-parens always \
+	@prettier --write \
 		$(JS_FILES) $(CSS_FILES) $(HTML_FILES) $(JSON_FILES)
 	@echo "→ Formatting shell scripts with shfmt…"
 	@shfmt -i 2 -ci -w $(SH_FILES)
