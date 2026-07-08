@@ -555,10 +555,6 @@ a:hover {
   line-height: 1.5;
 }
 
-.badge-version {
-  color: var(--card-text);
-}
-
 /* ── Feature Grid ── */
 .feature-grid {
   display: grid;
@@ -634,6 +630,10 @@ a:hover {
   padding: 0.1rem 0.4rem;
   margin-left: 0.5rem;
   vertical-align: middle;
+}
+
+a .badge-version {
+  color: var(--text-on-cream-muted);
 }
 
 /* ── Motto ── */

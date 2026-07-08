@@ -252,6 +252,165 @@
     });
   });
 
+  // ── Apps & Libs Sections ──
+  var appsGrid = document.getElementById('apps-grid');
+  var libsGrid = document.getElementById('libs-grid');
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  function capitalizeName(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
+
+  function repoUrl(repo) {
+    return 'https://github.com/' + repo;
+  }
+
+  function releaseUrl(repo) {
+    return 'https://github.com/' + repo + '/releases/latest';
+  }
+
+  function renderApps(apps, container) {
+    var dict = I18N[getLang()] || I18N[DEFAULT_LANG];
+    var html = '';
+    for (var i = 0; i < apps.length; i++) {
+      var p = apps[i];
+      var displayName = capitalizeName(p.name);
+      var flairText = dict[p.flair] || '';
+      var descText = dict[p.description] || '';
+      html += '<div class="feature-card" data-project="' + p.name + '">';
+      html += '<div class="feature-icon">';
+      if (p.iconType === 'img') {
+        html +=
+          '<img src="' +
+          escapeHtml(p.icon) +
+          '" alt="' +
+          escapeHtml(displayName) +
+          '" width="48" height="48" />';
+      } else {
+        html += escapeHtml(p.icon);
+      }
+      html += '</div>';
+      html += '<h3>';
+      html += escapeHtml(displayName);
+      html +=
+        '<span class="badge-version">' +
+        escapeHtml(p.version || '') +
+        '</span>';
+      html +=
+        '<span class="card-flair" data-i18n="' +
+        p.flair +
+        '">' +
+        flairText +
+        '</span>';
+      html += '</h3>';
+      html += '<p data-i18n="' + p.description + '">' + descText + '</p>';
+      html += '<div class="feature-actions">';
+      html +=
+        '<a href="' +
+        releaseUrl(p.repo) +
+        '" class="btn btn-small btn-primary" target="_blank" rel="noopener" data-i18n="apps.download">' +
+        escapeHtml(dict['apps.download'] || 'Download') +
+        '</a>';
+      html +=
+        '<a href="' +
+        repoUrl(p.repo) +
+        '" class="btn btn-small" target="_blank" rel="noopener" data-i18n="apps.source">' +
+        escapeHtml(dict['apps.source'] || 'Source') +
+        '</a>';
+      html += '</div>';
+      html += '</div>';
+    }
+    container.innerHTML = html;
+  }
+
+  function renderLibs(libs, container) {
+    var dict = I18N[getLang()] || I18N[DEFAULT_LANG];
+    var html = '';
+    for (var i = 0; i < libs.length; i++) {
+      var p = libs[i];
+      var displayName = capitalizeName(p.name);
+      var flairText = dict[p.flair] || '';
+      var descText = dict[p.description] || '';
+      html +=
+        '<a href="' +
+        repoUrl(p.repo) +
+        '" class="card" target="_blank" rel="noopener" data-project="' +
+        p.name +
+        '">';
+      html += '<div class="card-icon">' + escapeHtml(p.icon) + '</div>';
+      html += '<h3>';
+      html += escapeHtml(displayName);
+      if (p.version) {
+        html +=
+          '<span class="badge-version">' + escapeHtml(p.version) + '</span>';
+      }
+      html +=
+        '<span class="card-flair" data-i18n="' +
+        p.flair +
+        '">' +
+        flairText +
+        '</span>';
+      html += '</h3>';
+      html += '<p data-i18n="' + p.description + '">' + descText + '</p>';
+      html += '</a>';
+    }
+    container.innerHTML = html;
+  }
+
+  if (appsGrid || libsGrid) {
+    fetch('projects.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        if (appsGrid && data.apps) {
+          renderApps(data.apps, appsGrid);
+        }
+        if (libsGrid && data.libs) {
+          renderLibs(data.libs, libsGrid);
+        }
+        applyLang(getLang());
+        fetchLatestReleases(data);
+      })
+      .catch(function () {});
+  }
+
+  function fetchLatestReleases(data) {
+    var allProjects = (data.apps || []).concat(data.libs || []);
+    var seen = {};
+    var unique = [];
+    for (var i = 0; i < allProjects.length; i++) {
+      var p = allProjects[i];
+      if (!seen[p.repo]) {
+        seen[p.repo] = true;
+        unique.push(p);
+      }
+    }
+    unique.forEach(function (p) {
+      fetch('https://api.github.com/repos/' + p.repo + '/releases/latest')
+        .then(function (r) {
+          return r.ok ? r.json() : null;
+        })
+        .then(function (release) {
+          if (!release || !release.tag_name) return;
+          var cards = document.querySelectorAll(
+            '[data-project="' + p.name + '"]',
+          );
+          cards.forEach(function (card) {
+            var badge = card.querySelector('.badge-version');
+            if (badge) badge.textContent = release.tag_name;
+          });
+        })
+        .catch(function () {});
+    });
+  }
+
   // ── Community Section ──
   var communityGrid = document.getElementById('community-grid');
   if (communityGrid) {
@@ -266,12 +425,6 @@
       .catch(function () {
         communityGrid.innerHTML = '';
       });
-  }
-
-  function escapeHtml(str) {
-    var div = document.createElement('div');
-    div.textContent = str || '';
-    return div.innerHTML;
   }
 
   function getInitials(name) {

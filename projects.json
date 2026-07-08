@@ -1,0 +1,63 @@
+{
+  "apps": [
+    {
+      "name": "portty",
+      "icon": "https://raw.githubusercontent.com/chestso/portty/refs/heads/master/data/icons/hicolor/scalable/apps/portty.svg",
+      "iconType": "img",
+      "repo": "chestso/portty",
+      "host": "github",
+      "version": "v0.3.4",
+      "flair": "apps.portty.flair",
+      "description": "apps.portty.description"
+    },
+    {
+      "name": "ditty",
+      "icon": "https://raw.githubusercontent.com/chestso/ditty/refs/heads/master/icons/hicolor/scalable/apps/ditty.svg",
+      "iconType": "img",
+      "repo": "chestso/ditty",
+      "host": "github",
+      "version": "v0.2.1",
+      "flair": "apps.ditty.flair",
+      "description": "apps.ditty.description"
+    },
+    {
+      "name": "mudlark",
+      "icon": "⚔️",
+      "iconType": "emoji",
+      "repo": "chestso/mudlark",
+      "host": "github",
+      "version": "v0.1.2",
+      "flair": "apps.mudlark.flair",
+      "description": "apps.mudlark.description"
+    }
+  ],
+  "libs": [
+    {
+      "name": "coffer",
+      "icon": "▣",
+      "repo": "chestso/coffer",
+      "host": "github",
+      "version": "v0.1.0",
+      "flair": "libs.coffer.flair",
+      "description": "libs.coffer.description"
+    },
+    {
+      "name": "boba",
+      "icon": "◉",
+      "repo": "chestso/boba",
+      "host": "github",
+      "version": "v0.1.0",
+      "flair": "libs.boba.flair",
+      "description": "libs.boba.description"
+    },
+    {
+      "name": "ditty",
+      "icon": "λ",
+      "repo": "chestso/ditty",
+      "host": "github",
+      "version": "v0.3.0",
+      "flair": "libs.ditty.flair",
+      "description": "libs.ditty.description"
+    }
+  ]
+}

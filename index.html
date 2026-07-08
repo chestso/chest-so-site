@@ -101,116 +101,8 @@
           <p class="section-sub" data-i18n="apps.subtitle">
             Built with Chest. Ready to use.
           </p>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <img
-                  src="https://raw.githubusercontent.com/chestso/portty/refs/heads/master/data/icons/hicolor/scalable/apps/portty.svg"
-                  alt="Portty"
-                  width="48"
-                  height="48"
-                />
-              </div>
-              <h3>
-                Portty<span class="badge-version">v0.3.4</span
-                ><span class="card-flair" data-i18n="apps.portty.flair">
-                  — GPU-Accelerated</span
-                >
-              </h3>
-              <p data-i18n="apps.portty.description">
-                A modern terminal emulator built on SDL3 with Vulkan/D3D12/Metal
-                rendering. Gamma-correct text, sixel images, and Lottie
-                animations — all at 60fps.
-              </p>
-              <div class="feature-actions">
-                <a
-                  href="https://github.com/chestso/portty/releases/latest"
-                  class="btn btn-small btn-primary"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="apps.download"
-                  >Download</a
-                >
-                <a
-                  href="https://github.com/chestso/portty"
-                  class="btn btn-small"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="apps.source"
-                  >Source</a
-                >
-              </div>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon">
-                <img
-                  src="https://raw.githubusercontent.com/chestso/ditty/refs/heads/master/icons/hicolor/scalable/apps/ditty.svg"
-                  alt="Ditty"
-                  width="48"
-                  height="48"
-                />
-              </div>
-              <h3>
-                Ditty<span class="badge-version">v0.2.1</span
-                ><span class="card-flair" data-i18n="apps.ditty.flair">
-                  — Interactive REPL</span
-                >
-              </h3>
-              <p data-i18n="apps.ditty.description">
-                An interactive Lisp REPL with Flare-powered syntax highlighting.
-                Evaluate, explore, and extend your terminal in real time.
-              </p>
-              <div class="feature-actions">
-                <a
-                  href="https://github.com/chestso/ditty/releases/latest"
-                  class="btn btn-small btn-primary"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="apps.download"
-                  >Download</a
-                >
-                <a
-                  href="https://github.com/chestso/ditty"
-                  class="btn btn-small"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="apps.source"
-                  >Source</a
-                >
-              </div>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon">⚔️</div>
-              <h3>
-                Mudlark<span class="badge-version">v0.1.2</span
-                ><span class="card-flair" data-i18n="apps.mudlark.flair">
-                  — Bound for Adventure</span
-                >
-              </h3>
-              <p data-i18n="apps.mudlark.description">
-                Connect to MUDs and telnet servers with full scripting support.
-                Aliases, triggers, speedwalk, and TinTin++ compatibility — all
-                driven by Ditty Lisp.
-              </p>
-              <div class="feature-actions">
-                <a
-                  href="https://github.com/chestso/mudlark/releases/latest"
-                  class="btn btn-small btn-primary"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="apps.download"
-                  >Download</a
-                >
-                <a
-                  href="https://github.com/chestso/mudlark"
-                  class="btn btn-small"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="apps.source"
-                  >Source</a
-                >
-              </div>
-            </div>
+          <div class="feature-grid" id="apps-grid">
+            <!-- main.js renders app cards here from projects.json -->
           </div>
         </div>
       </section>
@@ -222,58 +114,8 @@
             Everything you need to build great stuff for the terminal. Always
             open&#8209;source.
           </p>
-          <div class="card-grid">
-            <a
-              href="https://github.com/chestso/coffer"
-              class="card"
-              target="_blank"
-              rel="noopener"
-            >
-              <div class="card-icon">▣</div>
-              <h3>
-                Coffer<span class="card-flair" data-i18n="libs.coffer.flair">
-                  — Virtual Engine</span
-                >
-              </h3>
-              <p data-i18n="libs.coffer.description">
-                Virtual terminal engine: VT parser, grid, scrollback, reflow,
-                sixel. Zero dependencies.
-              </p>
-            </a>
-            <a
-              href="https://github.com/chestso/boba"
-              class="card"
-              target="_blank"
-              rel="noopener"
-            >
-              <div class="card-icon">◉</div>
-              <h3>
-                Boba<span class="card-flair" data-i18n="libs.boba.flair">
-                  — Taro Flavor</span
-                >
-              </h3>
-              <p data-i18n="libs.boba.description">
-                TUI library with Elm Architecture. Components, styles, and
-                runtime — the Bubbletea of C.
-              </p>
-            </a>
-            <a
-              href="https://github.com/chestso/ditty"
-              class="card"
-              target="_blank"
-              rel="noopener"
-            >
-              <div class="card-icon">λ</div>
-              <h3>
-                Ditty<span class="card-flair" data-i18n="libs.ditty.flair">
-                  — Powerful Macros</span
-                >
-              </h3>
-              <p data-i18n="libs.ditty.description">
-                Embeddable Lisp interpreter, Flare syntax highlighter, and CLI.
-                Script your terminal.
-              </p>
-            </a>
+          <div class="card-grid" id="libs-grid">
+            <!-- main.js renders lib cards here from projects.json -->
           </div>
         </div>
       </section>

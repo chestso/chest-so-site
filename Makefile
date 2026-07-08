@@ -3,7 +3,7 @@
 JS_FILES   = main.js users.js i18n.js assets/icons.js
 CSS_FILES  = style.css users.css
 HTML_FILES = index.html thomasc/index.html
-JSON_FILES = users.json thomasc/projects.json
+JSON_FILES = users.json projects.json thomasc/projects.json
 SH_FILES   = serve.sh
 
 format:
