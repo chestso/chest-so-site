@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
   <!-- Chest body -->
-  <path d="M5,70 L5,125 Q5,155 25,155 L175,155 Q195,155 195,125 L195,70 Z" fill="#8a6e4b"/>
+  <path d="M5,85 L5,125 Q5,155 25,155 L175,155 Q195,155 195,125 L195,85 Z" fill="#FFFDF5"/>
 
   <!-- Chest lid (domed) -->
-  <path d="M0,70 Q0,4 100,3 Q200,4 200,70 Z" fill="#9b7e55"/>
+  <path d="M0,70 Q0,4 100,3 Q200,4 200,70 Z" fill="#6B50FF"/>
 
-  <!-- Gold band at seam -->
-  <rect x="0" y="64" width="200" height="12" rx="3" fill="#c8a84e"/>
+  <!-- Seam -->
+  <rect x="0" y="58" width="200" height="27" rx="4" fill="#FF60FF"/>
 
-  <!-- Simple clasp/lock -->
-  <rect x="86" y="56" width="28" height="20" rx="4" fill="#c8a84e"/>
-  <circle cx="100" cy="66" r="4" fill="#5a3e1a"/>
+  <!-- Clasp -->
+  <rect x="82" y="58" width="36" height="36" fill="#00FFB2"/>
+  <circle cx="100" cy="76" r="5" fill="#201F26"/>
 </svg>
