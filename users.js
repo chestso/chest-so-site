@@ -1,70 +1,10 @@
 (function () {
   'use strict';
 
-  var SUPPORTED = ['en', 'zh', 'fa', 'ar', 'th', 'ru'];
-  var DEFAULT_LANG = 'en';
-
-  function getLang() {
-    var stored = null;
-    try {
-      stored = localStorage.getItem('chest-lang');
-    } catch (e) {}
-    if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
-    var nav = (navigator.language || '').toLowerCase();
-    for (var i = 0; i < SUPPORTED.length; i++) {
-      if (nav.indexOf(SUPPORTED[i]) === 0) return SUPPORTED[i];
-    }
-    return DEFAULT_LANG;
-  }
-
-  function setLang(lang) {
-    if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
-    try {
-      localStorage.setItem('chest-lang', lang);
-    } catch (e) {}
-    applyLang(lang);
-  }
-
-  function applyLang(lang) {
-    var dict = I18N[lang] || I18N[DEFAULT_LANG];
-
-    document.documentElement.lang = lang;
-
-    var isRTL = RTL_LANGS.indexOf(lang) !== -1;
-    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
-    document.body.classList.toggle('rtl', isRTL);
-
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var key = el.getAttribute('data-i18n');
-      if (dict[key] !== undefined) el.innerHTML = dict[key];
-    });
-
-    document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
-      var pairs = el.getAttribute('data-i18n-attr').split(',');
-      pairs.forEach(function (pair) {
-        var parts = pair.split(':');
-        var attr = parts[0].trim();
-        var key = parts[1].trim();
-        if (dict[key] !== undefined) el.setAttribute(attr, dict[key]);
-      });
-    });
-
-    var btn = document.getElementById('lang-btn');
-    if (btn) btn.textContent = lang.toUpperCase();
-
-    var menu = document.getElementById('lang-menu');
-    if (menu) {
-      menu.querySelectorAll('[data-lang]').forEach(function (item) {
-        if (item.getAttribute('data-lang') === lang) {
-          item.classList.add('lang-active');
-        } else {
-          item.classList.remove('lang-active');
-        }
-      });
-    }
-
+  // ── Page-specific i18n hook: project labels ──
+  Common.onApplyLang = function (dict) {
     updateProjectLabels(dict);
-  }
+  };
 
   function updateProjectLabels(dict) {
     var titleEl = document.getElementById('user-projects-title');
@@ -72,7 +12,7 @@
       var username = titleEl.getAttribute('data-username') || '';
       titleEl.innerHTML =
         '<span class="tilde">~</span> ' +
-        escapeHtml(username) +
+        Common.escapeHtml(username) +
         '<span class="tilde">\'s ' +
         dict['user.projects.title'] +
         '</span> <span class="tilde">~</span>';
@@ -102,27 +42,6 @@
     });
   }
 
-  function escapeHtml(str) {
-    var div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  function getInitials(name) {
-    var parts = (name || '?').trim().split(/\s+/);
-    if (parts.length >= 2) {
-      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-    }
-    return parts[0].substring(0, 2).toUpperCase();
-  }
-
-  function libravatarUrl(hash, size) {
-    var s = size || 80;
-    return (
-      'https://seccdn.libravatar.org/avatar/' + hash + '?s=' + s + '&d=404'
-    );
-  }
-
   function isSourceUrl(url) {
     return (
       url &&
@@ -141,39 +60,39 @@
     html += '<div class="container">';
     var avatarSrc = data.avatar;
     if (!avatarSrc && data.avatarHash) {
-      avatarSrc = libravatarUrl(data.avatarHash, 80);
+      avatarSrc = Common.libravatarUrl(data.avatarHash, 80);
     }
-    var initials = getInitials(data.displayName || data.username);
+    var initials = Common.getInitials(data.displayName || data.username);
     if (avatarSrc) {
       html +=
         '<img src="' +
-        escapeHtml(avatarSrc) +
+        Common.escapeHtml(avatarSrc) +
         '" alt="' +
-        escapeHtml(data.displayName || data.username) +
+        Common.escapeHtml(data.displayName || data.username) +
         '" class="user-avatar" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'" />' +
         '<div class="user-avatar-placeholder" style="display:none">' +
-        escapeHtml(initials) +
+        Common.escapeHtml(initials) +
         '</div>';
     } else {
-      var initials = getInitials(data.displayName || data.username);
       html +=
         '<div class="user-avatar-placeholder">' +
-        escapeHtml(initials) +
+        Common.escapeHtml(initials) +
         '</div>';
     }
     html +=
       '<h1 class="user-name">' +
-      escapeHtml(data.displayName || data.username) +
+      Common.escapeHtml(data.displayName || data.username) +
       '</h1>';
     if (data.tagline) {
-      html += '<p class="user-tagline">' + escapeHtml(data.tagline) + '</p>';
+      html +=
+        '<p class="user-tagline">' + Common.escapeHtml(data.tagline) + '</p>';
     }
     if (data.links) {
       html += '<div class="user-links">';
       if (data.links.github) {
         html +=
           '<a href="' +
-          escapeHtml(data.links.github) +
+          Common.escapeHtml(data.links.github) +
           '" class="btn btn-outline" target="_blank" rel="noopener">' +
           (typeof Icons !== 'undefined' ? Icons.githubSvg() : '') +
           '<span>GitHub</span></a>';
@@ -181,7 +100,7 @@
       if (data.links.codeberg) {
         html +=
           '<a href="' +
-          escapeHtml(data.links.codeberg) +
+          Common.escapeHtml(data.links.codeberg) +
           '" class="btn btn-outline" target="_blank" rel="noopener">' +
           (typeof Icons !== 'undefined' ? Icons.codebergSvg() : '') +
           '<span>Codeberg</span></a>';
@@ -189,7 +108,7 @@
       if (data.links.website) {
         html +=
           '<a href="' +
-          escapeHtml(data.links.website) +
+          Common.escapeHtml(data.links.website) +
           '" class="btn btn-outline" target="_blank" rel="noopener">Website</a>';
       }
       html += '</div>';
@@ -205,7 +124,7 @@
     html += '<div class="container">';
     html +=
       '<h2 class="user-projects-title" id="user-projects-title" data-username="' +
-      escapeHtml(data.username || '') +
+      Common.escapeHtml(data.username || '') +
       '"></h2>';
     html += '<p class="user-projects-sub" id="user-projects-sub"></p>';
 
@@ -220,24 +139,28 @@
 
         // Icon
         html +=
-          '<div class="project-icon">' + escapeHtml(p.icon || '◆') + '</div>';
+          '<div class="project-icon">' +
+          Common.escapeHtml(p.icon || '◆') +
+          '</div>';
 
         // Header (name + status)
         html += '<div class="project-header">';
-        html += '<div class="project-name">' + escapeHtml(p.name);
+        html += '<div class="project-name">' + Common.escapeHtml(p.name);
         if (p.version) {
           html +=
-            '<span class="badge-version">' + escapeHtml(p.version) + '</span>';
+            '<span class="badge-version">' +
+            Common.escapeHtml(p.version) +
+            '</span>';
         }
         html += '</div>';
         if (p.status) {
           html +=
             '<span class="project-status status-' +
-            escapeHtml(p.status) +
+            Common.escapeHtml(p.status) +
             '" data-status-key="' +
-            escapeHtml(p.status) +
+            Common.escapeHtml(p.status) +
             '">' +
-            escapeHtml(p.status) +
+            Common.escapeHtml(p.status) +
             '</span>';
         }
         html += '</div>';
@@ -245,14 +168,16 @@
         // Tagline
         if (p.tagline) {
           html +=
-            '<p class="project-tagline">' + escapeHtml(p.tagline) + '</p>';
+            '<p class="project-tagline">' +
+            Common.escapeHtml(p.tagline) +
+            '</p>';
         }
 
         // Description
         if (p.description) {
           html +=
             '<p class="project-description">' +
-            escapeHtml(p.description) +
+            Common.escapeHtml(p.description) +
             '</p>';
         }
 
@@ -261,7 +186,9 @@
           html += '<div class="project-tags">';
           for (var t = 0; t < p.tags.length; t++) {
             html +=
-              '<span class="project-tag">#' + escapeHtml(p.tags[t]) + '</span>';
+              '<span class="project-tag">#' +
+              Common.escapeHtml(p.tags[t]) +
+              '</span>';
           }
           html += '</div>';
         }
@@ -272,7 +199,7 @@
           if (p.download) {
             html +=
               '<a href="' +
-              escapeHtml(p.download) +
+              Common.escapeHtml(p.download) +
               '" class="btn btn-small btn-primary" target="_blank" rel="noopener" ' +
               'data-action-download></a>';
           }
@@ -280,7 +207,7 @@
             var isSource = isSourceUrl(p.url);
             html +=
               '<a href="' +
-              escapeHtml(p.url) +
+              Common.escapeHtml(p.url) +
               '" class="btn btn-small" target="_blank" rel="noopener" ' +
               (isSource ? 'data-action-source' : 'data-action-visit') +
               '></a>';
@@ -298,8 +225,8 @@
     container.innerHTML = html;
 
     // Apply i18n labels now that DOM is built
-    var lang = getLang();
-    updateProjectLabels(I18N[lang] || I18N[DEFAULT_LANG]);
+    var lang = Common.getLang();
+    updateProjectLabels(I18N[lang] || I18N[Common.DEFAULT_LANG]);
   }
 
   function renderNotFound(username) {
@@ -309,46 +236,15 @@
       '<section class="user-notfound"><div class="container">' +
       '<h2>404</h2>' +
       '<p>User <strong>' +
-      escapeHtml(username || 'unknown') +
+      Common.escapeHtml(username || 'unknown') +
       "</strong> doesn't have a page here yet.</p>" +
       '<a href="/" class="btn btn-primary">Back to chest.so</a>' +
       '</div></section>';
   }
 
-  // ── Language Switcher ──
-  var langBtn = document.getElementById('lang-btn');
-  var langMenu = document.getElementById('lang-menu');
-
-  if (langBtn && langMenu) {
-    langBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var isOpen = langMenu.classList.toggle('lang-menu-open');
-      langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-
-    langMenu.addEventListener('click', function (e) {
-      var item = e.target.closest('[data-lang]');
-      if (item) {
-        setLang(item.getAttribute('data-lang'));
-        langMenu.classList.remove('lang-menu-open');
-        langBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    document.addEventListener('click', function () {
-      langMenu.classList.remove('lang-menu-open');
-      langBtn.setAttribute('aria-expanded', 'false');
-    });
-  }
-
-  function renderNavIcons() {
-    var navIcons = document.getElementById('nav-icons');
-    if (!navIcons || typeof Icons === 'undefined') return;
-    navIcons.innerHTML =
-      Icons.github('https://github.com/chestso') +
-      Icons.codeberg('https://codeberg.org/chestso');
-  }
+  // ── Language Switcher & Nav Icons ──
+  Common.initLangSwitcher();
+  Common.renderNavIcons();
 
   // ── Load user data ──
   var meta = document.querySelector('meta[name="user"]');
@@ -378,7 +274,6 @@
         if (!userInfo) throw new Error('User not found in users.json');
         userInfo.projects = projectsData.projects || [];
         renderUser(userInfo);
-        renderNavIcons();
       })
       .catch(function () {
         renderNotFound(username);
@@ -388,5 +283,5 @@
   }
 
   // Apply initial language
-  applyLang(getLang());
+  Common.applyLang(Common.getLang());
 })();

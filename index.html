@@ -68,9 +68,64 @@
           <span class="logo-chest">chest</span><span class="logo-tld">.so</span>
         </a>
         <div class="nav-links">
-          <a href="#apps" data-i18n="nav.apps">Apps</a>
-          <a href="#projects" data-i18n="nav.libs">Libs</a>
-          <a href="#community" data-i18n="nav.community">Community</a>
+          <a href="#apps" class="nav-link">
+            <svg
+              class="nav-link-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" /></svg
+            ><span data-i18n="nav.apps">Apps</span>
+          </a>
+          <a href="#projects" class="nav-link">
+            <svg
+              class="nav-link-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" /></svg
+            ><span data-i18n="nav.libs">Libs</span>
+          </a>
+          <a href="#community" class="nav-link">
+            <svg
+              class="nav-link-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+            ><span data-i18n="nav.community">Community</span>
+          </a>
           <span id="nav-icons"></span>
           <span class="nav-liberapay">
             <script src="https://liberapay.com/thomasc/widgets/button.js"></script>
@@ -200,6 +255,7 @@
 
     <script src="i18n.js"></script>
     <script src="assets/icons.js"></script>
+    <script src="common.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

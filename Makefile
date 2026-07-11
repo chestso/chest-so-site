@@ -1,6 +1,6 @@
 .PHONY: format
 
-JS_FILES   = main.js users.js i18n.js assets/icons.js
+JS_FILES   = main.js users.js common.js i18n.js assets/icons.js
 TS_FILES   = worker/index.ts
 CSS_FILES  = style.css users.css
 HTML_FILES = index.html thomasc/index.html

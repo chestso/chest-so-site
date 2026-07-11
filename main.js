@@ -1,70 +1,10 @@
 (function () {
   'use strict';
 
-  var SUPPORTED = ['en', 'zh', 'fa', 'ar', 'th', 'ru'];
-  var DEFAULT_LANG = 'en';
-
-  function getLang() {
-    var stored = null;
-    try {
-      stored = localStorage.getItem('chest-lang');
-    } catch (e) {}
-    if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
-    var nav = (navigator.language || '').toLowerCase();
-    for (var i = 0; i < SUPPORTED.length; i++) {
-      if (nav.indexOf(SUPPORTED[i]) === 0) return SUPPORTED[i];
-    }
-    return DEFAULT_LANG;
-  }
-
-  function setLang(lang) {
-    if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
-    try {
-      localStorage.setItem('chest-lang', lang);
-    } catch (e) {}
-    applyLang(lang);
-  }
-
-  function applyLang(lang) {
-    var dict = I18N[lang] || I18N[DEFAULT_LANG];
-
-    document.documentElement.lang = lang;
-
-    var isRTL = RTL_LANGS.indexOf(lang) !== -1;
-    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
-    document.body.classList.toggle('rtl', isRTL);
-
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var key = el.getAttribute('data-i18n');
-      if (dict[key] !== undefined) el.innerHTML = dict[key];
-    });
-
-    document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
-      var pairs = el.getAttribute('data-i18n-attr').split(',');
-      pairs.forEach(function (pair) {
-        var parts = pair.split(':');
-        var attr = parts[0].trim();
-        var key = parts[1].trim();
-        if (dict[key] !== undefined) el.setAttribute(attr, dict[key]);
-      });
-    });
-
-    var btn = document.getElementById('lang-btn');
-    if (btn) btn.textContent = lang.toUpperCase();
-
-    var menu = document.getElementById('lang-menu');
-    if (menu) {
-      menu.querySelectorAll('[data-lang]').forEach(function (item) {
-        if (item.getAttribute('data-lang') === lang) {
-          item.classList.add('lang-active');
-        } else {
-          item.classList.remove('lang-active');
-        }
-      });
-    }
-
+  // ── Page-specific i18n hook: typewriter ──
+  Common.onApplyLang = function (dict) {
     updateTypewriter(dict);
-  }
+  };
 
   // ── Typewriter Effect ──
   var phrases = [
@@ -119,42 +59,10 @@
 
   type();
 
-  // ── Language Switcher ──
-  var langBtn = document.getElementById('lang-btn');
-  var langMenu = document.getElementById('lang-menu');
-
-  if (langBtn && langMenu) {
-    langBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var isOpen = langMenu.classList.toggle('lang-menu-open');
-      langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-
-    langMenu.addEventListener('click', function (e) {
-      var item = e.target.closest('[data-lang]');
-      if (item) {
-        setLang(item.getAttribute('data-lang'));
-        langMenu.classList.remove('lang-menu-open');
-        langBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    document.addEventListener('click', function () {
-      langMenu.classList.remove('lang-menu-open');
-      langBtn.setAttribute('aria-expanded', 'false');
-    });
-  }
-
-  applyLang(getLang());
-
-  // ── Nav Icons ──
-  var navIcons = document.getElementById('nav-icons');
-  if (navIcons && typeof Icons !== 'undefined') {
-    navIcons.innerHTML =
-      Icons.github('https://github.com/chestso') +
-      Icons.codeberg('https://codeberg.org/chestso');
-  }
+  // ── Language Switcher & Nav Icons ──
+  Common.initLangSwitcher();
+  Common.applyLang(Common.getLang());
+  Common.renderNavIcons();
 
   // ── Subtle Gaussian Noise (WebGL) ──
   var noiseContainer = document.getElementById('noise');
@@ -256,12 +164,6 @@
   var appsGrid = document.getElementById('apps-grid');
   var libsGrid = document.getElementById('libs-grid');
 
-  function escapeHtml(str) {
-    var div = document.createElement('div');
-    div.textContent = str || '';
-    return div.innerHTML;
-  }
-
   function capitalizeName(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
   }
@@ -275,7 +177,7 @@
   }
 
   function renderApps(apps, container) {
-    var dict = I18N[getLang()] || I18N[DEFAULT_LANG];
+    var dict = I18N[Common.getLang()] || I18N[Common.DEFAULT_LANG];
     var html = '';
     for (var i = 0; i < apps.length; i++) {
       var p = apps[i];
@@ -287,19 +189,19 @@
       if (p.iconType === 'img') {
         html +=
           '<img src="' +
-          escapeHtml(p.icon) +
+          Common.escapeHtml(p.icon) +
           '" alt="' +
-          escapeHtml(displayName) +
+          Common.escapeHtml(displayName) +
           '" width="48" height="48" />';
       } else {
-        html += escapeHtml(p.icon);
+        html += Common.escapeHtml(p.icon);
       }
       html += '</div>';
       html += '<h3>';
-      html += escapeHtml(displayName);
+      html += Common.escapeHtml(displayName);
       html +=
         '<span class="badge-version">' +
-        escapeHtml(p.version || '') +
+        Common.escapeHtml(p.version || '') +
         '</span>';
       html +=
         '<span class="card-flair" data-i18n="' +
@@ -314,13 +216,13 @@
         '<a href="' +
         releaseUrl(p.repo) +
         '" class="btn btn-small btn-primary" target="_blank" rel="noopener" data-i18n="apps.download">' +
-        escapeHtml(dict['apps.download'] || 'Download') +
+        Common.escapeHtml(dict['apps.download'] || 'Download') +
         '</a>';
       html +=
         '<a href="' +
         repoUrl(p.repo) +
         '" class="btn btn-small" target="_blank" rel="noopener" data-i18n="apps.source">' +
-        escapeHtml(dict['apps.source'] || 'Source') +
+        Common.escapeHtml(dict['apps.source'] || 'Source') +
         '</a>';
       html += '</div>';
       html += '</div>';
@@ -329,7 +231,7 @@
   }
 
   function renderLibs(libs, container) {
-    var dict = I18N[getLang()] || I18N[DEFAULT_LANG];
+    var dict = I18N[Common.getLang()] || I18N[Common.DEFAULT_LANG];
     var html = '';
     for (var i = 0; i < libs.length; i++) {
       var p = libs[i];
@@ -342,12 +244,14 @@
         '" class="card" target="_blank" rel="noopener" data-project="' +
         p.name +
         '">';
-      html += '<div class="card-icon">' + escapeHtml(p.icon) + '</div>';
+      html += '<div class="card-icon">' + Common.escapeHtml(p.icon) + '</div>';
       html += '<h3>';
-      html += escapeHtml(displayName);
+      html += Common.escapeHtml(displayName);
       if (p.version) {
         html +=
-          '<span class="badge-version">' + escapeHtml(p.version) + '</span>';
+          '<span class="badge-version">' +
+          Common.escapeHtml(p.version) +
+          '</span>';
       }
       html +=
         '<span class="card-flair" data-i18n="' +
@@ -375,7 +279,7 @@
         if (libsGrid && data.libs) {
           renderLibs(data.libs, libsGrid);
         }
-        applyLang(getLang());
+        Common.applyLang(Common.getLang());
         fetchLatestReleases(data);
       })
       .catch(function () {});
@@ -427,55 +331,43 @@
       });
   }
 
-  function getInitials(name) {
-    var parts = (name || '?').trim().split(/\s+/);
-    if (parts.length >= 2) {
-      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-    }
-    return parts[0].substring(0, 2).toUpperCase();
-  }
-
-  function libravatarUrl(hash, size) {
-    var s = size || 56;
-    return (
-      'https://seccdn.libravatar.org/avatar/' + hash + '?s=' + s + '&d=404'
-    );
-  }
-
   function renderCommunity(users, container) {
-    var dict = I18N[getLang()] || I18N[DEFAULT_LANG];
+    var dict = I18N[Common.getLang()] || I18N[Common.DEFAULT_LANG];
     var html = '';
 
     for (var i = 0; i < users.length; i++) {
       var u = users[i];
       var url = u.username + '/';
-      var initials = getInitials(u.displayName || u.username);
+      var initials = Common.getInitials(u.displayName || u.username);
 
       var avatarSrc = u.avatar;
       if (!avatarSrc && u.avatarHash) {
-        avatarSrc = libravatarUrl(u.avatarHash, 56);
+        avatarSrc = Common.libravatarUrl(u.avatarHash, 56);
       }
-      html += '<a href="' + escapeHtml(url) + '" class="community-card">';
+      html +=
+        '<a href="' + Common.escapeHtml(url) + '" class="community-card">';
       if (avatarSrc) {
         html +=
           '<img src="' +
-          escapeHtml(avatarSrc) +
+          Common.escapeHtml(avatarSrc) +
           '" alt="' +
-          escapeHtml(u.displayName || u.username) +
+          Common.escapeHtml(u.displayName || u.username) +
           '" class="community-avatar" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'" />' +
           '<div class="community-avatar-placeholder" style="display:none">' +
-          escapeHtml(initials) +
+          Common.escapeHtml(initials) +
           '</div>';
       } else {
         html +=
           '<div class="community-avatar-placeholder">' +
-          escapeHtml(initials) +
+          Common.escapeHtml(initials) +
           '</div>';
       }
-      html += '<h3>' + escapeHtml(u.displayName || u.username) + '</h3>';
+      html += '<h3>' + Common.escapeHtml(u.displayName || u.username) + '</h3>';
       if (u.tagline) {
         html +=
-          '<p class="community-card-tagline">' + escapeHtml(u.tagline) + '</p>';
+          '<p class="community-card-tagline">' +
+          Common.escapeHtml(u.tagline) +
+          '</p>';
       }
       var countLabel = (u.projectCount || 0) + ' ';
       countLabel +=
@@ -483,10 +375,12 @@
           ? dict['community.project'] || 'project'
           : dict['community.projects'] || 'projects';
       html +=
-        '<p class="community-card-count">' + escapeHtml(countLabel) + '</p>';
+        '<p class="community-card-count">' +
+        Common.escapeHtml(countLabel) +
+        '</p>';
       html +=
         '<span class="btn btn-small btn-primary">' +
-        escapeHtml(dict['community.view'] || 'View') +
+        Common.escapeHtml(dict['community.view'] || 'View') +
         '</span>';
       html += '</a>';
     }
@@ -497,7 +391,7 @@
     html += '<div class="yours-icon">+</div>';
     html +=
       '<div class="yours-text">' +
-      escapeHtml(dict['community.yours'] || 'Get your own page') +
+      Common.escapeHtml(dict['community.yours'] || 'Get your own page') +
       '</div>';
     html += '</a>';
 
