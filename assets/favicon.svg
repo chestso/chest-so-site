@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
   <!-- Chest body -->
-  <path d="M5,85 L5,125 Q5,155 25,155 L175,155 Q195,155 195,125 L195,85 Z" fill="#605F6B"/>
+  <path d="M5,85 L5,125 Q5,155 25,155 L175,155 Q195,155 195,125 L195,85 Z" fill="#BFBCC8"/>
 
   <!-- Chest lid (domed) -->
   <path d="M0,70 Q0,4 100,3 Q200,4 200,70 Z" fill="#6B50FF"/>
