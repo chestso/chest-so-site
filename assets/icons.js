@@ -33,7 +33,7 @@ var Icons = (function () {
     return (
       '<a href="' +
       href +
-      '" target="_blank" rel="noopener" class="nav-icon-link' +
+      '" target="_blank" rel="noopener" class="nav-link' +
       cls +
       '">' +
       svg +
