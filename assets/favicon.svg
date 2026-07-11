@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="55%" r="35%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#ffaa00" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ff7b00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a3e1a"/>
+      <stop offset="50%" stop-color="#8b5e2f"/>
+      <stop offset="100%" stop-color="#6b4423"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b5e2f"/>
+      <stop offset="100%" stop-color="#5a3e1a"/>
+    </linearGradient>
+    <linearGradient id="goldTrim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9940a"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#c9940a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Golden light rays -->
+  <polygon points="44,72 30,28 42,30" fill="#ffd700" opacity="0.35"/>
+  <polygon points="64,72 64,18 74,20" fill="#ffd700" opacity="0.45"/>
+  <polygon points="84,72 98,28 86,30" fill="#ffd700" opacity="0.35"/>
+  <polygon points="54,72 42,22 54,24" fill="#ffcc00" opacity="0.25"/>
+  <polygon points="74,72 86,22 74,24" fill="#ffcc00" opacity="0.25"/>
+
+  <!-- Golden glow from inside -->
+  <ellipse cx="64" cy="75" rx="32" ry="14" fill="url(#glow)"/>
+
+  <!-- Chest body -->
+  <path d="M20,75 L20,104 Q20,112 28,112 L100,112 Q108,112 108,104 L108,75 Z" fill="url(#body)"/>
+
+  <!-- Chest body wood grain lines -->
+  <line x1="24" y1="85" x2="104" y2="85" stroke="#5a3e1a" stroke-width="0.8" opacity="0.5"/>
+  <line x1="24" y1="95" x2="104" y2="95" stroke="#5a3e1a" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Gold trim on body bottom -->
+  <rect x="20" y="106" width="88" height="4" rx="1" fill="url(#goldTrim)"/>
+
+  <!-- Chest lid (open, tilted back) -->
+  <path d="M16,75 L16,48 Q16,38 26,34 L64,26 Q68,25 72,26 L102,34 Q112,38 112,48 L112,75 Z" fill="url(#lid)"/>
+
+  <!-- Lid wood grain -->
+  <line x1="22" y1="55" x2="106" y2="55" stroke="#5a3e1a" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Gold trim at lid-body junction -->
+  <rect x="16" y="73" width="96" height="4" rx="1" fill="url(#goldTrim)"/>
+
+  <!-- Lock plate -->
+  <rect x="54" y="74" width="20" height="12" rx="3" fill="url(#goldTrim)"/>
+  <circle cx="64" cy="82" r="3" fill="#5a3e1a"/>
+  <circle cx="64" cy="82" r="1.5" fill="#c9940a"/>
+
+  <!-- Corner reinforcements -->
+  <rect x="20" y="73" width="8" height="8" rx="1" fill="url(#goldTrim)" opacity="0.8"/>
+  <rect x="100" y="73" width="8" height="8" rx="1" fill="url(#goldTrim)" opacity="0.8"/>
+
+  <!-- Gold trim on lid top -->
+  <path d="M26,34 L64,26 L102,34" fill="none" stroke="url(#goldTrim)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Inner glow highlight at opening -->
+  <ellipse cx="64" cy="75" rx="24" ry="5" fill="#ffd700" opacity="0.6"/>
+</svg>
