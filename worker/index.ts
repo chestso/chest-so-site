@@ -163,7 +163,7 @@ function buildJsonLd(
     '@type': 'Organization',
     name: 'Chest',
     url: 'https://chest.so',
-    logo: 'https://chest.so/assets/banner.jpg',
+    logo: 'https://chest.so/assets/banner.webp',
     sameAs: ['https://github.com/chestso', 'https://codeberg.org/chestso'],
   };
   const apps = projects.apps.map((p) => ({

@@ -6,7 +6,7 @@
       "iconType": "img",
       "repo": "chestso/portty",
       "host": "github",
-      "version": "v0.3.11",
+      "version": "v0.3.12",
       "flair": "apps.portty.flair",
       "description": "apps.portty.description"
     },
@@ -37,7 +37,7 @@
       "icon": "▣",
       "repo": "chestso/coffer",
       "host": "github",
-      "version": "v0.1.2",
+      "version": "v0.1.3",
       "flair": "libs.coffer.flair",
       "description": "libs.coffer.description"
     },
