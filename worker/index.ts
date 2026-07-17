@@ -9,7 +9,7 @@ const I18N: Record<string, Record<string, string>> = {
       'A terminal emulator with pluggable backends for rendering, windowing, and fonts. Ships with SDL3 or Sokol, FreeType/HarfBuzz, and gamma-correct text.',
     'apps.ditty.flair': ' — Interactive REPL',
     'apps.ditty.description':
-      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate expressions, define functions, and load libraries in real time.',
+      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate expressions, define functions, and load libraries.',
     'apps.mudlark.flair': ' — Bound for Adventure',
     'apps.mudlark.description':
       'Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Ditty Lisp.',

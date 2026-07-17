@@ -36,7 +36,7 @@ var I18N = {
       'A terminal emulator with pluggable backends for rendering, windowing, and fonts. Ships with SDL3 or Sokol, FreeType/HarfBuzz, and gamma-correct text.',
     'apps.ditty.flair': ' — Interactive REPL',
     'apps.ditty.description':
-      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate expressions, define functions, and load libraries in real time.',
+      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate expressions, define functions, and load libraries.',
     'apps.mudlark.flair': ' — Bound for Adventure',
     'apps.mudlark.description':
       'Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Ditty Lisp.',
@@ -98,7 +98,7 @@ var I18N = {
       '具有可插拔后端的终端模拟器，支持渲染、窗口和字体切换。内置 SDL3 或 Sokol、FreeType/HarfBuzz，以及伽马校正文本。',
     'apps.ditty.flair': ' — 交互式 REPL',
     'apps.ditty.description':
-      '带有 Flare 语法高亮的交互式 Lisp REPL。实时评估表达式、定义函数和加载库。',
+      '带有 Flare 语法高亮的交互式 Lisp REPL。评估表达式、定义函数和加载库。',
     'apps.mudlark.flair': ' — 冒险启航',
     'apps.mudlark.description':
       '连接到 MUD 和 telnet 服务器，支持完整脚本功能。别名、触发器、快速行走和 TinTin++ 兼容性——全部由 Ditty Lisp 驱动。',
@@ -160,7 +160,7 @@ var I18N = {
       'شبیه‌ساز ترمینال با بک‌اندهای جایگزین‌پذیر برای رندر، پنجره‌سازی و فونت. همراه SDL3 یا Sokol، FreeType/HarfBuzz و متن گامای صحیح.',
     'apps.ditty.flair': ' — REPL تعاملی',
     'apps.ditty.description':
-      'REPL Lisp تعاملی با برجسته‌سازی نحو Flare. ارزیابی عبارات، تعریف توابع و بارگذاری کتابخانه‌ها در زمان واقعی.',
+      'REPL Lisp تعاملی با برجسته‌سازی نحو Flare. ارزیابی عبارات، تعریف توابع و بارگذاری کتابخانه‌ها.',
     'apps.mudlark.flair': ' — آماده ماجراجویی',
     'apps.mudlark.description':
       'به MUDها و سرورهای telnet متصل شوید با پشتیبانی کامل اسکریپت. نام‌های مستعار، تریگرها، speedwalk، و سازگاری TinTin++ — همه توسط Ditty Lisp هدایت می‌شود.',
@@ -223,7 +223,7 @@ var I18N = {
       'محاكي طرفية بنوى خلفية قابلة للتبديل للرسم والنوافذ والخطوط. يأتي مع SDL3 أو Sokol، FreeType/HarfBuzz، ونص بجاما صحيح.',
     'apps.ditty.flair': ' — REPL تفاعلي',
     'apps.ditty.description':
-      'REPL Lisp تفاعلي مع إبراز بناء الجملة Flare. قيّم التعابير، عرّف الدوال، وحمّل المكتبات في الوقت الفعلي.',
+      'REPL Lisp تفاعلي مع إبراز بناء الجملة Flare. قيّم التعابير، عرّف الدوال، وحمّل المكتبات.',
     'apps.mudlark.flair': ' — متجه نحو المغامرة',
     'apps.mudlark.description':
       'اتصل بخوادم MUD و telnet مع دعم كامل للبرمجة. أسماء مستعارة، مشغلات، speedwalk، وتوافق TinTin++ — كلها مدفوعة بـ Ditty Lisp.',
@@ -287,7 +287,7 @@ var I18N = {
       'เทอร์มินัลอิมิวเลเตอร์ที่มีแบ็กเอนด์ถอดเปลี่ยนได้สำหรับการเรนเดอร์ หน้าต่าง และฟอนต์ มาพร้อม SDL3 หรือ Sokol, FreeType/HarfBuzz และข้อความแกมม่าถูกต้อง',
     'apps.ditty.flair': ' — REPL โต้ตอบ',
     'apps.ditty.description':
-      'REPL Lisp โต้ตอบพร้อมการไฮไลต์ไวยากรณ์ Flare ประเมินนิพจน์ กำหนดฟังก์ชัน และโหลดไลบรารีแบบเรียลไทม์',
+      'REPL Lisp โต้ตอบพร้อมการไฮไลต์ไวยากรณ์ Flare ประเมินนิพจน์ กำหนดฟังก์ชัน และโหลดไลบรารี',
     'apps.mudlark.flair': ' — พร้อมผจญภัย',
     'apps.mudlark.description':
       'เชื่อมต่อกับ MUD และเซิร์ฟเวอร์ telnet พร้อมรองรับสคริปต์เต็มรูปแบบ นามแฝง ทริกเกอร์ speedwalk และความเข้ากันได้ของ TinTin++ — ทั้งหมดขับเคลื่อนด้วย Ditty Lisp',
@@ -351,7 +351,7 @@ var I18N = {
       'Эмулятор терминала с подключаемыми бэкендами для рендеринга, окон и шрифтов. Поставляется с SDL3 или Sokol, FreeType/HarfBuzz и гамма-корректным текстом.',
     'apps.ditty.flair': ' — Интерактивный REPL',
     'apps.ditty.description':
-      'Интерактивный Lisp REPL с подсветкой синтаксиса Flare. Вычисляйте выражения, определяйте функции и загружайте библиотеки в реальном времени.',
+      'Интерактивный Lisp REPL с подсветкой синтаксиса Flare. Вычисляйте выражения, определяйте функции и загружайте библиотеки.',
     'apps.mudlark.flair': ' — Навстречу приключениям',
     'apps.mudlark.description':
       'Подключайтесь к MUD и telnet-серверам с полной поддержкой скриптинга. Псевдонимы, триггеры, speedwalk и совместимость с TinTin++ — всё на базе Ditty Lisp.',
