@@ -31,12 +31,12 @@ var I18N = {
     'apps.subtitle': 'Built with Chest. Ready to use.',
     'apps.download': 'Download',
     'apps.source': 'Source',
-    'apps.portty.flair': ' — GPU-Accelerated',
+    'apps.portty.flair': ' — Pluggable Architecture',
     'apps.portty.description':
-      'A modern terminal emulator built on SDL3 with Vulkan/D3D12/Metal rendering. Gamma-correct text, sixel images, and Lottie animations — all at 60fps.',
+      'A terminal emulator with pluggable backends for rendering, windowing, and fonts. Ships with SDL3 or Sokol, FreeType/HarfBuzz, and gamma-correct text.',
     'apps.ditty.flair': ' — Interactive REPL',
     'apps.ditty.description':
-      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate, explore, and extend your terminal in real time.',
+      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate, explore, and script your terminal in real time.',
     'apps.mudlark.flair': ' — Bound for Adventure',
     'apps.mudlark.description':
       'Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Ditty Lisp.',
@@ -45,10 +45,10 @@ var I18N = {
       'Everything you need to build great stuff for the terminal. Always open&#8209;source.',
     'libs.coffer.flair': ' — Virtual Engine',
     'libs.coffer.description':
-      'Virtual terminal engine: VT parser, grid, scrollback, reflow, sixel. Zero dependencies.',
+      'Virtual terminal engine: VT parser, UAX-aware grid, scrollback, reflow, sixel, Lottie, damage tracking, kitty keyboard. Zero dependencies.',
     'libs.boba.flair': ' — Taro Flavor',
     'libs.boba.description':
-      'TUI library with Elm Architecture. Components, styles, and runtime — the Bubbletea of C.',
+      'TUI library with Elm Architecture — runtime, styles, and components in one package. The Bubbletea, Lipgloss, and Bubbles of C.',
     'libs.ditty.flair': ' — Powerful Macros',
     'libs.ditty.description':
       'Embeddable Lisp interpreter, Flare syntax highlighter, and CLI. Script your terminal.',
@@ -93,12 +93,12 @@ var I18N = {
     'apps.subtitle': '用 Chest 构建。开箱即用。',
     'apps.download': '下载',
     'apps.source': '源码',
-    'apps.portty.flair': ' — GPU 加速',
+    'apps.portty.flair': ' — 可插拔架构',
     'apps.portty.description':
-      '基于 SDL3 构建的现代终端模拟器，支持 Vulkan/D3D12/Metal 渲染。伽马校正文本、sixel 图像和 Lottie 动画——全部 60fps。',
+      '具有可插拔后端的终端模拟器，支持渲染、窗口和字体切换。内置 SDL3 或 Sokol、FreeType/HarfBuzz，以及伽马校正文本。',
     'apps.ditty.flair': ' — 交互式 REPL',
     'apps.ditty.description':
-      '带有 Flare 语法高亮的交互式 Lisp REPL。实时评估、探索和扩展你的终端。',
+      '带有 Flare 语法高亮的交互式 Lisp REPL。实时评估、探索和脚本化你的终端。',
     'apps.mudlark.flair': ' — 冒险启航',
     'apps.mudlark.description':
       '连接到 MUD 和 telnet 服务器，支持完整脚本功能。别名、触发器、快速行走和 TinTin++ 兼容性——全部由 Ditty Lisp 驱动。',
@@ -106,10 +106,10 @@ var I18N = {
     'libs.subtitle': '构建出色终端作品所需的一切。始终开源。',
     'libs.coffer.flair': ' — 虚拟引擎',
     'libs.coffer.description':
-      '虚拟终端引擎：VT 解析器、网格、回滚、回流、sixel。零依赖。',
+      '虚拟终端引擎：VT 解析器、UAX 感知网格、回滚、回流、sixel、Lottie、损伤跟踪、kitty 键盘协议。零依赖。',
     'libs.boba.flair': ' — 塔罗风味',
     'libs.boba.description':
-      '采用 Elm 架构的 TUI 库。组件、样式和运行时——C 语言的 Bubbletea。',
+      '采用 Elm 架构的 TUI 库——运行时、样式和组件集于一身。C 语言的 Bubbletea、Lipgloss 和 Bubbles。',
     'libs.ditty.flair': ' — 强大宏',
     'libs.ditty.description':
       '可嵌入 Lisp 解释器、Flare 语法高亮和 CLI。脚本化你的终端。',
@@ -155,12 +155,12 @@ var I18N = {
     'apps.subtitle': 'ساخته شده با Chest. آماده استفاده.',
     'apps.download': 'دانلود',
     'apps.source': 'کد منبع',
-    'apps.portty.flair': ' — شتاب‌یافته GPU',
+    'apps.portty.flair': ' — معماری جایگزین‌پذیر',
     'apps.portty.description':
-      'شبیه‌ساز ترمینال مدرن ساخته شده روی SDL3 با رندر Vulkan/D3D12/Metal. متن گامای صحیح، تصاویر sixel، و انیمیشن Lottie — همه با ۶۰fps.',
+      'شبیه‌ساز ترمینال با بک‌اندهای جایگزین‌پذیر برای رندر، پنجره‌سازی و فونت. همراه SDL3 یا Sokol، FreeType/HarfBuzz و متن گامای صحیح.',
     'apps.ditty.flair': ' — REPL تعاملی',
     'apps.ditty.description':
-      'REPL Lisp تعاملی با برجسته‌سازی نحو Flare. ارزیابی، کاوش، و گسترش ترمینال خود در زمان واقعی.',
+      'REPL Lisp تعاملی با برجسته‌سازی نحو Flare. ارزیابی، کاوش، و اسکریپت‌نویسی ترمینال خود در زمان واقعی.',
     'apps.mudlark.flair': ' — آماده ماجراجویی',
     'apps.mudlark.description':
       'به MUDها و سرورهای telnet متصل شوید با پشتیبانی کامل اسکریپت. نام‌های مستعار، تریگرها، speedwalk، و سازگاری TinTin++ — همه توسط Ditty Lisp هدایت می‌شود.',
@@ -169,10 +169,10 @@ var I18N = {
       'هر آنچه برای ساختن چیزهای عالی برای ترمینال نیاز دارید. همیشه متن‌باز.',
     'libs.coffer.flair': ' — موتور مجازی',
     'libs.coffer.description':
-      'موتور ترمینال مجازی: تجزیه‌کننده VT، شبکه، اسکرول‌بک، reflow، sixel. وابستگی صفر.',
+      'موتور ترمینال مجازی: تجزیه‌کننده VT، شبکه UAAWARE، اسکرول‌بک، reflow، sixel، Lottie، ردیابی آسیب، کیبورد kitty. وابستگی صفر.',
     'libs.boba.flair': ' — طعم تارو',
     'libs.boba.description':
-      'کتابخانه TUI با معماری Elm. کامپوننت‌ها، سبک‌ها، و رانتایم — Bubbleteaی C.',
+      'کتابخانه TUI با معماری Elm — رانتایم، سبک‌ها و کامپوننت‌ها در یک بسته. Bubbletea، Lipgloss و Bubblesی C.',
     'libs.ditty.flair': ' — ماکروهای قدرتمند',
     'libs.ditty.description':
       'مفسر Lisp قابل جاسازی، برجسته‌کننده نحو Flare، و CLI. ترمینال خود را اسکریپت کنید.',
@@ -218,12 +218,12 @@ var I18N = {
     'apps.subtitle': 'مبنية بـ Chest. جاهزة للاستخدام.',
     'apps.download': 'تنزيل',
     'apps.source': 'المصدر',
-    'apps.portty.flair': ' — معجل بـ GPU',
+    'apps.portty.flair': ' — بنية قابلة للتبديل',
     'apps.portty.description':
-      'محاكي طرفية حديث مبني على SDL3 مع رسم Vulkan/D3D12/Metal. نص بجاما صحيح، صور sixel، ورسوم Lottie متحركة — كل ذلك بـ 60fps.',
+      'محاكي طرفية بنوى خلفية قابلة للتبديل للرسم والنوافذ والخطوط. يأتي مع SDL3 أو Sokol، FreeType/HarfBuzz، ونص بجاما صحيح.',
     'apps.ditty.flair': ' — REPL تفاعلي',
     'apps.ditty.description':
-      'REPL Lisp تفاعلي مع إبراز بناء الجملة Flare. قيّم، استكشف، ووسّع طرفيتك في الوقت الفعلي.',
+      'REPL Lisp تفاعلي مع إبراز بناء الجملة Flare. قيّم، استكشف، وبرمج طرفيتك في الوقت الفعلي.',
     'apps.mudlark.flair': ' — متجه نحو المغامرة',
     'apps.mudlark.description':
       'اتصل بخوادم MUD و telnet مع دعم كامل للبرمجة. أسماء مستعارة، مشغلات، speedwalk، وتوافق TinTin++ — كلها مدفوعة بـ Ditty Lisp.',
@@ -232,10 +232,10 @@ var I18N = {
       'كل ما تحتاجه لبناء أشياء رائعة للطرفية. دائماً مفتوح المصدر.',
     'libs.coffer.flair': ' — محرك افتراضي',
     'libs.coffer.description':
-      'محرك طرفية افتراضي: محلل VT، شبكة، تمرير للخلف، إعادة تدفق، sixel. صفر تبعيات.',
+      'محرك طرفية افتراضي: محلل VT، شبكة UAX، تمرير للخلف، إعادة تدفق، sixel، Lottie، تتبع الضرر، لوحة مفاتيح kitty. صفر تبعيات.',
     'libs.boba.flair': ' — نكهة تارو',
     'libs.boba.description':
-      'مكتبة TUI بمعمارية Elm. مكونات، أنماط، وزمن تشغيل — Bubbletea الخاص بـ C.',
+      'مكتبة TUI بمعمارية Elm — زمن تشغيل وأنماط ومكونات في حزمة واحدة. Bubbletea وLipgloss وBubbles الخاص بـ C.',
     'libs.ditty.flair': ' — وحدات ماكرو قوية',
     'libs.ditty.description':
       'مفسر Lisp قابل للتضمين، أداة إبراز بناء الجملة Flare، و CLI. برمج طرفيتك.',
@@ -282,12 +282,12 @@ var I18N = {
     'apps.subtitle': 'สร้างด้วย Chest พร้อมใช้งาน',
     'apps.download': 'ดาวน์โหลด',
     'apps.source': 'ซอร์สโค้ด',
-    'apps.portty.flair': ' — เร่งด้วย GPU',
+    'apps.portty.flair': ' — สถาปัตยกรรมแบบถอดเปลี่ยน',
     'apps.portty.description':
-      'เทอร์มินัลอิมิวเลเตอร์สมัยใหม่สร้างบน SDL3 พร้อมการเรนเดอร์ Vulkan/D3D12/Metal ข้อความแกมม่าถูกต้อง ภาพ sixel และอนิเมชัน Lottie — ทั้งหมดที่ 60fps',
+      'เทอร์มินัลอิมิวเลเตอร์ที่มีแบ็กเอนด์ถอดเปลี่ยนได้สำหรับการเรนเดอร์ หน้าต่าง และฟอนต์ มาพร้อม SDL3 หรือ Sokol, FreeType/HarfBuzz และข้อความแกมม่าถูกต้อง',
     'apps.ditty.flair': ' — REPL โต้ตอบ',
     'apps.ditty.description':
-      'REPL Lisp โต้ตอบพร้อมการไฮไลต์ไวยากรณ์ Flare ประเมิน สำรวจ และขยายเทอร์มินัลของคุณแบบเรียลไทม์',
+      'REPL Lisp โต้ตอบพร้อมการไฮไลต์ไวยากรณ์ Flare ประเมิน สำรวจ และเขียนสคริปต์เทอร์มินัลของคุณแบบเรียลไทม์',
     'apps.mudlark.flair': ' — พร้อมผจญภัย',
     'apps.mudlark.description':
       'เชื่อมต่อกับ MUD และเซิร์ฟเวอร์ telnet พร้อมรองรับสคริปต์เต็มรูปแบบ นามแฝง ทริกเกอร์ speedwalk และความเข้ากันได้ของ TinTin++ — ทั้งหมดขับเคลื่อนด้วย Ditty Lisp',
@@ -296,10 +296,10 @@ var I18N = {
       'ทุกสิ่งที่คุณต้องการเพื่อสร้างสิ่งดีๆ สำหรับเทอร์มินัล โอเพนซอร์สเสมอ',
     'libs.coffer.flair': ' — เอนจินเสมือน',
     'libs.coffer.description':
-      'เอนจินเทอร์มินัลเสมือน: ตัววิเคราะห์ VT กริด สกรอลแบ็ก รีโฟลว์ sixel ไม่มีการพึ่งพาใดๆ',
+      'เอนจินเทอร์มินัลเสมือน: ตัววิเคราะห์ VT กริด UAX-aware สกรอลแบ็ก รีโฟลว์ sixel Lottie การติดตามความเสียหาย คีย์บอร์ด kitty ไม่มีการพึ่งพาใดๆ',
     'libs.boba.flair': ' — รสชาติ Taro',
     'libs.boba.description':
-      'ไลบรารี TUI ด้วยสถาปัตยกรรม Elm คอมโพเนนต์ สไตล์ และรันไทม์ — Bubbletea ของภาษา C',
+      'ไลบรารี TUI ด้วยสถาปัตยกรรม Elm — รันไทม์ สไตล์ และคอมโพเนนต์ในแพ็กเกจเดียว Bubbletea, Lipgloss และ Bubbles ของภาษา C',
     'libs.ditty.flair': ' — มาโครทรงพลัง',
     'libs.ditty.description':
       'อินเทอร์พรีเตอร์ Lisp ฝังได้ ตัวไฮไลต์ไวยากรณ์ Flare และ CLI เขียนสคริปต์เทอร์มินัลของคุณ',
@@ -346,12 +346,12 @@ var I18N = {
     'apps.subtitle': 'Создано с помощью Chest. Готово к использованию.',
     'apps.download': 'Скачать',
     'apps.source': 'Исходный код',
-    'apps.portty.flair': ' — Ускорение GPU',
+    'apps.portty.flair': ' — Подключаемая архитектура',
     'apps.portty.description':
-      'Современный эмулятор терминала, построенный на SDL3 с рендерингом Vulkan/D3D12/Metal. Гамма-корректный текст, изображения sixel и анимации Lottie — всё при 60fps.',
+      'Эмулятор терминала с подключаемыми бэкендами для рендеринга, окон и шрифтов. Поставляется с SDL3 или Sokol, FreeType/HarfBuzz и гамма-корректным текстом.',
     'apps.ditty.flair': ' — Интерактивный REPL',
     'apps.ditty.description':
-      'Интерактивный Lisp REPL с подсветкой синтаксиса Flare. Вычисляйте, исследуйте и расширяйте свой терминал в реальном времени.',
+      'Интерактивный Lisp REPL с подсветкой синтаксиса Flare. Вычисляйте, исследуйте и скриптуйте свой терминал в реальном времени.',
     'apps.mudlark.flair': ' — Навстречу приключениям',
     'apps.mudlark.description':
       'Подключайтесь к MUD и telnet-серверам с полной поддержкой скриптинга. Псевдонимы, триггеры, speedwalk и совместимость с TinTin++ — всё на базе Ditty Lisp.',
@@ -360,10 +360,10 @@ var I18N = {
       'Всё необходимое для создания отличных терминальных приложений. Всегда с открытым исходным кодом.',
     'libs.coffer.flair': ' — Виртуальный движок',
     'libs.coffer.description':
-      'Виртуальный терминальный движок: VT-парсер, сетка, прокрутка, reflow, sixel. Ноль зависимостей.',
+      'Виртуальный терминальный движок: VT-парсер, UAX-сетка, прокрутка, reflow, sixel, Lottie, отслеживание повреждений, клавиатура kitty. Ноль зависимостей.',
     'libs.boba.flair': ' — Вкус Таро',
     'libs.boba.description':
-      'TUI-библиотека с архитектурой Elm. Компоненты, стили и среда выполнения — Bubbletea для C.',
+      'TUI-библиотека с архитектурой Elm — среда выполнения, стили и компоненты в одном пакете. Bubbletea, Lipgloss и Bubbles для C.',
     'libs.ditty.flair': ' — Мощные макросы',
     'libs.ditty.description':
       'Встраиваемый Lisp-интерпретатор, подсветка синтаксиса Flare и CLI. Скриптуйте свой терминал.',

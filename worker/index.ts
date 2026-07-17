@@ -4,21 +4,21 @@ interface Env {
 
 const I18N: Record<string, Record<string, string>> = {
   en: {
-    'apps.portty.flair': ' — GPU-Accelerated',
+    'apps.portty.flair': ' — Pluggable Architecture',
     'apps.portty.description':
-      'A modern terminal emulator built on SDL3 with Vulkan/D3D12/Metal rendering. Gamma-correct text, sixel images, and Lottie animations — all at 60fps.',
+      'A terminal emulator with pluggable backends for rendering, windowing, and fonts. Ships with SDL3 or Sokol, FreeType/HarfBuzz, and gamma-correct text.',
     'apps.ditty.flair': ' — Interactive REPL',
     'apps.ditty.description':
-      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate, explore, and extend your terminal in real time.',
+      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate, explore, and script your terminal in real time.',
     'apps.mudlark.flair': ' — Bound for Adventure',
     'apps.mudlark.description':
       'Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Ditty Lisp.',
     'libs.coffer.flair': ' — Virtual Engine',
     'libs.coffer.description':
-      'Virtual terminal engine: VT parser, grid, scrollback, reflow, sixel. Zero dependencies.',
+      'Virtual terminal engine: VT parser, UAX-aware grid, scrollback, reflow, sixel, Lottie, damage tracking, kitty keyboard. Zero dependencies.',
     'libs.boba.flair': ' — Taro Flavor',
     'libs.boba.description':
-      'TUI library with Elm Architecture. Components, styles, and runtime — the Bubbletea of C.',
+      'TUI library with Elm Architecture — runtime, styles, and components in one package. The Bubbletea, Lipgloss, and Bubbles of C.',
     'libs.ditty.flair': ' — Powerful Macros',
     'libs.ditty.description':
       'Embeddable Lisp interpreter, Flare syntax highlighter, and CLI. Script your terminal.',
