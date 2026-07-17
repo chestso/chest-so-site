@@ -36,7 +36,7 @@ var I18N = {
       'A terminal emulator with pluggable backends for rendering, windowing, and fonts. Ships with SDL3 or Sokol, FreeType/HarfBuzz, and gamma-correct text.',
     'apps.ditty.flair': ' — Interactive REPL',
     'apps.ditty.description':
-      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate, explore, and script your terminal in real time.',
+      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate expressions, define functions, and load libraries in real time.',
     'apps.mudlark.flair': ' — Bound for Adventure',
     'apps.mudlark.description':
       'Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Ditty Lisp.',
@@ -49,9 +49,9 @@ var I18N = {
     'libs.boba.flair': ' — Taro Flavor',
     'libs.boba.description':
       'TUI library with Elm Architecture — runtime, styles, and components in one package. The Bubbletea, Lipgloss, and Bubbles of C.',
-    'libs.ditty.flair': ' — Powerful Macros',
+    'libs.ditty.flair': ' — Embeddable Lisp',
     'libs.ditty.description':
-      'Embeddable Lisp interpreter, Flare syntax highlighter, and CLI. Script your terminal.',
+      'Embeddable Lisp interpreter with packages, condition system, tail-call optimization, and Flare syntax highlighting.',
     'motto.title': 'Free as in freedom.',
     'motto.subtitle':
       'Every library in Chest is free software, because the best toys are the ones you can crack open, inspect, and rebuild yourself.',
@@ -98,7 +98,7 @@ var I18N = {
       '具有可插拔后端的终端模拟器，支持渲染、窗口和字体切换。内置 SDL3 或 Sokol、FreeType/HarfBuzz，以及伽马校正文本。',
     'apps.ditty.flair': ' — 交互式 REPL',
     'apps.ditty.description':
-      '带有 Flare 语法高亮的交互式 Lisp REPL。实时评估、探索和脚本化你的终端。',
+      '带有 Flare 语法高亮的交互式 Lisp REPL。实时评估表达式、定义函数和加载库。',
     'apps.mudlark.flair': ' — 冒险启航',
     'apps.mudlark.description':
       '连接到 MUD 和 telnet 服务器，支持完整脚本功能。别名、触发器、快速行走和 TinTin++ 兼容性——全部由 Ditty Lisp 驱动。',
@@ -110,9 +110,9 @@ var I18N = {
     'libs.boba.flair': ' — 塔罗风味',
     'libs.boba.description':
       '采用 Elm 架构的 TUI 库——运行时、样式和组件集于一身。C 语言的 Bubbletea、Lipgloss 和 Bubbles。',
-    'libs.ditty.flair': ' — 强大宏',
+    'libs.ditty.flair': ' — 可嵌入 Lisp',
     'libs.ditty.description':
-      '可嵌入 Lisp 解释器、Flare 语法高亮和 CLI。脚本化你的终端。',
+      '可嵌入 Lisp 解释器，支持包系统、条件系统、尾调用优化和 Flare 语法高亮。',
     'motto.title': '自由如自由。',
     'motto.subtitle':
       'Chest 中的每个库都是自由软件，因为最好的玩具是那些你可以拆开、检查并自己重建的。',
@@ -160,7 +160,7 @@ var I18N = {
       'شبیه‌ساز ترمینال با بک‌اندهای جایگزین‌پذیر برای رندر، پنجره‌سازی و فونت. همراه SDL3 یا Sokol، FreeType/HarfBuzz و متن گامای صحیح.',
     'apps.ditty.flair': ' — REPL تعاملی',
     'apps.ditty.description':
-      'REPL Lisp تعاملی با برجسته‌سازی نحو Flare. ارزیابی، کاوش، و اسکریپت‌نویسی ترمینال خود در زمان واقعی.',
+      'REPL Lisp تعاملی با برجسته‌سازی نحو Flare. ارزیابی عبارات، تعریف توابع و بارگذاری کتابخانه‌ها در زمان واقعی.',
     'apps.mudlark.flair': ' — آماده ماجراجویی',
     'apps.mudlark.description':
       'به MUDها و سرورهای telnet متصل شوید با پشتیبانی کامل اسکریپت. نام‌های مستعار، تریگرها، speedwalk، و سازگاری TinTin++ — همه توسط Ditty Lisp هدایت می‌شود.',
@@ -173,9 +173,9 @@ var I18N = {
     'libs.boba.flair': ' — طعم تارو',
     'libs.boba.description':
       'کتابخانه TUI با معماری Elm — رانتایم، سبک‌ها و کامپوننت‌ها در یک بسته. Bubbletea، Lipgloss و Bubblesی C.',
-    'libs.ditty.flair': ' — ماکروهای قدرتمند',
+    'libs.ditty.flair': ' — Lisp قابل جاسازی',
     'libs.ditty.description':
-      'مفسر Lisp قابل جاسازی، برجسته‌کننده نحو Flare، و CLI. ترمینال خود را اسکریپت کنید.',
+      'مفسر Lisp قابل جاسازی با سیستم بسته، سیستم شرطی، بهینه‌سازی فراخوان دمی و برجسته‌سازی نحو Flare.',
     'motto.title': 'آزاد به معنای آزادی.',
     'motto.subtitle':
       'هر کتابخانه در Chest نرم‌افزار آزاد است، زیرا بهترین اسباب‌بازی‌ها آن‌هایی هستند که می‌توانید باز کنید، بررسی کنید، و خودتان بازسازی کنید.',
@@ -223,7 +223,7 @@ var I18N = {
       'محاكي طرفية بنوى خلفية قابلة للتبديل للرسم والنوافذ والخطوط. يأتي مع SDL3 أو Sokol، FreeType/HarfBuzz، ونص بجاما صحيح.',
     'apps.ditty.flair': ' — REPL تفاعلي',
     'apps.ditty.description':
-      'REPL Lisp تفاعلي مع إبراز بناء الجملة Flare. قيّم، استكشف، وبرمج طرفيتك في الوقت الفعلي.',
+      'REPL Lisp تفاعلي مع إبراز بناء الجملة Flare. قيّم التعابير، عرّف الدوال، وحمّل المكتبات في الوقت الفعلي.',
     'apps.mudlark.flair': ' — متجه نحو المغامرة',
     'apps.mudlark.description':
       'اتصل بخوادم MUD و telnet مع دعم كامل للبرمجة. أسماء مستعارة، مشغلات، speedwalk، وتوافق TinTin++ — كلها مدفوعة بـ Ditty Lisp.',
@@ -236,9 +236,9 @@ var I18N = {
     'libs.boba.flair': ' — نكهة تارو',
     'libs.boba.description':
       'مكتبة TUI بمعمارية Elm — زمن تشغيل وأنماط ومكونات في حزمة واحدة. Bubbletea وLipgloss وBubbles الخاص بـ C.',
-    'libs.ditty.flair': ' — وحدات ماكرو قوية',
+    'libs.ditty.flair': ' — Lisp قابل للتضمين',
     'libs.ditty.description':
-      'مفسر Lisp قابل للتضمين، أداة إبراز بناء الجملة Flare، و CLI. برمج طرفيتك.',
+      'مفسر Lisp قابل للتضمين مع نظام حزم، نظام شروط، تحسين استدعاء الذيل، وإبراز بناء الجملة Flare.',
     'motto.title': 'حر كما في الحرية.',
     'motto.subtitle':
       'كل مكتبة في Chest هي برمجية حرة، لأن أفضل الألعاب هي تلك التي يمكنك فتحها وفحصها وإعادة بنائها بنفسك.',
@@ -287,7 +287,7 @@ var I18N = {
       'เทอร์มินัลอิมิวเลเตอร์ที่มีแบ็กเอนด์ถอดเปลี่ยนได้สำหรับการเรนเดอร์ หน้าต่าง และฟอนต์ มาพร้อม SDL3 หรือ Sokol, FreeType/HarfBuzz และข้อความแกมม่าถูกต้อง',
     'apps.ditty.flair': ' — REPL โต้ตอบ',
     'apps.ditty.description':
-      'REPL Lisp โต้ตอบพร้อมการไฮไลต์ไวยากรณ์ Flare ประเมิน สำรวจ และเขียนสคริปต์เทอร์มินัลของคุณแบบเรียลไทม์',
+      'REPL Lisp โต้ตอบพร้อมการไฮไลต์ไวยากรณ์ Flare ประเมินนิพจน์ กำหนดฟังก์ชัน และโหลดไลบรารีแบบเรียลไทม์',
     'apps.mudlark.flair': ' — พร้อมผจญภัย',
     'apps.mudlark.description':
       'เชื่อมต่อกับ MUD และเซิร์ฟเวอร์ telnet พร้อมรองรับสคริปต์เต็มรูปแบบ นามแฝง ทริกเกอร์ speedwalk และความเข้ากันได้ของ TinTin++ — ทั้งหมดขับเคลื่อนด้วย Ditty Lisp',
@@ -300,9 +300,9 @@ var I18N = {
     'libs.boba.flair': ' — รสชาติ Taro',
     'libs.boba.description':
       'ไลบรารี TUI ด้วยสถาปัตยกรรม Elm — รันไทม์ สไตล์ และคอมโพเนนต์ในแพ็กเกจเดียว Bubbletea, Lipgloss และ Bubbles ของภาษา C',
-    'libs.ditty.flair': ' — มาโครทรงพลัง',
+    'libs.ditty.flair': ' — Lisp ฝังได้',
     'libs.ditty.description':
-      'อินเทอร์พรีเตอร์ Lisp ฝังได้ ตัวไฮไลต์ไวยากรณ์ Flare และ CLI เขียนสคริปต์เทอร์มินัลของคุณ',
+      'อินเทอร์พรีเตอร์ Lisp ฝังได้พร้อมระบบแพ็กเกจ ระบบเงื่อนไข การเพิ่มประสิทธิภาพ tail call และการไฮไลต์ไวยากรณ์ Flare',
     'motto.title': 'เสรีดั่งอิสรภาพ',
     'motto.subtitle':
       'ทุกไลบรารีใน Chest คือซอฟต์แวร์เสรี เพราะของเล่นที่ดีที่สุดคือของที่คุณสามารถเปิดออก ตรวจสอบ และสร้างใหม่ได้ด้วยตัวเอง',
@@ -351,7 +351,7 @@ var I18N = {
       'Эмулятор терминала с подключаемыми бэкендами для рендеринга, окон и шрифтов. Поставляется с SDL3 или Sokol, FreeType/HarfBuzz и гамма-корректным текстом.',
     'apps.ditty.flair': ' — Интерактивный REPL',
     'apps.ditty.description':
-      'Интерактивный Lisp REPL с подсветкой синтаксиса Flare. Вычисляйте, исследуйте и скриптуйте свой терминал в реальном времени.',
+      'Интерактивный Lisp REPL с подсветкой синтаксиса Flare. Вычисляйте выражения, определяйте функции и загружайте библиотеки в реальном времени.',
     'apps.mudlark.flair': ' — Навстречу приключениям',
     'apps.mudlark.description':
       'Подключайтесь к MUD и telnet-серверам с полной поддержкой скриптинга. Псевдонимы, триггеры, speedwalk и совместимость с TinTin++ — всё на базе Ditty Lisp.',
@@ -364,9 +364,9 @@ var I18N = {
     'libs.boba.flair': ' — Вкус Таро',
     'libs.boba.description':
       'TUI-библиотека с архитектурой Elm — среда выполнения, стили и компоненты в одном пакете. Bubbletea, Lipgloss и Bubbles для C.',
-    'libs.ditty.flair': ' — Мощные макросы',
+    'libs.ditty.flair': ' — Встраиваемый Lisp',
     'libs.ditty.description':
-      'Встраиваемый Lisp-интерпретатор, подсветка синтаксиса Flare и CLI. Скриптуйте свой терминал.',
+      'Встраиваемый Lisp-интерпретатор с системой пакетов, системой условий, оптимизацией хвостовых вызовов и подсветкой синтаксиса Flare.',
     'motto.title': 'Свободно как в свободе.',
     'motto.subtitle':
       'Каждая библиотека в Chest — свободное программное обеспечение, потому что лучшие игрушки — те, которые можно открыть, изучить и пересобрать самостоятельно.',

@@ -9,7 +9,7 @@ const I18N: Record<string, Record<string, string>> = {
       'A terminal emulator with pluggable backends for rendering, windowing, and fonts. Ships with SDL3 or Sokol, FreeType/HarfBuzz, and gamma-correct text.',
     'apps.ditty.flair': ' — Interactive REPL',
     'apps.ditty.description':
-      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate, explore, and script your terminal in real time.',
+      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate expressions, define functions, and load libraries in real time.',
     'apps.mudlark.flair': ' — Bound for Adventure',
     'apps.mudlark.description':
       'Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Ditty Lisp.',
@@ -19,9 +19,9 @@ const I18N: Record<string, Record<string, string>> = {
     'libs.boba.flair': ' — Taro Flavor',
     'libs.boba.description':
       'TUI library with Elm Architecture — runtime, styles, and components in one package. The Bubbletea, Lipgloss, and Bubbles of C.',
-    'libs.ditty.flair': ' — Powerful Macros',
+    'libs.ditty.flair': ' — Embeddable Lisp',
     'libs.ditty.description':
-      'Embeddable Lisp interpreter, Flare syntax highlighter, and CLI. Script your terminal.',
+      'Embeddable Lisp interpreter with packages, condition system, tail-call optimization, and Flare syntax highlighting.',
     'apps.download': 'Download',
     'apps.source': 'Source',
     'community.project': 'project',
