@@ -57,6 +57,15 @@
       "tags": ["python", "cli", "subtitles"],
       "url": "https://codeberg.org/thomasc/subgrab",
       "icon": "💬"
+    },
+    {
+      "name": "Tapestry",
+      "tagline": "TUI library for Ditty Lisp",
+      "description": "Pure-Lisp TUI library for the Ditty Lisp interpreter. ANSI escape codes, text layout, reusable UI components, and an Elm Architecture app runtime for interactive terminal applications.",
+      "status": "incubating",
+      "tags": ["lisp", "tui", "library", "ditty"],
+      "url": "https://codeberg.org/thomasc/tapestry",
+      "icon": "🧵"
     }
   ]
 }
