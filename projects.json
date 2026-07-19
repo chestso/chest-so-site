@@ -6,7 +6,7 @@
       "iconType": "img",
       "repo": "chestso/portty",
       "host": "github",
-      "version": "v0.3.12",
+      "version": "v0.4.0",
       "flair": "apps.portty.flair",
       "description": "apps.portty.description"
     },
@@ -16,7 +16,7 @@
       "iconType": "img",
       "repo": "chestso/ditty",
       "host": "github",
-      "version": "v0.4.0",
+      "version": "v0.6.2",
       "flair": "apps.ditty.flair",
       "description": "apps.ditty.description"
     },
@@ -55,7 +55,7 @@
       "icon": "λ",
       "repo": "chestso/ditty",
       "host": "github",
-      "version": "v0.4.0",
+      "version": "v0.6.2",
       "flair": "libs.ditty.flair",
       "description": "libs.ditty.description"
     }

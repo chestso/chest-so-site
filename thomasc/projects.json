@@ -17,8 +17,8 @@
       "status": "independent",
       "tags": ["c", "cli", "codeberg", "forgejo", "api-client"],
       "url": "https://codeberg.org/thomasc/cb",
-      "download": "https://codeberg.org/thomasc/cb/releases/tag/v0.8.0",
-      "version": "v0.8.0",
+      "download": "https://codeberg.org/thomasc/cb/releases/tag/v0.9.0",
+      "version": "v0.9.0",
       "icon": "🏔️"
     },
     {
