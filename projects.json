@@ -6,7 +6,7 @@
       "iconType": "img",
       "repo": "chestso/portty",
       "host": "github",
-      "version": "v0.4.0",
+      "version": "v0.4.2",
       "flair": "apps.portty.flair",
       "description": "apps.portty.description"
     },
