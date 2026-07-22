@@ -65,193 +65,199 @@
     <link rel="apple-touch-icon" href="assets/favicon-180.png" />
   </head>
   <body>
-    <nav class="nav">
-      <div class="nav-inner">
-        <a href="/" class="nav-logo">
-          <span class="logo-chest">chest</span><span class="logo-tld">.so</span>
-        </a>
-        <div class="nav-links">
-          <a href="#apps" class="nav-link">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <rect x="3" y="3" width="7" height="7" rx="1" />
-              <rect x="14" y="3" width="7" height="7" rx="1" />
-              <rect x="14" y="14" width="7" height="7" rx="1" />
-              <rect x="3" y="14" width="7" height="7" rx="1" /></svg
-            ><span data-i18n="nav.apps">Apps</span>
+    <div class="page-wrapper">
+      <nav class="nav">
+        <div class="nav-inner">
+          <a href="/" class="nav-logo">
+            <span class="logo-chest">chest</span
+            ><span class="logo-tld">.so</span>
           </a>
-          <a href="#projects" class="nav-link">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
+          <div class="nav-links">
+            <a href="#apps" class="nav-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" /></svg
+              ><span data-i18n="nav.apps">Apps</span>
+            </a>
+            <a href="#projects" class="nav-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" /></svg
+              ><span data-i18n="nav.libs">Libs</span>
+            </a>
+            <a href="#community" class="nav-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+              ><span data-i18n="nav.community">Community</span>
+            </a>
+            <span id="nav-icons"></span>
+            <span class="nav-liberapay">
+              <script src="https://liberapay.com/thomasc/widgets/button.js"></script>
+              <noscript
+                ><a href="https://liberapay.com/thomasc/donate"
+                  ><img
+                    alt="Donate using Liberapay"
+                    src="https://liberapay.com/assets/widgets/donate.svg" /></a
+              ></noscript>
+            </span>
+            <div class="lang-switcher" id="lang-switcher">
+              <button
+                class="lang-btn"
+                id="lang-btn"
+                aria-label="Switch language"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                EN
+              </button>
+              <ul class="lang-menu" id="lang-menu" role="menu">
+                <li role="menuitem" data-lang="en">English</li>
+                <li role="menuitem" data-lang="zh">中文</li>
+                <li role="menuitem" data-lang="fa">فارسی</li>
+                <li role="menuitem" data-lang="ar">العربية</li>
+                <li role="menuitem" data-lang="th">ไทย</li>
+                <li role="menuitem" data-lang="ru">Русский</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <header class="hero">
+        <div class="hero-bg">
+          <img
+            src="assets/banner.webp"
+            alt="Treasure chest"
+            class="hero-banner"
+            loading="eager"
+          />
+          <div class="hero-overlay"></div>
+          <div class="hero-noise" id="noise"></div>
+        </div>
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="typewriter" id="typewriter"></span
+            ><span class="cursor">_</span>
+          </h1>
+          <p class="hero-sub" data-i18n="hero.subtitle">
+            The open source terminal ecosystem.<br />Emulator. TUI framework.
+            Lisp scripting. All in one chest.
+          </p>
+          <div class="hero-cta">
+            <a href="#apps" class="btn btn-primary" data-i18n="hero.cta.apps"
+              >See Apps</a
             >
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" /></svg
-            ><span data-i18n="nav.libs">Libs</span>
-          </a>
-          <a href="#community" class="nav-link">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
+            <a
+              href="#projects"
+              class="btn btn-outline"
+              data-i18n="hero.cta.explore"
+              >Explore</a
             >
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
-            ><span data-i18n="nav.community">Community</span>
-          </a>
-          <span id="nav-icons"></span>
-          <span class="nav-liberapay">
-            <script src="https://liberapay.com/thomasc/widgets/button.js"></script>
-            <noscript
-              ><a href="https://liberapay.com/thomasc/donate"
-                ><img
-                  alt="Donate using Liberapay"
-                  src="https://liberapay.com/assets/widgets/donate.svg" /></a
-            ></noscript>
-          </span>
-          <div class="lang-switcher" id="lang-switcher">
-            <button
-              class="lang-btn"
-              id="lang-btn"
-              aria-label="Switch language"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              EN
-            </button>
-            <ul class="lang-menu" id="lang-menu" role="menu">
-              <li role="menuitem" data-lang="en">English</li>
-              <li role="menuitem" data-lang="zh">中文</li>
-              <li role="menuitem" data-lang="fa">فارسی</li>
-              <li role="menuitem" data-lang="ar">العربية</li>
-              <li role="menuitem" data-lang="th">ไทย</li>
-              <li role="menuitem" data-lang="ru">Русский</li>
-            </ul>
           </div>
         </div>
-      </div>
-    </nav>
+      </header>
 
-    <header class="hero">
-      <div class="hero-bg">
-        <img
-          src="assets/banner.webp"
-          alt="Treasure chest"
-          class="hero-banner"
-          loading="eager"
-        />
-        <div class="hero-overlay"></div>
-        <div class="hero-noise" id="noise"></div>
-      </div>
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="typewriter" id="typewriter"></span
-          ><span class="cursor">_</span>
-        </h1>
-        <p class="hero-sub" data-i18n="hero.subtitle">
-          The open source terminal ecosystem.<br />Emulator. TUI framework. Lisp
-          scripting. All in one chest.
-        </p>
-        <div class="hero-cta">
-          <a href="#apps" class="btn btn-primary" data-i18n="hero.cta.apps"
-            >See Apps</a
-          >
-          <a
-            href="#projects"
-            class="btn btn-outline"
-            data-i18n="hero.cta.explore"
-            >Explore</a
-          >
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <section id="apps" class="section">
-        <div class="container">
-          <h2 class="section-title" data-i18n="apps.title">Apps</h2>
-          <p class="section-sub" data-i18n="apps.subtitle">
-            Built with Chest. Ready to use.
-          </p>
-          <div class="feature-grid" id="apps-grid">
-            <!-- main.js renders app cards here from projects.json -->
+      <main>
+        <section id="apps" class="section">
+          <div class="container">
+            <h2 class="section-title" data-i18n="apps.title">Apps</h2>
+            <p class="section-sub" data-i18n="apps.subtitle">
+              Built with Chest. Ready to use.
+            </p>
+            <div class="feature-grid" id="apps-grid">
+              <!-- main.js renders app cards here from projects.json -->
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="projects" class="section section-alt">
-        <div class="container">
-          <h2 class="section-title" data-i18n="libs.title">Build with Chest</h2>
-          <p class="section-sub" data-i18n="libs.subtitle">
-            Everything you need to build great stuff for the terminal. Always
-            open&#8209;source.
-          </p>
-          <div class="card-grid" id="libs-grid">
-            <!-- main.js renders lib cards here from projects.json -->
+        <section id="projects" class="section section-alt">
+          <div class="container">
+            <h2 class="section-title" data-i18n="libs.title">
+              Build with Chest
+            </h2>
+            <p class="section-sub" data-i18n="libs.subtitle">
+              Everything you need to build great stuff for the terminal. Always
+              open&#8209;source.
+            </p>
+            <div class="card-grid" id="libs-grid">
+              <!-- main.js renders lib cards here from projects.json -->
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section section-motto">
-        <div class="container">
-          <h2 class="motto" data-i18n="motto.title">Free as in freedom.</h2>
-          <p class="motto-sub" data-i18n="motto.subtitle">
-            Every library in Chest is free software, because the best toys are
-            the ones you can crack open, inspect, and rebuild yourself.
-          </p>
-        </div>
-      </section>
-
-      <section id="community" class="section section-alt">
-        <div class="container">
-          <h2 class="section-title" data-i18n="community.title">Community</h2>
-          <p class="section-sub" data-i18n="community.subtitle">
-            Personal pages of Chest community members and their projects.
-          </p>
-          <div class="community-grid" id="community-grid">
-            <!-- main.js renders user cards here from users.json -->
+        <section class="section section-motto">
+          <div class="container">
+            <h2 class="motto" data-i18n="motto.title">Free as in freedom.</h2>
+            <p class="motto-sub" data-i18n="motto.subtitle">
+              Every library in Chest is free software, because the best toys are
+              the ones you can crack open, inspect, and rebuild yourself.
+            </p>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
 
-    <footer class="footer">
-      <div class="container">
-        <p>
-          <span class="logo-chest">chest</span><span class="logo-tld">.so</span>
-        </p>
-        <p class="footer-sub" data-i18n="footer.copyright">
-          Copyright &copy; 2026 Chest Contributors.
-        </p>
-      </div>
-    </footer>
+        <section id="community" class="section section-alt">
+          <div class="container">
+            <h2 class="section-title" data-i18n="community.title">Community</h2>
+            <p class="section-sub" data-i18n="community.subtitle">
+              Personal pages of Chest community members and their projects.
+            </p>
+            <div class="community-grid" id="community-grid">
+              <!-- main.js renders user cards here from users.json -->
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <p>
+            <span class="logo-chest">chest</span
+            ><span class="logo-tld">.so</span>
+          </p>
+          <p class="footer-sub" data-i18n="footer.copyright">
+            Copyright &copy; 2026 Chest Contributors.
+          </p>
+        </div>
+      </footer>
+    </div>
 
     <script src="i18n.js"></script>
     <script src="assets/icons.js"></script>

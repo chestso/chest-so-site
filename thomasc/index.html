@@ -17,65 +17,69 @@
     <link rel="apple-touch-icon" href="../assets/favicon-180.png" />
   </head>
   <body>
-    <nav class="nav">
-      <div class="nav-inner">
-        <a href="/" class="nav-logo">
-          <span class="logo-chest">chest</span><span class="logo-tld">.so</span>
-        </a>
-        <div class="nav-links">
-          <a href="/" class="nav-link">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" /></svg
-            ><span data-i18n="nav.home">Home</span>
+    <div class="page-wrapper">
+      <nav class="nav">
+        <div class="nav-inner">
+          <a href="/" class="nav-logo">
+            <span class="logo-chest">chest</span
+            ><span class="logo-tld">.so</span>
           </a>
-          <span id="nav-icons"></span>
-          <div class="lang-switcher" id="lang-switcher">
-            <button
-              class="lang-btn"
-              id="lang-btn"
-              aria-label="Switch language"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              EN
-            </button>
-            <ul class="lang-menu" id="lang-menu" role="menu">
-              <li role="menuitem" data-lang="en">English</li>
-              <li role="menuitem" data-lang="zh">中文</li>
-              <li role="menuitem" data-lang="fa">فارسی</li>
-              <li role="menuitem" data-lang="ar">العربية</li>
-              <li role="menuitem" data-lang="th">ไทย</li>
-              <li role="menuitem" data-lang="ru">Русский</li>
-            </ul>
+          <div class="nav-links">
+            <a href="/" class="nav-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" /></svg
+              ><span data-i18n="nav.home">Home</span>
+            </a>
+            <span id="nav-icons"></span>
+            <div class="lang-switcher" id="lang-switcher">
+              <button
+                class="lang-btn"
+                id="lang-btn"
+                aria-label="Switch language"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                EN
+              </button>
+              <ul class="lang-menu" id="lang-menu" role="menu">
+                <li role="menuitem" data-lang="en">English</li>
+                <li role="menuitem" data-lang="zh">中文</li>
+                <li role="menuitem" data-lang="fa">فارسی</li>
+                <li role="menuitem" data-lang="ar">العربية</li>
+                <li role="menuitem" data-lang="th">ไทย</li>
+                <li role="menuitem" data-lang="ru">Русский</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    <main id="user-content"></main>
+      <main id="user-content"></main>
 
-    <footer class="footer">
-      <div class="container">
-        <p>
-          <span class="logo-chest">chest</span><span class="logo-tld">.so</span>
-        </p>
-        <p class="footer-sub" data-i18n="footer.copyright">
-          Copyright &copy; 2026 Chest Contributors.
-        </p>
-      </div>
-    </footer>
+      <footer class="footer">
+        <div class="container">
+          <p>
+            <span class="logo-chest">chest</span
+            ><span class="logo-tld">.so</span>
+          </p>
+          <p class="footer-sub" data-i18n="footer.copyright">
+            Copyright &copy; 2026 Chest Contributors.
+          </p>
+        </div>
+      </footer>
+    </div>
 
     <script src="../i18n.js"></script>
     <script src="../assets/icons.js"></script>

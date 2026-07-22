@@ -85,16 +85,20 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background: #000;
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+.page-wrapper {
+  background: var(--bg);
   position: relative;
   min-height: 100vh;
 }
 
-body::before {
+.page-wrapper::before {
   content: '';
   position: absolute;
   top: 0;
