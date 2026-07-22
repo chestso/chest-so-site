@@ -797,6 +797,10 @@ a .badge-version {
     font-size: 0.8rem;
   }
 
+  #nav-icons {
+    gap: 0.75rem;
+  }
+
   .nav-link span {
     display: none;
   }
