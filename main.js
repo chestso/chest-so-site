@@ -224,6 +224,15 @@
         '" class="btn btn-small" target="_blank" rel="noopener" data-i18n="apps.source">' +
         Common.escapeHtml(dict['apps.source'] || 'Source') +
         '</a>';
+      if (p.deepwiki) {
+        html +=
+          '<a href="https://deepwiki.com/chestso/' +
+          p.name +
+          '" target="_blank" rel="noopener" class="deepwiki-badge">';
+        html +=
+          '<img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki" />';
+        html += '</a>';
+      }
       html += '</div>';
       html += '</div>';
     }

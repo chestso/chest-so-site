@@ -82,6 +82,9 @@ function renderApps(
     html += `<div class="feature-actions">`;
     html += `<a href="${releaseUrl(p.repo)}" class="btn btn-small btn-primary" target="_blank" rel="noopener" data-i18n="apps.download">${escapeHtml(dict['apps.download'])}</a>`;
     html += `<a href="${repoUrl(p.repo)}" class="btn btn-small" target="_blank" rel="noopener" data-i18n="apps.source">${escapeHtml(dict['apps.source'])}</a>`;
+    if (p.deepwiki) {
+      html += `<a href="https://deepwiki.com/chestso/${p.name}" target="_blank" rel="noopener" class="deepwiki-badge"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki" /></a>`;
+    }
     html += `</div></div>`;
   }
   return html;
