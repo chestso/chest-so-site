@@ -184,7 +184,16 @@
       var displayName = capitalizeName(p.name);
       var flairText = dict[p.flair] || '';
       var descText = dict[p.description] || '';
-      html += '<div class="feature-card" data-project="' + p.name + '">';
+      var hasPromo = !!p.promo;
+      html +=
+        '<div class="feature-card' +
+        (hasPromo ? ' feature-card-wide' : '') +
+        '" data-project="' +
+        p.name +
+        '">';
+      if (hasPromo) {
+        html += '<div class="feature-content">';
+      }
       html += '<div class="feature-icon">';
       if (p.iconType === 'img') {
         html +=
@@ -234,9 +243,39 @@
         html += '</a>';
       }
       html += '</div>';
+      if (hasPromo) {
+        html += '</div>';
+        html += '<div class="feature-promo-wrapper">';
+        html +=
+          '<video class="feature-promo" src="' +
+          Common.escapeHtml(p.promo) +
+          '" loop muted playsinline></video>';
+        html += '</div>';
+      }
       html += '</div>';
     }
     container.innerHTML = html;
+
+    // Pause all promo videos initially, play on hover
+    var promoVideos = container.querySelectorAll('.feature-promo');
+    promoVideos.forEach(function (video) {
+      video.pause();
+      // Seek to 90% of duration when loaded
+      video.addEventListener('loadedmetadata', function () {
+        if (video.duration) {
+          video.currentTime = video.duration * 0.9;
+        }
+      });
+      var card = video.closest('.feature-card');
+      if (card) {
+        card.addEventListener('mouseenter', function () {
+          video.play().catch(function () {});
+        });
+        card.addEventListener('mouseleave', function () {
+          video.pause();
+        });
+      }
+    });
   }
 
   function renderLibs(libs, container) {

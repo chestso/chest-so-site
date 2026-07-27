@@ -62,6 +62,7 @@ function renderApps(
     version: string;
     flair: string;
     description: string;
+    promo?: string;
   }>,
 ): string {
   let html = '';
@@ -69,7 +70,11 @@ function renderApps(
     const displayName = capitalizeName(p.name);
     const flairText = dict[p.flair] || '';
     const descText = dict[p.description] || '';
-    html += `<div class="feature-card" data-project="${escapeHtml(p.name)}">`;
+    const hasPromo = !!p.promo;
+    html += `<div class="feature-card${hasPromo ? ' feature-card-wide' : ''}" data-project="${escapeHtml(p.name)}">`;
+    if (hasPromo) {
+      html += '<div class="feature-content">';
+    }
     html += `<div class="feature-icon">`;
     if (p.iconType === 'img') {
       html += `<img src="${escapeHtml(p.icon)}" alt="${escapeHtml(displayName)}" width="48" height="48" />`;
@@ -85,7 +90,14 @@ function renderApps(
     if (p.deepwiki) {
       html += `<a href="https://deepwiki.com/chestso/${p.name}" target="_blank" rel="noopener" class="deepwiki-badge"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki" /></a>`;
     }
-    html += `</div></div>`;
+    html += `</div>`;
+    if (hasPromo) {
+      html += '</div>';
+      html += '<div class="feature-promo-wrapper">';
+      html += `<video class="feature-promo" src="${escapeHtml(p.promo!)}" loop muted playsinline></video>`;
+      html += '</div>';
+    }
+    html += `</div>`;
   }
   return html;
 }

@@ -20,7 +20,8 @@
       "version": "v0.6.7",
       "flair": "apps.ditty.flair",
       "description": "apps.ditty.description",
-      "deepwiki": true
+      "deepwiki": true,
+      "promo": "assets/ditty.webm"
     },
     {
       "name": "mudlark",
