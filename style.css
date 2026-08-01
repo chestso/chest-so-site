@@ -556,6 +556,7 @@ a:hover {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: minmax(320px, auto);
   gap: 1.5rem;
 }
 
@@ -571,7 +572,6 @@ a:hover {
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
-  min-height: 320px;
 }
 
 .feature-card-wide {
@@ -582,7 +582,7 @@ a:hover {
   align-items: stretch;
   overflow: hidden;
   padding: 0;
-  height: 320px;
+  min-height: 320px;
 }
 
 .feature-content {
