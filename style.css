@@ -629,7 +629,7 @@ a:hover {
 
 .card-flair {
   display: block;
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   color: var(--card-flair);
   margin-bottom: 0.75rem;
 }

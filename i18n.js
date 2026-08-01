@@ -31,25 +31,25 @@ var I18N = {
     'apps.subtitle': 'Built with Chest. Ready to use.',
     'apps.download': 'Download',
     'apps.source': 'Source',
-    'apps.portty.flair': ' — Pluggable Architecture',
+    'apps.portty.flair': 'Pluggable Architecture',
     'apps.portty.description':
       'A terminal emulator with pluggable backends for rendering, windowing, and fonts.',
-    'apps.ditty.flair': ' — Interactive REPL',
+    'apps.ditty.flair': 'Interactive REPL',
     'apps.ditty.description':
       'An interactive Lisp REPL with Flare-powered syntax highlighting.',
-    'apps.mudlark.flair': ' — Bound for Adventure',
+    'apps.mudlark.flair': 'Bound for Adventure',
     'apps.mudlark.description':
       'Connect to MUDs and telnet servers with full scripting support.',
     'libs.title': 'Build with Chest',
     'libs.subtitle':
       'Everything you need to build great stuff for the terminal. Always open&#8209;source.',
-    'libs.coffer.flair': ' — Virtual Engine',
+    'libs.coffer.flair': 'Virtual Engine',
     'libs.coffer.description':
       'Virtual terminal engine: VT parser, UAX-aware grid, scrollback, reflow, sixel, Lottie, damage tracking, kitty keyboard. Zero dependencies.',
-    'libs.boba.flair': ' — Taro Flavor',
+    'libs.boba.flair': 'Taro Flavor',
     'libs.boba.description':
       'TUI library with Elm Architecture — runtime, styles, and components in one package. The Bubbletea, Lipgloss, and Bubbles of C.',
-    'libs.ditty.flair': ' — Embeddable Lisp',
+    'libs.ditty.flair': 'Embeddable Lisp',
     'libs.ditty.description':
       'Embeddable Lisp interpreter with packages, condition system, tail-call optimization, and Flare syntax highlighting.',
     'motto.title': 'Free as in freedom.',
