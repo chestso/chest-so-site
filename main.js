@@ -191,9 +191,7 @@
         '" data-project="' +
         p.name +
         '">';
-      if (hasPromo) {
-        html += '<div class="feature-content">';
-      }
+      html += '<div class="feature-content">';
       html += '<div class="feature-header">';
       html += '<div class="feature-icon">';
       if (p.iconType === 'img') {
@@ -245,8 +243,8 @@
         html += '</a>';
       }
       html += '</div>';
+      html += '</div>';
       if (hasPromo) {
-        html += '</div>';
         html += '<div class="feature-promo-wrapper">';
         html +=
           '<video class="feature-promo" src="' +
