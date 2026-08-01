@@ -582,7 +582,7 @@ a:hover {
   align-items: stretch;
   overflow: hidden;
   padding: 0;
-  min-height: 320px;
+  height: 320px;
 }
 
 .feature-content {
