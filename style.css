@@ -622,6 +622,12 @@ a:hover {
   margin-bottom: 0.75rem;
 }
 
+.feature-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .feature-icon {
   font-size: 2.5rem;
   flex-shrink: 0;
@@ -640,6 +646,13 @@ a:hover {
   margin-bottom: 0;
   color: var(--card-title);
   transition: color 0.25s;
+}
+
+.card-flair {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--card-flair);
+  margin-top: 0.25rem;
 }
 
 .feature-card:hover h3 {
