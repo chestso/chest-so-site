@@ -563,7 +563,6 @@ a:hover {
 .feature-card {
   background: var(--bg-card);
   border-radius: 12px;
-  padding: 2rem;
   transition:
     transform 0.15s,
     box-shadow 0.15s;
@@ -573,6 +572,14 @@ a:hover {
   position: relative;
   overflow: hidden;
   height: 380px;
+}
+
+.feature-card > .feature-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .feature-card-wide {
