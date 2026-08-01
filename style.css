@@ -586,6 +586,13 @@ a:hover {
   height: 380px;
 }
 
+.feature-card-wide > .feature-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
 .feature-content {
   padding: 2rem;
   display: flex;
