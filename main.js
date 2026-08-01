@@ -207,7 +207,6 @@
         html += Common.escapeHtml(p.icon);
       }
       html += '</div>';
-      html += '<div class="feature-title-group">';
       html += '<h3>';
       html += Common.escapeHtml(displayName);
       html +=
@@ -215,14 +214,13 @@
         Common.escapeHtml(p.version || '') +
         '</span>';
       html += '</h3>';
+      html += '</div>';
       html +=
         '<span class="card-flair" data-i18n="' +
         p.flair +
         '">' +
         flairText +
         '</span>';
-      html += '</div>';
-      html += '</div>';
       html += '<p data-i18n="' + p.description + '">' + descText + '</p>';
       html += '<div class="feature-actions">';
       html +=
