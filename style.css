@@ -572,6 +572,7 @@ a:hover {
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
+  height: 380px;
 }
 
 .feature-card-wide {
@@ -582,7 +583,7 @@ a:hover {
   align-items: stretch;
   overflow: hidden;
   padding: 0;
-  min-height: 320px;
+  height: 380px;
 }
 
 .feature-content {
