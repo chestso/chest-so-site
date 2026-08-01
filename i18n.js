@@ -33,13 +33,13 @@ var I18N = {
     'apps.source': 'Source',
     'apps.portty.flair': ' — Pluggable Architecture',
     'apps.portty.description':
-      'A terminal emulator with pluggable backends for rendering, windowing, and fonts. Ships with SDL3 or Sokol, FreeType/HarfBuzz, and gamma-correct text.',
+      'A terminal emulator with pluggable backends for rendering, windowing, and fonts.',
     'apps.ditty.flair': ' — Interactive REPL',
     'apps.ditty.description':
-      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate expressions, define functions, and load libraries.',
+      'An interactive Lisp REPL with Flare-powered syntax highlighting.',
     'apps.mudlark.flair': ' — Bound for Adventure',
     'apps.mudlark.description':
-      'Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Ditty Lisp.',
+      'Connect to MUDs and telnet servers with full scripting support.',
     'libs.title': 'Build with Chest',
     'libs.subtitle':
       'Everything you need to build great stuff for the terminal. Always open&#8209;source.',
