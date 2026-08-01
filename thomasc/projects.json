@@ -1,14 +1,22 @@
 {
   "projects": [
     {
-      "name": "telnet-gui",
-      "tagline": "Lisp-scriptable telnet client",
-      "description": "Lisp scriptable multi-platform telnet client with its own terminal emulator. Built for MUD games. Inspired by DIKU days. Superseded by Mudlark — left for posterity.",
-      "status": "independent",
-      "tags": ["c", "lisp", "mud", "telnet"],
-      "url": "https://codeberg.org/thomasc/telnet-gui",
-      "version": "v0.4",
-      "icon": "🎭"
+      "name": "crush.el",
+      "tagline": "GNU Emacs package for Crush CLI",
+      "description": "GNU Emacs package for interacting with the Crush CLI.",
+      "status": "incubating",
+      "tags": ["emacs", "elisp", "crush", "cli"],
+      "url": "https://codeberg.org/thomasc/crush.el",
+      "icon": "🫧"
+    },
+    {
+      "name": "Tapestry",
+      "tagline": "TUI library for Ditty Lisp",
+      "description": "Pure-Lisp TUI library for the Ditty Lisp interpreter. ANSI escape codes, text layout, reusable UI components, and an Elm Architecture app runtime for interactive terminal applications.",
+      "status": "incubating",
+      "tags": ["lisp", "tui", "library", "ditty"],
+      "url": "https://codeberg.org/thomasc/tapestry",
+      "icon": "🧵"
     },
     {
       "name": "cb",
@@ -59,22 +67,14 @@
       "icon": "💬"
     },
     {
-      "name": "Tapestry",
-      "tagline": "TUI library for Ditty Lisp",
-      "description": "Pure-Lisp TUI library for the Ditty Lisp interpreter. ANSI escape codes, text layout, reusable UI components, and an Elm Architecture app runtime for interactive terminal applications.",
-      "status": "incubating",
-      "tags": ["lisp", "tui", "library", "ditty"],
-      "url": "https://codeberg.org/thomasc/tapestry",
-      "icon": "🧵"
-    },
-    {
-      "name": "crush.el",
-      "tagline": "GNU Emacs package for Crush CLI",
-      "description": "GNU Emacs package for interacting with the Crush CLI.",
-      "status": "incubating",
-      "tags": ["emacs", "elisp", "crush", "cli"],
-      "url": "https://codeberg.org/thomasc/crush.el",
-      "icon": "🫧"
+      "name": "telnet-gui",
+      "tagline": "Lisp-scriptable telnet client",
+      "description": "Lisp scriptable multi-platform telnet client with its own terminal emulator. Built for MUD games. Inspired by DIKU days. Superseded by Mudlark — left for posterity.",
+      "status": "independent",
+      "tags": ["c", "lisp", "mud", "telnet"],
+      "url": "https://codeberg.org/thomasc/telnet-gui",
+      "version": "v0.4",
+      "icon": "🎭"
     }
   ]
 }
