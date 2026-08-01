@@ -194,6 +194,7 @@
       if (hasPromo) {
         html += '<div class="feature-content">';
       }
+      html += '<div class="feature-header">';
       html += '<div class="feature-icon">';
       if (p.iconType === 'img') {
         html +=
@@ -219,6 +220,7 @@
         flairText +
         '</span>';
       html += '</h3>';
+      html += '</div>';
       html += '<p data-i18n="' + p.description + '">' + descText + '</p>';
       html += '<div class="feature-actions">';
       html +=
