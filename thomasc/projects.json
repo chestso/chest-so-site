@@ -66,6 +66,15 @@
       "tags": ["lisp", "tui", "library", "ditty"],
       "url": "https://codeberg.org/thomasc/tapestry",
       "icon": "🧵"
+    },
+    {
+      "name": "crush.el",
+      "tagline": "GNU Emacs package for Crush CLI",
+      "description": "GNU Emacs package for interacting with the Crush CLI.",
+      "status": "incubating",
+      "tags": ["emacs", "elisp", "crush", "cli"],
+      "url": "https://codeberg.org/thomasc/crush.el",
+      "icon": "🫧"
     }
   ]
 }
