@@ -571,7 +571,7 @@ a:hover {
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
-  height: 440px;
+  height: 380px;
 }
 
 .feature-card > .feature-content {
