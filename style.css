@@ -683,6 +683,11 @@ a:hover {
   align-items: center;
 }
 
+.deepwiki-badge {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
 .deepwiki-badge img {
   height: 20px;
   vertical-align: middle;
