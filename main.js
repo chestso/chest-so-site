@@ -239,6 +239,7 @@
       }
       html += '</div>';
       html += '</div>';
+      html += '</div>';
     }
     container.innerHTML = html;
   }
