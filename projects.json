@@ -9,7 +9,8 @@
       "version": "v0.5.7",
       "flair": "apps.portty.flair",
       "description": "apps.portty.description",
-      "deepwiki": true
+      "deepwiki": true,
+      "promo": "https://assets.chest.so/portty.webm"
     },
     {
       "name": "ditty",

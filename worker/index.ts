@@ -4,22 +4,22 @@ interface Env {
 
 const I18N: Record<string, Record<string, string>> = {
   en: {
-    'apps.portty.flair': ' — Pluggable Architecture',
+    'apps.portty.flair': 'Pluggable Architecture',
     'apps.portty.description':
-      'A terminal emulator with pluggable backends for rendering, windowing, and fonts. Ships with SDL3 or Sokol, FreeType/HarfBuzz, and gamma-correct text.',
-    'apps.ditty.flair': ' — Interactive REPL',
+      'A terminal emulator with pluggable backends for rendering, windowing, and fonts.',
+    'apps.ditty.flair': 'Interactive REPL',
     'apps.ditty.description':
-      'An interactive Lisp REPL with Flare-powered syntax highlighting. Evaluate expressions, define functions, and load libraries.',
-    'apps.mudlark.flair': ' — Bound for Adventure',
+      'An interactive Lisp REPL with Flare-powered syntax highlighting.',
+    'apps.mudlark.flair': 'Bound for Adventure',
     'apps.mudlark.description':
-      'Connect to MUDs and telnet servers with full scripting support. Aliases, triggers, speedwalk, and TinTin++ compatibility — all driven by Ditty Lisp.',
-    'libs.coffer.flair': ' — Virtual Engine',
+      'Connect to MUDs and telnet servers with full scripting support.',
+    'libs.coffer.flair': 'Virtual Engine',
     'libs.coffer.description':
       'Virtual terminal engine: VT parser, UAX-aware grid, scrollback, reflow, sixel, Lottie, damage tracking, kitty keyboard. Zero dependencies.',
-    'libs.boba.flair': ' — Taro Flavor',
+    'libs.boba.flair': 'Taro Flavor',
     'libs.boba.description':
       'TUI library with Elm Architecture — runtime, styles, and components in one package. The Bubbletea, Lipgloss, and Bubbles of C.',
-    'libs.ditty.flair': ' — Embeddable Lisp',
+    'libs.ditty.flair': 'Embeddable Lisp',
     'libs.ditty.description':
       'Embeddable Lisp interpreter with packages, condition system, tail-call optimization, and Flare syntax highlighting.',
     'apps.download': 'Download',
