@@ -185,7 +185,10 @@
       var flairText = dict[p.flair] || '';
       var descText = dict[p.description] || '';
       var hasPromo = !!p.promo;
-      html += '<div class="feature-card" data-project="' + p.name + '">';
+      var cardClass = hasPromo
+        ? 'feature-card feature-card-wide'
+        : 'feature-card';
+      html += '<div class="' + cardClass + '" data-project="' + p.name + '">';
       html += '<div class="feature-content">';
       html += '<div class="feature-header">';
       html += '<div class="feature-icon">';
@@ -239,9 +242,111 @@
         '</a>';
       html += '</div>';
       html += '</div>';
+      if (hasPromo) {
+        html += '<div class="feature-promo-wrapper">';
+        html +=
+          '<video class="feature-promo" src="' +
+          Common.escapeHtml(p.promo) +
+          '" muted playsinline preload="auto" aria-label="' +
+          Common.escapeHtml(displayName) +
+          ' promo video"></video>';
+        html += '</div>';
+      }
       html += '</div>';
     }
     container.innerHTML = html;
+  }
+
+  // ── Promo video: initialize on load at 90%, then play on hover and loop ──
+  function setupPromoPlayOnHover() {
+    var videos = document.querySelectorAll('.feature-promo');
+    videos.forEach(function (video) {
+      var card = video.closest('.feature-card');
+      if (!card) return;
+      var hovering = false;
+
+      function seekTo90() {
+        if (video.duration && isFinite(video.duration)) {
+          video.currentTime = video.duration * 0.9;
+        }
+      }
+
+      function startPlayback() {
+        function go() {
+          seekTo90();
+          var p = video.play();
+          if (p && typeof p.catch === 'function') p.catch(function () {});
+        }
+        if (video.readyState >= 1) {
+          go();
+        } else {
+          video.addEventListener('loadedmetadata', function once() {
+            video.removeEventListener('loadedmetadata', once);
+            go();
+          });
+        }
+      }
+
+      function stopPlayback() {
+        video.pause();
+      }
+
+      function onEnter() {
+        hovering = true;
+        startPlayback();
+      }
+      function onLeave() {
+        hovering = false;
+        stopPlayback();
+      }
+
+      // ── Initialize on load: paint the frame at 90%, paused. ──
+      function initPosterFrame() {
+        function go() {
+          seekTo90();
+          requestAnimationFrame(function () {
+            video.pause();
+          });
+        }
+        if (video.readyState >= 1) {
+          go();
+        } else {
+          video.addEventListener('loadedmetadata', function once() {
+            video.removeEventListener('loadedmetadata', once);
+            go();
+          });
+        }
+      }
+      initPosterFrame();
+
+      card.addEventListener('mouseenter', onEnter);
+      card.addEventListener('mouseleave', onLeave);
+      // Keyboard users: focus the card to play (semantically equivalent to hover).
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('focusin', onEnter);
+      card.addEventListener('focusout', onLeave);
+      video.addEventListener('ended', function () {
+        if (!hovering) {
+          stopPlayback();
+          return;
+        }
+        // Loop back to the beginning on each repeat (not 90 %).
+        function go() {
+          video.currentTime = 0;
+          var p = video.play();
+          if (p && typeof p.catch === 'function') p.catch(function () {});
+        }
+        if (video.readyState >= 1) {
+          go();
+        } else if (!video.dataset.loopBound) {
+          video.dataset.loopBound = '1';
+          video.addEventListener('loadedmetadata', function once() {
+            video.removeEventListener('loadedmetadata', once);
+            go();
+          });
+        }
+      });
+    });
   }
 
   function renderLibs(libs, container) {
@@ -289,6 +394,7 @@
       .then(function (data) {
         if (appsGrid && data.apps) {
           renderApps(data.apps, appsGrid);
+          setupPromoPlayOnHover();
         }
         if (libsGrid && data.libs) {
           renderLibs(data.libs, libsGrid);
