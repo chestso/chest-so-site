@@ -247,7 +247,9 @@
         html +=
           '<video class="feature-promo" src="' +
           Common.escapeHtml(p.promo) +
-          '" muted playsinline preload="auto" aria-label="' +
+          '" poster="' +
+          Common.escapeHtml(p.promo.replace(/\.webm$/, '.webp')) +
+          '" muted playsinline preload="metadata" aria-label="' +
           Common.escapeHtml(displayName) +
           ' promo video"></video>';
         html += '</div>';
@@ -264,6 +266,16 @@
       var card = video.closest('.feature-card');
       if (!card) return;
       var hovering = false;
+      // started separates first activation (seek 90 %, play) from any later
+      // re-engagement (resume from currentTime). All input systems share this
+      // rule -- previous "mouse re-hover always rewinds to 90 %" was a bug.
+      var started = false;
+      // focusEngaged captures whether the most recent focusin was from a
+      // :focus-visible source (keyboard / programmatic). Without this flag,
+      // :focus-visible cannot be checked on focusout (the target is no
+      // longer focused), so we record the focusin decision and act on it
+      // on focusout.
+      var focusEngaged = false;
 
       function seekTo90() {
         if (video.duration && isFinite(video.duration)) {
@@ -273,7 +285,10 @@
 
       function startPlayback() {
         function go() {
-          seekTo90();
+          if (!started) {
+            started = true;
+            seekTo90();
+          }
           var p = video.play();
           if (p && typeof p.catch === 'function') p.catch(function () {});
         }
@@ -292,10 +307,14 @@
       }
 
       function onEnter() {
+        // Idempotent -- a re-emitted mouseenter or duplicate focusin shouldn't
+        // restart playback after the card is already engaged.
+        if (hovering) return;
         hovering = true;
         startPlayback();
       }
       function onLeave() {
+        if (!hovering) return;
         hovering = false;
         stopPlayback();
       }
@@ -317,14 +336,59 @@
           });
         }
       }
+
+      // Reduced motion: the <video poster="..."> already paints the
+      // curated 90 % frame as a static image; skip initPosterFrame (which
+      // would fetch .webm metadata just to seek to 90 %) and skip
+      // registering any play triggers.
+      var reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+      ).matches;
+      if (reduceMotion) return;
+
       initPosterFrame();
 
-      card.addEventListener('mouseenter', onEnter);
-      card.addEventListener('mouseleave', onLeave);
-      // Keyboard users: focus the card to play (semantically equivalent to hover).
+      // Mouse / trackpad: hover drives start/stop. Finger-primary devices
+      // don't get these listeners at all -- (pointer: fine) is false on
+      // phones and tablets, so the only play triggers there are focus and
+      // click.
+      var finePointer = window.matchMedia('(pointer: fine)').matches;
+      if (finePointer) {
+        card.addEventListener('mouseenter', onEnter);
+        card.addEventListener('mouseleave', onLeave);
+      }
+
+      // Keyboard: focus is the keyboard equivalent of hover. The
+      // :focus-visible filter ensures touch taps (which move focus but
+      // are not "keyboard-style" focus) do not double-fire onEnter.
       card.setAttribute('tabindex', '0');
-      card.addEventListener('focusin', onEnter);
-      card.addEventListener('focusout', onLeave);
+      card.addEventListener('focusin', function (e) {
+        if (e.target.matches(':focus-visible')) {
+          focusEngaged = true;
+          onEnter();
+        }
+      });
+      card.addEventListener('focusout', function () {
+        if (focusEngaged) {
+          focusEngaged = false;
+          onLeave();
+        }
+      });
+
+      // Click: on touch this is a toggle (tap to play/pause/resume). On
+      // mouse systems the hover listeners are already in charge, so a click
+      // during hover is a no-op via the (finePointer && hovering) guard.
+      // Inner buttons (Download / Source / DeepWiki) own their own clicks
+      // and are excluded here.
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a, button')) return;
+        if (finePointer && hovering) return;
+        if (hovering) onLeave();
+        else onEnter();
+      });
+
+      // Loop while active, stop when inactive. Reads the hovering flag shared
+      // with mouse / focus / click handlers above.
       video.addEventListener('ended', function () {
         if (!hovering) {
           stopPlayback();

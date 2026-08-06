@@ -896,6 +896,31 @@ a .badge-version {
     grid-template-columns: 1fr;
   }
 
+  /* ── Promo card on narrow: override `grid-column: span 3` from the
+   * desktop rule (it would force a 3-column-wide card via implicit
+   * tracks, leaving non-promo cards narrower in comparison). Match
+   * width with the non-promo cards, stack content above video. ── */
+  .feature-card-wide {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 0;
+  }
+
+  /* ── Cap content padding across feature cards so action buttons ──
+   * fit side-by-side without wrapping. Does not change card height. ── */
+  .feature-card > .feature-content,
+  .feature-card-wide > .feature-content {
+    padding: 1.5rem;
+  }
+
+  .feature-card-wide > .feature-promo-wrapper {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border-top: 1px solid var(--border-card);
+    background: #000;
+  }
+
   .section {
     padding: 3rem 0;
   }

@@ -94,7 +94,7 @@ function renderApps(
     if (hasPromo) {
       html += '</div>';
       html += '<div class="feature-promo-wrapper">';
-      html += `<video class="feature-promo" src="${escapeHtml(p.promo!)}" loop muted playsinline></video>`;
+      html += `<video class="feature-promo" src="${escapeHtml(p.promo!)}" poster="${escapeHtml(p.promo!.replace(/\.webm$/, '.webp'))}" loop muted playsinline preload="metadata"></video>`;
       html += '</div>';
     }
     html += `</div>`;
