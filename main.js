@@ -224,6 +224,8 @@
       h0.style.whiteSpace = nowrap0;
       h1.style.whiteSpace = nowrap1;
 
+      if (!overflow0 && !overflow1) continue;
+
       var a = 3;
       var b = 3;
 
