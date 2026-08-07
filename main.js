@@ -228,12 +228,19 @@
         parseFloat(s1.paddingLeft) -
         parseFloat(s1.paddingRight);
 
+      var icon0 = c0.querySelector('.app-icon');
+      var icon1 = c1.querySelector('.app-icon');
+      var iconW0 = icon0 ? icon0.offsetWidth + 12 : 0;
+      var iconW1 = icon1 ? icon1.offsetWidth + 12 : 0;
+
       var old0 = h0.style.whiteSpace;
       var old1 = h1.style.whiteSpace;
       h0.style.whiteSpace = 'nowrap';
       h1.style.whiteSpace = 'nowrap';
-      var overflow0 = h0.scrollWidth > avail0;
-      var overflow1 = h1.scrollWidth > avail1;
+      var need0 = iconW0 + h0.scrollWidth;
+      var need1 = iconW1 + h1.scrollWidth;
+      var overflow0 = need0 > avail0;
+      var overflow1 = need1 > avail1;
       h0.style.whiteSpace = old0;
       h1.style.whiteSpace = old1;
 
@@ -241,8 +248,8 @@
         console.log(
           '[fixBarOverflow]',
           c0.dataset.project,
-          'scrollWidth:',
-          h0.scrollWidth,
+          'need:',
+          need0,
           'avail:',
           avail0,
         );
@@ -251,8 +258,8 @@
         console.log(
           '[fixBarOverflow]',
           c1.dataset.project,
-          'scrollWidth:',
-          h1.scrollWidth,
+          'need:',
+          need1,
           'avail:',
           avail1,
         );
