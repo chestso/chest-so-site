@@ -53,6 +53,42 @@ function releaseUrl(repo: string): string {
   return `https://github.com/${repo}/releases/latest`;
 }
 
+function allocateCells(weights: number[]): number[] {
+  const result: number[] = [];
+  let i = 0;
+  while (i < weights.length) {
+    const w0 = weights[i];
+    i++;
+    if (i < weights.length) {
+      const w1 = weights[i];
+      i++;
+      const total = w0 + w1;
+      let raw0 = Math.round((6 * w0) / total);
+      let raw1 = Math.round((6 * w1) / total);
+      if (raw0 + raw1 === 6) {
+        result.push(raw0, raw1);
+      } else if (raw0 + raw1 < 6) {
+        const diff = 6 - (raw0 + raw1);
+        if (raw0 >= raw1) {
+          result.push(raw0 + diff, raw1);
+        } else {
+          result.push(raw0, raw1 + diff);
+        }
+      } else {
+        const diff = raw0 + raw1 - 6;
+        if (raw0 >= raw1) {
+          result.push(raw0 - diff, raw1);
+        } else {
+          result.push(raw0, raw1 - diff);
+        }
+      }
+    } else {
+      result.push(6);
+    }
+  }
+  return result;
+}
+
 function renderApps(
   apps: Array<{
     name: string;
@@ -63,17 +99,21 @@ function renderApps(
     flair: string;
     description: string;
     gfx: string;
-    span?: number;
+    weight?: number;
     promo?: string;
   }>,
 ): string {
+  const weights = apps.map((p) => p.weight || 1);
+  const cells = allocateCells(weights);
   let html = '';
-  for (const p of apps) {
+  for (let i = 0; i < apps.length; i++) {
+    const p = apps[i];
     const displayName = capitalizeName(p.name);
     const flairText = dict[p.flair] || '';
     const hasPromo = !!p.promo;
-    const span = p.span || 1;
-    const spanStyle = span > 1 ? ` style="grid-column: span ${span}"` : '';
+    const cellSpan = cells[i];
+    const spanStyle =
+      cellSpan > 1 ? ` style="grid-column: span ${cellSpan}"` : '';
     html += `<div class="app-card app-card--bar" data-project="${escapeHtml(p.name)}"${spanStyle}>`;
     html += '<div class="app-gfx">';
     if (hasPromo) {

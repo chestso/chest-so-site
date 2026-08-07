@@ -23,7 +23,7 @@
       "flair": "apps.ditty.flair",
       "description": "apps.ditty.description",
       "deepwiki": true,
-      "span": 2,
+      "weight": 3,
       "gfx": "https://assets.chest.so/ditty.webp",
       "promo": "https://assets.chest.so/ditty.webm"
     },

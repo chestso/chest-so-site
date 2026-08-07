@@ -176,67 +176,58 @@
     return 'https://github.com/' + repo + '/releases/latest';
   }
 
-  function computeSpans(desired, cols) {
+  function allocateCells(weights) {
     var result = [];
-    for (var i = 0; i < desired.length; i++) {
-      result.push(Math.min(desired[i], cols));
-    }
     var i = 0;
-    while (i < desired.length) {
-      var rowStart = i;
-      var rowUsed = 0;
-      while (i < desired.length && rowUsed + result[i] <= cols) {
-        rowUsed += result[i];
+    while (i < weights.length) {
+      var w0 = weights[i];
+      i++;
+      if (i < weights.length) {
+        var w1 = weights[i];
         i++;
-      }
-      if (i < desired.length && rowUsed < cols) {
-        result[i] = cols - rowUsed;
-        rowUsed = cols;
-        i++;
-      }
-      var slack = cols - rowUsed;
-      if (slack > 0 && rowStart < i) {
-        var bestIdx = rowStart;
-        for (var j = rowStart + 1; j < i; j++) {
-          if (desired[j] > desired[bestIdx]) {
-            bestIdx = j;
+        var total = w0 + w1;
+        var raw0 = Math.round((6 * w0) / total);
+        var raw1 = Math.round((6 * w1) / total);
+        if (raw0 + raw1 === 6) {
+          result.push(raw0, raw1);
+        } else if (raw0 + raw1 < 6) {
+          var diff = 6 - (raw0 + raw1);
+          if (raw0 >= raw1) {
+            result.push(raw0 + diff, raw1);
+          } else {
+            result.push(raw0, raw1 + diff);
+          }
+        } else {
+          var diff = raw0 + raw1 - 6;
+          if (raw0 >= raw1) {
+            result.push(raw0 - diff, raw1);
+          } else {
+            result.push(raw0, raw1 - diff);
           }
         }
-        result[bestIdx] += slack;
+      } else {
+        result.push(6);
       }
     }
     return result;
   }
 
-  function getGridColumns(container) {
-    var style = getComputedStyle(container).gridTemplateColumns;
-    return style.split(' ').length;
-  }
-
-  function adjustSpans(apps, container) {
-    if (!container.clientWidth) return;
-    var cols = getGridColumns(container);
-    var desired = [];
-    for (var i = 0; i < apps.length; i++) {
-      desired.push(apps[i].span || 1);
-    }
-    var spans = computeSpans(desired, cols);
-    var cards = container.querySelectorAll('.app-card');
-    for (var i = 0; i < cards.length && i < spans.length; i++) {
-      cards[i].style.gridColumn = spans[i] > 1 ? 'span ' + spans[i] : '';
-    }
-  }
-
   function renderApps(apps, container) {
     var dict = I18N[Common.getLang()] || I18N[Common.DEFAULT_LANG];
+    var weights = [];
+    for (var i = 0; i < apps.length; i++) {
+      weights.push(apps[i].weight || 1);
+    }
+    var cells = allocateCells(weights);
     var html = '';
     for (var i = 0; i < apps.length; i++) {
       var p = apps[i];
       var displayName = capitalizeName(p.name);
       var flairText = dict[p.flair] || '';
       var hasPromo = !!p.promo;
-      var span = p.span || 1;
-      var spanStyle = span > 1 ? ' style="grid-column: span ' + span + '"' : '';
+      var cellSpan = cells[i];
+      var spanStyle =
+        cellSpan > 1 ? ' style="grid-column: span ' + cellSpan + '"' : '';
       html +=
         '<div class="app-card app-card--bar" data-project="' +
         p.name +
@@ -502,15 +493,7 @@
       .then(function (data) {
         if (appsGrid && data.apps) {
           renderApps(data.apps, appsGrid);
-          adjustSpans(data.apps, appsGrid);
           setupPromoPlayOnHover();
-          var resizeTimer = null;
-          window.addEventListener('resize', function () {
-            if (resizeTimer) clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function () {
-              adjustSpans(data.apps, appsGrid);
-            }, 200);
-          });
         }
         if (libsGrid && data.libs) {
           renderLibs(data.libs, libsGrid);
