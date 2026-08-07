@@ -183,33 +183,53 @@
       var p = apps[i];
       var displayName = capitalizeName(p.name);
       var flairText = dict[p.flair] || '';
-      var descText = dict[p.description] || '';
       var hasPromo = !!p.promo;
-      var cardClass = hasPromo
-        ? 'feature-card feature-card-wide'
-        : 'feature-card';
-      html += '<div class="' + cardClass + '" data-project="' + p.name + '">';
-      html += '<div class="feature-content">';
-      html += '<div class="feature-header">';
-      html += '<div class="feature-icon">';
+      var span = p.span || 1;
+      var spanStyle = span > 1 ? ' style="grid-column: span ' + span + '"' : '';
+      html +=
+        '<div class="app-card" data-project="' + p.name + '"' + spanStyle + '>';
+      html += '<div class="app-gfx">';
+      if (hasPromo) {
+        html +=
+          '<video src="' +
+          Common.escapeHtml(p.promo) +
+          '" poster="' +
+          Common.escapeHtml(p.gfx) +
+          '" loop muted playsinline preload="metadata" aria-label="' +
+          Common.escapeHtml(displayName) +
+          ' promo video"></video>';
+      } else {
+        html +=
+          '<img src="' +
+          Common.escapeHtml(p.gfx) +
+          '" alt="' +
+          Common.escapeHtml(displayName) +
+          '" />';
+      }
+      html += '</div>';
+      html +=
+        '<a href="' +
+        repoUrl(p.repo) +
+        '" class="app-info" target="_blank" rel="noopener">';
+      html += '<div class="app-header">';
+      html += '<div class="app-icon">';
       if (p.iconType === 'img') {
         html +=
           '<img src="' +
           Common.escapeHtml(p.icon) +
           '" alt="' +
           Common.escapeHtml(displayName) +
-          '" width="48" height="48" />';
+          '" width="24" height="24" />';
       } else {
         html += Common.escapeHtml(p.icon);
       }
       html += '</div>';
-      html += '<h3>';
-      html += Common.escapeHtml(displayName);
       html +=
+        '<h3>' +
+        Common.escapeHtml(displayName) +
         '<span class="badge-version">' +
         Common.escapeHtml(p.version || '') +
-        '</span>';
-      html += '</h3>';
+        '</span></h3>';
       html += '</div>';
       html +=
         '<span class="card-flair" data-i18n="' +
@@ -217,43 +237,7 @@
         '">' +
         flairText +
         '</span>';
-      html += '<p data-i18n="' + p.description + '">' + descText + '</p>';
-      if (p.deepwiki) {
-        html +=
-          '<a href="https://deepwiki.com/chestso/' +
-          p.name +
-          '" target="_blank" rel="noopener" class="deepwiki-badge">';
-        html +=
-          '<img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki" />';
-        html += '</a>';
-      }
-      html += '<div class="feature-actions">';
-      html +=
-        '<a href="' +
-        releaseUrl(p.repo) +
-        '" class="btn btn-small btn-primary" target="_blank" rel="noopener" data-i18n="apps.download">' +
-        Common.escapeHtml(dict['apps.download'] || 'Download') +
-        '</a>';
-      html +=
-        '<a href="' +
-        repoUrl(p.repo) +
-        '" class="btn btn-small" target="_blank" rel="noopener" data-i18n="apps.source">' +
-        Common.escapeHtml(dict['apps.source'] || 'Source') +
-        '</a>';
-      html += '</div>';
-      html += '</div>';
-      if (hasPromo) {
-        html += '<div class="feature-promo-wrapper">';
-        html +=
-          '<video class="feature-promo" src="' +
-          Common.escapeHtml(p.promo) +
-          '" poster="' +
-          Common.escapeHtml(p.promo.replace(/\.webm$/, '.webp')) +
-          '" muted playsinline preload="metadata" aria-label="' +
-          Common.escapeHtml(displayName) +
-          ' promo video"></video>';
-        html += '</div>';
-      }
+      html += '</a>';
       html += '</div>';
     }
     container.innerHTML = html;
@@ -261,9 +245,9 @@
 
   // ── Promo video: initialize on load at 90%, then play on hover and loop ──
   function setupPromoPlayOnHover() {
-    var videos = document.querySelectorAll('.feature-promo');
+    var videos = document.querySelectorAll('.app-gfx video');
     videos.forEach(function (video) {
-      var card = video.closest('.feature-card');
+      var card = video.closest('.app-card');
       if (!card) return;
       var hovering = false;
       // started separates first activation (seek 90 %, play) from any later
@@ -348,14 +332,17 @@
 
       initPosterFrame();
 
-      // Mouse / trackpad: hover drives start/stop. Finger-primary devices
-      // don't get these listeners at all -- (pointer: fine) is false on
-      // phones and tablets, so the only play triggers there are focus and
-      // click.
+      // Mouse / trackpad: hover drives start/stop. Use mouseover/mouseout
+      // on the card and check relatedTarget so moving between children
+      // (app-gfx → app-info) doesn't toggle playback.
       var finePointer = window.matchMedia('(pointer: fine)').matches;
       if (finePointer) {
-        card.addEventListener('mouseenter', onEnter);
-        card.addEventListener('mouseleave', onLeave);
+        card.addEventListener('mouseover', function (e) {
+          if (!card.contains(e.relatedTarget)) onEnter();
+        });
+        card.addEventListener('mouseout', function (e) {
+          if (!card.contains(e.relatedTarget)) onLeave();
+        });
       }
 
       // Keyboard: focus is the keyboard equivalent of hover. The
@@ -377,11 +364,13 @@
 
       // Click: on touch this is a toggle (tap to play/pause/resume). On
       // mouse systems the hover listeners are already in charge, so a click
-      // during hover is a no-op via the (finePointer && hovering) guard.
-      // Inner buttons (Download / Source / DeepWiki) own their own clicks
-      // and are excluded here.
+      // during hover is a no-op. Prevent the browser's default video click
+      // so it doesn't fight our play/pause calls.
       card.addEventListener('click', function (e) {
         if (e.target.closest('a, button')) return;
+        if (e.target.tagName === 'VIDEO') {
+          e.preventDefault();
+        }
         if (finePointer && hovering) return;
         if (hovering) onLeave();
         else onEnter();

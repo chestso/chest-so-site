@@ -62,6 +62,8 @@ function renderApps(
     version: string;
     flair: string;
     description: string;
+    gfx: string;
+    span?: number;
     promo?: string;
   }>,
 ): string {
@@ -69,35 +71,31 @@ function renderApps(
   for (const p of apps) {
     const displayName = capitalizeName(p.name);
     const flairText = dict[p.flair] || '';
-    const descText = dict[p.description] || '';
     const hasPromo = !!p.promo;
-    html += `<div class="feature-card${hasPromo ? ' feature-card-wide' : ''}" data-project="${escapeHtml(p.name)}">`;
+    const span = p.span || 1;
+    const spanStyle = span > 1 ? ` style="grid-column: span ${span}"` : '';
+    html += `<div class="app-card" data-project="${escapeHtml(p.name)}"${spanStyle}>`;
+    html += '<div class="app-gfx">';
     if (hasPromo) {
-      html += '<div class="feature-content">';
+      html += `<video src="${escapeHtml(p.promo!)}" poster="${escapeHtml(p.gfx)}" loop muted playsinline preload="metadata" aria-label="${escapeHtml(displayName)} promo video"></video>`;
+    } else {
+      html += `<img src="${escapeHtml(p.gfx)}" alt="${escapeHtml(displayName)}" />`;
     }
-    html += `<div class="feature-icon">`;
+    html += '</div>';
+    html += `<a href="${repoUrl(p.repo)}" class="app-info" target="_blank" rel="noopener">`;
+    html += '<div class="app-header">';
+    html += '<div class="app-icon">';
     if (p.iconType === 'img') {
-      html += `<img src="${escapeHtml(p.icon)}" alt="${escapeHtml(displayName)}" width="48" height="48" />`;
+      html += `<img src="${escapeHtml(p.icon)}" alt="${escapeHtml(displayName)}" width="24" height="24" />`;
     } else {
       html += escapeHtml(p.icon);
     }
-    html += `</div>`;
-    html += `<h3>${escapeHtml(displayName)}<span class="badge-version">${escapeHtml(p.version || '')}</span><span class="card-flair" data-i18n="${escapeHtml(p.flair)}">${flairText}</span></h3>`;
-    html += `<p data-i18n="${escapeHtml(p.description)}">${descText}</p>`;
-    html += `<div class="feature-actions">`;
-    html += `<a href="${releaseUrl(p.repo)}" class="btn btn-small btn-primary" target="_blank" rel="noopener" data-i18n="apps.download">${escapeHtml(dict['apps.download'])}</a>`;
-    html += `<a href="${repoUrl(p.repo)}" class="btn btn-small" target="_blank" rel="noopener" data-i18n="apps.source">${escapeHtml(dict['apps.source'])}</a>`;
-    if (p.deepwiki) {
-      html += `<a href="https://deepwiki.com/chestso/${p.name}" target="_blank" rel="noopener" class="deepwiki-badge"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki" /></a>`;
-    }
-    html += `</div>`;
-    if (hasPromo) {
-      html += '</div>';
-      html += '<div class="feature-promo-wrapper">';
-      html += `<video class="feature-promo" src="${escapeHtml(p.promo!)}" poster="${escapeHtml(p.promo!.replace(/\.webm$/, '.webp'))}" loop muted playsinline preload="metadata"></video>`;
-      html += '</div>';
-    }
-    html += `</div>`;
+    html += '</div>';
+    html += `<h3>${escapeHtml(displayName)}<span class="badge-version">${escapeHtml(p.version || '')}</span></h3>`;
+    html += '</div>';
+    html += `<span class="card-flair" data-i18n="${escapeHtml(p.flair)}">${flairText}</span>`;
+    html += '</a>';
+    html += '</div>';
   }
   return html;
 }

@@ -10,6 +10,7 @@
       "flair": "apps.portty.flair",
       "description": "apps.portty.description",
       "deepwiki": true,
+      "gfx": "https://assets.chest.so/portty.webp",
       "promo": "https://assets.chest.so/portty.webm"
     },
     {
@@ -22,6 +23,8 @@
       "flair": "apps.ditty.flair",
       "description": "apps.ditty.description",
       "deepwiki": true,
+      "span": 2,
+      "gfx": "https://assets.chest.so/ditty.webp",
       "promo": "https://assets.chest.so/ditty.webm"
     },
     {
@@ -32,7 +35,8 @@
       "host": "github",
       "version": "v0.1.2",
       "flair": "apps.mudlark.flair",
-      "description": "apps.mudlark.description"
+      "description": "apps.mudlark.description",
+      "gfx": "https://assets.chest.so/mudlark.webp"
     }
   ],
   "libs": [

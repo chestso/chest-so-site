@@ -550,147 +550,118 @@ a:hover {
   color: var(--card-text);
   font-size: 0.9rem;
   line-height: 1.5;
+  height: 4.05rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* ── Feature Grid ── */
-.feature-grid {
+/* ── App Grid ── */
+.app-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-auto-rows: 1fr;
   gap: 1.5rem;
+  padding: 0 2rem;
 }
 
-.feature-card {
-  background: var(--bg-card);
+/* ── App Cards ── */
+.app-card {
+  position: relative;
+  display: block;
   border-radius: 12px;
+  overflow: hidden;
+  height: 380px;
+  box-shadow: var(--shadow-card);
   transition:
     transform 0.15s,
     box-shadow 0.15s;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-card);
-  position: relative;
-  overflow: hidden;
-  height: 380px;
 }
 
-.feature-card > .feature-content {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.feature-card-wide {
-  grid-column: span 3;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 0;
-  align-items: stretch;
-  overflow: hidden;
-  padding: 0;
-}
-
-.feature-card-wide > .feature-content {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-.feature-content {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.feature-promo-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.feature-promo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  display: block;
-}
-
-.feature-card:hover {
+.app-card:hover {
   transform: translateY(6px);
   box-shadow: var(--shadow-card-hover);
 }
 
-.feature-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
+.app-gfx {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000;
+  pointer-events: none;
 }
 
-.feature-icon {
-  font-size: 2.5rem;
+.app-gfx img,
+.app-gfx video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.app-gfx video {
+  cursor: pointer;
+}
+
+.app-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: var(--bg-card);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.app-info h3 {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--card-title);
+  transition: color 0.25s;
+  margin: 0;
+}
+
+.app-card:hover .app-info h3 {
+  color: var(--card-title-hover);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.app-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-icon-bg);
+  border-radius: 6px;
+  color: var(--card-icon-color);
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
   flex-shrink: 0;
+}
+
+.app-icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 .card-flair {
   display: block;
-  font-size: 1.2rem;
-  color: var(--card-flair);
-  margin-bottom: 0.75rem;
-}
-
-.feature-icon img {
-  display: block;
-  width: 48px;
-  height: 48px;
-}
-
-.feature-card h3 {
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 0;
-  color: var(--card-title);
-  transition: color 0.25s;
-}
-
-.feature-card:hover h3 {
-  color: var(--card-title-hover);
-}
-
-.feature-card p {
-  color: var(--card-text);
   font-size: 0.95rem;
-  margin-bottom: 1.25rem;
-  line-height: 1.6;
-  flex: 1;
-}
-
-.feature-actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: auto;
-  align-items: center;
-}
-
-.deepwiki-badge {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-}
-
-.deepwiki-badge img {
-  height: 20px;
-  vertical-align: middle;
+  color: var(--card-flair);
 }
 
 .badge-version {
@@ -866,7 +837,7 @@ a .badge-version {
   margin-top: 0.5rem;
 }
 
-/* ── Responsive ── */
+/* ─ Responsive ── */
 @media (max-width: 640px) {
   .nav-links {
     gap: 0.75rem;
@@ -875,6 +846,11 @@ a .badge-version {
 
   #nav-icons {
     gap: 0.75rem;
+  }
+
+  .btn-small {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
   }
 
   .nav-link span {
@@ -891,34 +867,26 @@ a .badge-version {
   }
 
   .card-grid,
-  .feature-grid,
+  .app-grid,
   .community-grid {
     grid-template-columns: 1fr;
   }
 
-  /* ── Promo card on narrow: override `grid-column: span 3` from the
-   * desktop rule (it would force a 3-column-wide card via implicit
-   * tracks, leaving non-promo cards narrower in comparison). Match
-   * width with the non-promo cards, stack content above video. ── */
-  .feature-card-wide {
-    grid-column: auto;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    gap: 0;
+  .app-grid {
+    padding: 0 1rem;
   }
 
-  /* ── Cap content padding across feature cards so action buttons ──
-   * fit side-by-side without wrapping. Does not change card height. ── */
-  .feature-card > .feature-content,
-  .feature-card-wide > .feature-content {
-    padding: 1.5rem;
-  }
-
-  .feature-card-wide > .feature-promo-wrapper {
-    aspect-ratio: 16 / 9;
+  .app-card {
     height: auto;
-    border-top: 1px solid var(--border-card);
-    background: #000;
+    min-height: 380px;
+  }
+
+  .app-card[style*='grid-column'] {
+    grid-column: auto !important;
+  }
+
+  .app-info {
+    padding: 1rem 1.25rem;
   }
 
   .section {
@@ -954,7 +922,7 @@ body.rtl .hero-cta {
 }
 
 body.rtl .card-grid,
-body.rtl .feature-grid,
+body.rtl .app-grid,
 body.rtl .community-grid {
   direction: rtl;
 }
