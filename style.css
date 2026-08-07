@@ -567,7 +567,7 @@ a:hover {
   padding: 0 2rem;
 }
 
-/* ── App Cards ── */
+/* ── App Cards: bar mode (default, info at bottom) ── */
 .app-card {
   position: relative;
   display: block;
@@ -607,6 +607,7 @@ a:hover {
   cursor: pointer;
 }
 
+/* ── Info overlay: bar mode (bottom strip) ── */
 .app-info {
   position: absolute;
   bottom: 0;
@@ -620,6 +621,7 @@ a:hover {
   gap: 0.25rem;
 }
 
+/* ── Info overlay: panel mode (left side, card ≥ 600px wide) ── */
 @container appcard (min-width: 600px) {
   .app-info {
     bottom: auto;
@@ -906,6 +908,7 @@ a .badge-version {
     grid-column: auto !important;
   }
 
+  /* Force bar mode on narrow screens */
   .app-info {
     bottom: 0 !important;
     top: auto !important;

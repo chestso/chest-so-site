@@ -74,7 +74,7 @@ function renderApps(
     const hasPromo = !!p.promo;
     const span = p.span || 1;
     const spanStyle = span > 1 ? ` style="grid-column: span ${span}"` : '';
-    html += `<div class="app-card" data-project="${escapeHtml(p.name)}"${spanStyle}>`;
+    html += `<div class="app-card app-card--bar" data-project="${escapeHtml(p.name)}"${spanStyle}>`;
     html += '<div class="app-gfx">';
     if (hasPromo) {
       html += `<video src="${escapeHtml(p.promo!)}" poster="${escapeHtml(p.gfx)}" loop muted playsinline preload="metadata" aria-label="${escapeHtml(displayName)} promo video"></video>`;

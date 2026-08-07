@@ -238,7 +238,11 @@
       var span = p.span || 1;
       var spanStyle = span > 1 ? ' style="grid-column: span ' + span + '"' : '';
       html +=
-        '<div class="app-card" data-project="' + p.name + '"' + spanStyle + '>';
+        '<div class="app-card app-card--bar" data-project="' +
+        p.name +
+        '"' +
+        spanStyle +
+        '>';
       html += '<div class="app-gfx">';
       if (hasPromo) {
         html +=
@@ -385,7 +389,7 @@
 
       // Mouse / trackpad: hover drives start/stop. Use mouseover/mouseout
       // on the card and check relatedTarget so moving between children
-      // (app-gfx → app-info) doesn't toggle playback.
+      // (gfx → info) doesn't toggle playback.
       var finePointer = window.matchMedia('(pointer: fine)').matches;
       if (finePointer) {
         card.addEventListener('mouseover', function (e) {
