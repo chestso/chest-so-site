@@ -202,24 +202,45 @@
 
   function fixBarOverflow(container) {
     var cards = container.querySelectorAll('.app-card');
+    var gridWidth = container.clientWidth;
+    var gap = 24;
+    var cellWidth = (gridWidth - 5 * gap) / 6;
+    if (cellWidth < 1) cellWidth = 1;
+
     for (var i = 0; i < cards.length; i += 2) {
       var c0 = cards[i];
       var c1 = cards[i + 1];
-      if (!c1) continue;
+      if (!c1) {
+        c0.style.gridColumn = 'span 6';
+        continue;
+      }
+
       var h0 = c0.querySelector('h3');
       var h1 = c1.querySelector('h3');
-      var nowrap0 = h0 ? h0.style.whiteSpace : '';
-      var nowrap1 = h1 ? h1.style.whiteSpace : '';
-      if (h0) h0.style.whiteSpace = 'nowrap';
-      if (h1) h1.style.whiteSpace = 'nowrap';
-      var overflow0 = h0 && h0.scrollWidth > h0.clientWidth + 1;
-      var overflow1 = h1 && h1.scrollWidth > h1.clientWidth + 1;
-      if (h0) h0.style.whiteSpace = nowrap0;
-      if (h1) h1.style.whiteSpace = nowrap1;
-      if (overflow0 || overflow1) {
-        c0.style.gridColumn = 'span 3';
-        c1.style.gridColumn = 'span 3';
+      if (!h0 || !h1) continue;
+
+      var old0 = h0.style.whiteSpace;
+      var old1 = h1.style.whiteSpace;
+      h0.style.whiteSpace = 'nowrap';
+      h1.style.whiteSpace = 'nowrap';
+      var tw0 = h0.scrollWidth;
+      var tw1 = h1.scrollWidth;
+      h0.style.whiteSpace = old0;
+      h1.style.whiteSpace = old1;
+
+      var buffer = 60;
+      var need0 = Math.ceil((tw0 + buffer) / cellWidth);
+      var need1 = Math.ceil((tw1 + buffer) / cellWidth);
+      need0 = Math.max(1, Math.min(5, need0));
+      need1 = Math.max(1, Math.min(5, need1));
+
+      if (need0 + need1 > 6) {
+        need0 = 3;
+        need1 = 3;
       }
+
+      c0.style.gridColumn = 'span ' + need0;
+      c1.style.gridColumn = 'span ' + need1;
     }
   }
 
