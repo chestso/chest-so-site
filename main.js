@@ -211,48 +211,70 @@
         continue;
       }
 
-      var orig0 = parseInt(c0.dataset.cells, 10) || 3;
-      var orig1 = parseInt(c1.dataset.cells, 10) || 3;
-      c0.style.gridColumn = 'span ' + orig0;
-      c1.style.gridColumn = 'span ' + orig1;
+      var a = parseInt(c0.dataset.cells, 10) || 3;
+      var b = parseInt(c1.dataset.cells, 10) || 3;
 
-      var info0 = c0.querySelector('.app-info');
-      var info1 = c1.querySelector('.app-info');
-      var h0 = c0.querySelector('h3');
-      var h1 = c1.querySelector('h3');
-      if (!info0 || !info1 || !h0 || !h1) continue;
+      function apply(a, b) {
+        c0.style.gridColumn = 'span ' + a;
+        c1.style.gridColumn = 'span ' + b;
+      }
 
-      var s0 = getComputedStyle(info0);
-      var s1 = getComputedStyle(info1);
-      var avail0 =
-        info0.clientWidth -
-        parseFloat(s0.paddingLeft) -
-        parseFloat(s0.paddingRight);
-      var avail1 =
-        info1.clientWidth -
-        parseFloat(s1.paddingLeft) -
-        parseFloat(s1.paddingRight);
+      function measure() {
+        var info0 = c0.querySelector('.app-info');
+        var info1 = c1.querySelector('.app-info');
+        var h0 = c0.querySelector('h3');
+        var h1 = c1.querySelector('h3');
+        if (!info0 || !info1 || !h0 || !h1) return [false, false];
 
-      var icon0 = c0.querySelector('.app-icon');
-      var icon1 = c1.querySelector('.app-icon');
-      var iconW0 = icon0 ? icon0.offsetWidth + 12 : 0;
-      var iconW1 = icon1 ? icon1.offsetWidth + 12 : 0;
+        var s0 = getComputedStyle(info0);
+        var s1 = getComputedStyle(info1);
+        var avail0 =
+          info0.clientWidth -
+          parseFloat(s0.paddingLeft) -
+          parseFloat(s0.paddingRight);
+        var avail1 =
+          info1.clientWidth -
+          parseFloat(s1.paddingLeft) -
+          parseFloat(s1.paddingRight);
 
-      var old0 = h0.style.whiteSpace;
-      var old1 = h1.style.whiteSpace;
-      h0.style.whiteSpace = 'nowrap';
-      h1.style.whiteSpace = 'nowrap';
-      var need0 = iconW0 + h0.scrollWidth;
-      var need1 = iconW1 + h1.scrollWidth;
-      var overflow0 = need0 > avail0;
-      var overflow1 = need1 > avail1;
-      h0.style.whiteSpace = old0;
-      h1.style.whiteSpace = old1;
+        var icon0 = c0.querySelector('.app-icon');
+        var icon1 = c1.querySelector('.app-icon');
+        var iconW0 = icon0 ? icon0.offsetWidth + 12 : 0;
+        var iconW1 = icon1 ? icon1.offsetWidth + 12 : 0;
 
-      if (!overflow0 && !overflow1) continue;
+        var old0 = h0.style.whiteSpace;
+        var old1 = h1.style.whiteSpace;
+        h0.style.whiteSpace = 'nowrap';
+        h1.style.whiteSpace = 'nowrap';
+        var need0 = iconW0 + h0.scrollWidth;
+        var need1 = iconW1 + h1.scrollWidth;
+        var overflow0 = need0 > avail0;
+        var overflow1 = need1 > avail1;
+        h0.style.whiteSpace = old0;
+        h1.style.whiteSpace = old1;
 
-      c0.style.gridColumn = 'span 3';
-      c1.style.gridColumn = 'span 3';
+        return [overflow0, overflow1];
+      }
+
+      apply(a, b);
+      var overflow = measure();
+
+      while (overflow[0] || overflow[1]) {
+        if (overflow[0] && !overflow[1] && b > 1) {
+          a++;
+          b--;
+        } else if (!overflow[0] && overflow[1] && a > 1) {
+          a--;
+          b++;
+        } else {
+          a = 3;
+          b = 3;
+          apply(a, b);
+          break;
+        }
+        apply(a, b);
+        overflow = measure();
+      }
     }
   }
 
