@@ -202,10 +202,6 @@
 
   function fixBarOverflow(container) {
     var cards = container.querySelectorAll('.app-card');
-    var gridWidth = container.clientWidth;
-    var gap = 24;
-    var cellWidth = (gridWidth - 5 * gap) / 6;
-    if (cellWidth < 1) cellWidth = 1;
 
     for (var i = 0; i < cards.length; i += 2) {
       var c0 = cards[i];
@@ -219,26 +215,22 @@
       var h1 = c1.querySelector('h3');
       if (!h0 || !h1) continue;
 
-      var old0 = h0.style.whiteSpace;
-      var old1 = h1.style.whiteSpace;
+      var nowrap0 = h0.style.whiteSpace;
+      var nowrap1 = h1.style.whiteSpace;
       h0.style.whiteSpace = 'nowrap';
       h1.style.whiteSpace = 'nowrap';
-      var tw0 = h0.scrollWidth;
-      var tw1 = h1.scrollWidth;
-      h0.style.whiteSpace = old0;
-      h1.style.whiteSpace = old1;
-
-      var buffer = 60;
-      var need0 = Math.ceil((tw0 + buffer) / cellWidth);
-      var need1 = Math.ceil((tw1 + buffer) / cellWidth);
+      var overflow0 = h0.scrollWidth > h0.clientWidth + 1;
+      var overflow1 = h1.scrollWidth > h1.clientWidth + 1;
+      h0.style.whiteSpace = nowrap0;
+      h1.style.whiteSpace = nowrap1;
 
       var a = 3;
       var b = 3;
 
-      if (need0 > 3 && need1 <= 2) {
+      if (overflow0 && !overflow1) {
         a = 4;
         b = 2;
-      } else if (need1 > 3 && need0 <= 2) {
+      } else if (!overflow0 && overflow1) {
         a = 2;
         b = 4;
       }
