@@ -231,16 +231,20 @@
       var buffer = 60;
       var need0 = Math.ceil((tw0 + buffer) / cellWidth);
       var need1 = Math.ceil((tw1 + buffer) / cellWidth);
-      need0 = Math.max(1, Math.min(5, need0));
-      need1 = Math.max(1, Math.min(5, need1));
 
-      if (need0 + need1 > 6) {
-        need0 = 3;
-        need1 = 3;
+      var a = 3;
+      var b = 3;
+
+      if (need0 > 3 && need1 <= 2) {
+        a = 4;
+        b = 2;
+      } else if (need1 > 3 && need0 <= 2) {
+        a = 2;
+        b = 4;
       }
 
-      c0.style.gridColumn = 'span ' + need0;
-      c1.style.gridColumn = 'span ' + need1;
+      c0.style.gridColumn = 'span ' + a;
+      c1.style.gridColumn = 'span ' + b;
     }
   }
 
