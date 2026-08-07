@@ -211,34 +211,57 @@
         continue;
       }
 
+      var info0 = c0.querySelector('.app-info');
+      var info1 = c1.querySelector('.app-info');
       var h0 = c0.querySelector('h3');
       var h1 = c1.querySelector('h3');
-      if (!h0 || !h1) continue;
+      if (!info0 || !info1 || !h0 || !h1) continue;
 
-      var nowrap0 = h0.style.whiteSpace;
-      var nowrap1 = h1.style.whiteSpace;
+      var s0 = getComputedStyle(info0);
+      var s1 = getComputedStyle(info1);
+      var avail0 =
+        info0.clientWidth -
+        parseFloat(s0.paddingLeft) -
+        parseFloat(s0.paddingRight);
+      var avail1 =
+        info1.clientWidth -
+        parseFloat(s1.paddingLeft) -
+        parseFloat(s1.paddingRight);
+
+      var old0 = h0.style.whiteSpace;
+      var old1 = h1.style.whiteSpace;
       h0.style.whiteSpace = 'nowrap';
       h1.style.whiteSpace = 'nowrap';
-      var overflow0 = h0.scrollWidth > h0.clientWidth + 1;
-      var overflow1 = h1.scrollWidth > h1.clientWidth + 1;
-      h0.style.whiteSpace = nowrap0;
-      h1.style.whiteSpace = nowrap1;
+      var overflow0 = h0.scrollWidth > avail0;
+      var overflow1 = h1.scrollWidth > avail1;
+      h0.style.whiteSpace = old0;
+      h1.style.whiteSpace = old1;
+
+      if (overflow0) {
+        console.log(
+          '[fixBarOverflow]',
+          c0.dataset.project,
+          'scrollWidth:',
+          h0.scrollWidth,
+          'avail:',
+          avail0,
+        );
+      }
+      if (overflow1) {
+        console.log(
+          '[fixBarOverflow]',
+          c1.dataset.project,
+          'scrollWidth:',
+          h1.scrollWidth,
+          'avail:',
+          avail1,
+        );
+      }
 
       if (!overflow0 && !overflow1) continue;
 
-      var a = 3;
-      var b = 3;
-
-      if (overflow0 && !overflow1) {
-        a = 4;
-        b = 2;
-      } else if (!overflow0 && overflow1) {
-        a = 2;
-        b = 4;
-      }
-
-      c0.style.gridColumn = 'span ' + a;
-      c1.style.gridColumn = 'span ' + b;
+      c0.style.gridColumn = 'span 3';
+      c1.style.gridColumn = 'span 3';
     }
   }
 
