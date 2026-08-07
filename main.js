@@ -211,6 +211,11 @@
         continue;
       }
 
+      var orig0 = parseInt(c0.dataset.cells, 10) || 3;
+      var orig1 = parseInt(c1.dataset.cells, 10) || 3;
+      c0.style.gridColumn = 'span ' + orig0;
+      c1.style.gridColumn = 'span ' + orig1;
+
       var info0 = c0.querySelector('.app-info');
       var info1 = c1.querySelector('.app-info');
       var h0 = c0.querySelector('h3');
@@ -244,27 +249,6 @@
       h0.style.whiteSpace = old0;
       h1.style.whiteSpace = old1;
 
-      if (overflow0) {
-        console.log(
-          '[fixBarOverflow]',
-          c0.dataset.project,
-          'need:',
-          need0,
-          'avail:',
-          avail0,
-        );
-      }
-      if (overflow1) {
-        console.log(
-          '[fixBarOverflow]',
-          c1.dataset.project,
-          'need:',
-          need1,
-          'avail:',
-          avail1,
-        );
-      }
-
       if (!overflow0 && !overflow1) continue;
 
       c0.style.gridColumn = 'span 3';
@@ -291,6 +275,8 @@
       html +=
         '<div class="app-card app-card--bar" data-project="' +
         p.name +
+        '" data-cells="' +
+        cellSpan +
         '"' +
         spanStyle +
         '>';
@@ -557,6 +543,13 @@
         if (appsGrid && data.apps) {
           renderApps(data.apps, appsGrid);
           setupPromoPlayOnHover();
+          var resizeTimer = null;
+          window.addEventListener('resize', function () {
+            if (resizeTimer) clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+              fixBarOverflow(appsGrid);
+            }, 200);
+          });
         }
         if (libsGrid && data.libs) {
           renderLibs(data.libs, libsGrid);
