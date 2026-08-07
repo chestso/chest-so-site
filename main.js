@@ -176,6 +176,57 @@
     return 'https://github.com/' + repo + '/releases/latest';
   }
 
+  function computeSpans(desired, cols) {
+    var result = [];
+    for (var i = 0; i < desired.length; i++) {
+      result.push(Math.min(desired[i], cols));
+    }
+    var i = 0;
+    while (i < desired.length) {
+      var rowStart = i;
+      var rowUsed = 0;
+      while (i < desired.length && rowUsed + result[i] <= cols) {
+        rowUsed += result[i];
+        i++;
+      }
+      if (i < desired.length && rowUsed < cols) {
+        result[i] = cols - rowUsed;
+        rowUsed = cols;
+        i++;
+      }
+      var slack = cols - rowUsed;
+      if (slack > 0 && rowStart < i) {
+        var bestIdx = rowStart;
+        for (var j = rowStart + 1; j < i; j++) {
+          if (desired[j] > desired[bestIdx]) {
+            bestIdx = j;
+          }
+        }
+        result[bestIdx] += slack;
+      }
+    }
+    return result;
+  }
+
+  function getGridColumns(container) {
+    var style = getComputedStyle(container).gridTemplateColumns;
+    return style.split(' ').length;
+  }
+
+  function adjustSpans(apps, container) {
+    if (!container.clientWidth) return;
+    var cols = getGridColumns(container);
+    var desired = [];
+    for (var i = 0; i < apps.length; i++) {
+      desired.push(apps[i].span || 1);
+    }
+    var spans = computeSpans(desired, cols);
+    var cards = container.querySelectorAll('.app-card');
+    for (var i = 0; i < cards.length && i < spans.length; i++) {
+      cards[i].style.gridColumn = spans[i] > 1 ? 'span ' + spans[i] : '';
+    }
+  }
+
   function renderApps(apps, container) {
     var dict = I18N[Common.getLang()] || I18N[Common.DEFAULT_LANG];
     var html = '';
@@ -447,7 +498,15 @@
       .then(function (data) {
         if (appsGrid && data.apps) {
           renderApps(data.apps, appsGrid);
+          adjustSpans(data.apps, appsGrid);
           setupPromoPlayOnHover();
+          var resizeTimer = null;
+          window.addEventListener('resize', function () {
+            if (resizeTimer) clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+              adjustSpans(data.apps, appsGrid);
+            }, 200);
+          });
         }
         if (libsGrid && data.libs) {
           renderLibs(data.libs, libsGrid);
