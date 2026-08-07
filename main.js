@@ -201,6 +201,29 @@
     return result;
   }
 
+  function fixBarOverflow(container) {
+    var cards = container.querySelectorAll('.app-card');
+    for (var i = 0; i < cards.length; i += 2) {
+      var c0 = cards[i];
+      var c1 = cards[i + 1];
+      if (!c1) continue;
+      var h0 = c0.querySelector('h3');
+      var h1 = c1.querySelector('h3');
+      var nowrap0 = h0 ? h0.style.whiteSpace : '';
+      var nowrap1 = h1 ? h1.style.whiteSpace : '';
+      if (h0) h0.style.whiteSpace = 'nowrap';
+      if (h1) h1.style.whiteSpace = 'nowrap';
+      var overflow0 = h0 && h0.scrollWidth > h0.clientWidth + 1;
+      var overflow1 = h1 && h1.scrollWidth > h1.clientWidth + 1;
+      if (h0) h0.style.whiteSpace = nowrap0;
+      if (h1) h1.style.whiteSpace = nowrap1;
+      if (overflow0 || overflow1) {
+        c0.style.gridColumn = 'span 3';
+        c1.style.gridColumn = 'span 3';
+      }
+    }
+  }
+
   function renderApps(apps, container) {
     var dict = I18N[Common.getLang()] || I18N[Common.DEFAULT_LANG];
     var weights = [];
@@ -276,6 +299,9 @@
       html += '</div>';
     }
     container.innerHTML = html;
+    requestAnimationFrame(function () {
+      fixBarOverflow(container);
+    });
   }
 
   // ── Promo video: initialize on load at 90%, then play on hover and loop ──
