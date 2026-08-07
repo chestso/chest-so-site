@@ -625,7 +625,7 @@ a:hover {
     bottom: auto;
     top: 0;
     right: auto;
-    width: 38.2%;
+    width: 200px;
     height: 100%;
     justify-content: center;
     border-right: 1px solid var(--border-card);
