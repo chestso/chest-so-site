@@ -54,6 +54,7 @@ function releaseUrl(repo: string): string {
 }
 
 function allocateCells(weights: number[]): number[] {
+  const MIN = 2;
   const result: number[] = [];
   let i = 0;
   while (i < weights.length) {
@@ -63,25 +64,13 @@ function allocateCells(weights: number[]): number[] {
       const w1 = weights[i];
       i++;
       const total = w0 + w1;
-      let raw0 = Math.round((6 * w0) / total);
-      let raw1 = Math.round((6 * w1) / total);
-      if (raw0 + raw1 === 6) {
-        result.push(raw0, raw1);
-      } else if (raw0 + raw1 < 6) {
-        const diff = 6 - (raw0 + raw1);
-        if (raw0 >= raw1) {
-          result.push(raw0 + diff, raw1);
-        } else {
-          result.push(raw0, raw1 + diff);
-        }
-      } else {
-        const diff = raw0 + raw1 - 6;
-        if (raw0 >= raw1) {
-          result.push(raw0 - diff, raw1);
-        } else {
-          result.push(raw0, raw1 - diff);
-        }
+      let c0 = Math.max(MIN, Math.min(4, Math.round((6 * w0) / total)));
+      let c1 = 6 - c0;
+      if (c1 < MIN) {
+        c1 = MIN;
+        c0 = 6 - MIN;
       }
+      result.push(c0, c1);
     } else {
       result.push(6);
     }

@@ -177,6 +177,7 @@
   }
 
   function allocateCells(weights) {
+    var MIN = 2;
     var result = [];
     var i = 0;
     while (i < weights.length) {
@@ -186,25 +187,13 @@
         var w1 = weights[i];
         i++;
         var total = w0 + w1;
-        var raw0 = Math.round((6 * w0) / total);
-        var raw1 = Math.round((6 * w1) / total);
-        if (raw0 + raw1 === 6) {
-          result.push(raw0, raw1);
-        } else if (raw0 + raw1 < 6) {
-          var diff = 6 - (raw0 + raw1);
-          if (raw0 >= raw1) {
-            result.push(raw0 + diff, raw1);
-          } else {
-            result.push(raw0, raw1 + diff);
-          }
-        } else {
-          var diff = raw0 + raw1 - 6;
-          if (raw0 >= raw1) {
-            result.push(raw0 - diff, raw1);
-          } else {
-            result.push(raw0, raw1 - diff);
-          }
+        var c0 = Math.max(MIN, Math.min(4, Math.round((6 * w0) / total)));
+        var c1 = 6 - c0;
+        if (c1 < MIN) {
+          c1 = MIN;
+          c0 = 6 - MIN;
         }
+        result.push(c0, c1);
       } else {
         result.push(6);
       }
