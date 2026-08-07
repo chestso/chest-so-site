@@ -565,12 +565,8 @@
         if (appsGrid && data.apps) {
           renderApps(data.apps, appsGrid);
           setupPromoPlayOnHover();
-          var resizeTimer = null;
           window.addEventListener('resize', function () {
-            if (resizeTimer) clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function () {
-              fixBarOverflow(appsGrid);
-            }, 200);
+            fixBarOverflow(appsGrid);
           });
         }
         if (libsGrid && data.libs) {
