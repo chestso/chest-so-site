@@ -49,15 +49,6 @@
       "icon": "📖"
     },
     {
-      "name": "Pandoc-Easy",
-      "tagline": "GFM to PDF",
-      "description": "Simple GFM-to-PDF conversion tool.",
-      "status": "independent",
-      "tags": ["python", "pandoc", "pdf", "markdown"],
-      "url": "https://codeberg.org/thomasc/pandoc-easy",
-      "icon": "📄"
-    },
-    {
       "name": "Subgrab",
       "tagline": "Movie subtitle downloader",
       "description": "CLI to search and download movie subtitles from subf2m.co. Fuzzy/keyword search, 40+ languages, ZIP auto-extraction.",
